@@ -1,6 +1,7 @@
 
 import "./globals.css";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Ticket Management",
@@ -17,7 +18,7 @@ export default function RootLayout({
       <body>
         <div className="app-shell">
           <header className="app-header">
-            <div className="app-logo">Ticket Management</div>
+            <Link href="/" classname="app-logo"> Ticket Management</Link>
             <nav className="app-nav">
               <a href="/" className="nav-link">
                 Home
