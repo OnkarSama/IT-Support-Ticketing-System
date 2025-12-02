@@ -18,7 +18,7 @@ export default function Component() {
         <div className="flex h-full w-full items-center justify-center">
             <div className="rounded-large flex w-full max-w-sm flex-col gap-4">
                 <div className="flex flex-col items-center pb-6">
-                    <p className="text-xl font-medium">Welcome Back</p>
+                    <p className="text-xl font-medium">Welcome</p>
                     <p className="text-small text-default-500">Log in to your account to continue</p>
                 </div>
                 <Form className="flex flex-col gap-3" validationBehavior="native" onSubmit={handleSubmit}>
