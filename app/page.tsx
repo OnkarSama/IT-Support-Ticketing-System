@@ -26,7 +26,7 @@ const MOCK_TICKETS: Ticket[] = [
     title: "Email not syncing",
     description: "Mobile email app is not syncing new messages.",
     status: "In Progress",
-    requester: "Rahima Patel",
+    requester: "Rahima Signh",
   },
   {
     id: 103,
