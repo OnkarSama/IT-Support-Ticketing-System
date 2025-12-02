@@ -34,28 +34,16 @@ export default function RootLayout({
         <body
             className={clsx(
                 "min-h-screen text-foreground bg-background font-sans antialiased",
-                fontSans.variable
             )}
         >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
             <div className="relative flex flex-col h-screen">
-                {/* --- App Header (Your original one) --- */}
-                <header className="app-header flex items-center justify-between px-6 py-4 border-b">
-                    <div className="app-logo text-xl font-semibold">
-                        Ticket Management
-                    </div>
-                    <nav className="app-nav flex gap-4">
-                        <a href="/" className="nav-link hover:underline">
-                            Home
-                        </a>
-                        <a href="/new-ticket" className="nav-link hover:underline">
-                            New Ticket
-                        </a>
-                    </nav>
-                </header>
 
-                {/* --- Main content --- */}
+                <Navbar/>
+
                 <main className="app-main flex-1 p-6">{children}</main>
+
+
 
                 {/* Theme Switcher */}
                 <div className="fixed bottom-4 right-4 z-50">
