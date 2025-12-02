@@ -94,3 +94,38 @@ export default function Component() {
         </div>
     );
 }
+
+
+/*
+"use client";
+
+import { Input, Button } from "@heroui/react";
+import { useState } from "react";
+import "./login.css";
+
+export default function Login() {
+    //JavaScript Part
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const alertPopup = () => {alert("Successful!")};
+    
+    //HTML Part
+    return(
+        <div className="backgroundContainer">
+            <div className="cardContainer">
+                <h1 className="title">Login</h1>
+
+                <br></br>
+                <div className="infoContainer">
+                    <Input className="emailTextbox" placeholder="Email" type="email" onChange={(e) => setEmail(e.target.value)}/>
+                    <br></br> 
+                    <Input className="passwordTextbox" placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
+        
+                    <br></br>
+                    <Button className="loginButton" onClick={alertPopup}>Submit</Button>
+                </div>
+            </div>
+        </div>
+    );
+}*/
