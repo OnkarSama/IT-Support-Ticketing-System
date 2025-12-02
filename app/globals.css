@@ -1,26 +1,388 @@
-@import "tailwindcss";
+/* app/global.css */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Basic reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 2rem;
+  background: #020617;
+  border-bottom: 1px solid #1f2937;
+}
+
+.app-logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+.app-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.nav-link:hover {
+  background: #111827;
+  border-color: #374151;
+}
+
+/* Main layout */
+
+.app-main {
+  flex: 1;
+  padding: 1.5rem 2rem 2.5rem;
+}
+
+.app-footer {
+  padding: 0.75rem 2rem;
+  border-top: 1px solid #1f2937;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+/* Page layout */
+
+.page-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page-container.narrow {
+  max-width: 600px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.page-subtitle {
+  margin: 0.25rem 0 0 0;
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+/* Cards */
+
+.card {
+  background: #020617;
+  border-radius: 0.75rem;
+  border: 1px solid #1f2937;
+  padding: 1.25rem 1.5rem;
+  margin-top: 1rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.card-header {
+  margin-bottom: 0.75rem;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Buttons */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease, transform 0.08s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  color: white;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+.btn-secondary:hover {
+  background: #111827;
+}
+
+.actions-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Filter chips */
+
+.filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-chip {
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.85rem;
+  border: 1px solid #1f2937;
+  background: #020617;
+  cursor: pointer;
+  color: #d1d5db;
+  transition: background 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.filter-chip:hover {
+  background: #111827;
+}
+
+.filter-chip-active {
+  background: #1d4ed8;
+  border-color: #2563eb;
+  color: #e5e7eb;
+}
+
+/* Table */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.ticket-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.ticket-table th,
+.ticket-table td {
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid #1f2937;
+  text-align: left;
+}
+
+.ticket-table thead th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+}
+
+.ticket-table tbody tr:hover {
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.ticket-description {
+  color: #d1d5db;
+  max-width: 360px;
+}
+
+.empty-row {
+  text-align: center;
+  padding: 1.25rem 0.5rem;
+  color: #9ca3af;
+}
+
+/* Status badge */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-open {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+}
+
+.status-in-progress {
+  background: rgba(234, 179, 8, 0.15);
+  color: #facc15;
+}
+
+.status-closed {
+  background: rgba(148, 163, 184, 0.15);
+  color: #e5e7eb;
+}
+
+/* Links */
+
+.link {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Ticket details */
+
+.ticket-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem 2rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.ticket-details dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #9ca3af;
+  margin-bottom: 0.1rem;
+}
+
+.ticket-details dd {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.ticket-details-body h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+.ticket-details-body p {
+  margin: 0;
+  color: #e5e7eb;
+}
+
+/* Forms */
+
+.form-card {
+  margin-top: 1.2rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.9rem;
+}
+
+.form-field label {
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+  color: #e5e7eb;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  border-radius: 0.45rem;
+  border: 1px solid #374151;
+  padding: 0.5rem 0.6rem;
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Popup header */
+
+.popup-header {
+  margin-top: 0.5rem;
+}
+
+.popup-header h1 {
+  margin-bottom: 0.2rem;
+}
+
+/* Responsiveness */
+
+@media (max-width: 640px) {
+  .app-main {
+    padding: 1rem;
+  }
+
+  .app-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
