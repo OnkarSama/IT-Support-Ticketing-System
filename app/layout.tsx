@@ -3,7 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "TicketFlow | Ticket Management",
+  title: "Ticket Management",
   description: "Simple ticket management system UI built with Next.js",
 };
 
@@ -17,7 +17,7 @@ export default function RootLayout({
       <body>
         <div className="app-shell">
           <header className="app-header">
-            <div className="app-logo">TicketFlow</div>
+            <div className="app-logo">Ticket Management</div>
             <nav className="app-nav">
               <a href="/" className="nav-link">
                 Home
@@ -31,7 +31,7 @@ export default function RootLayout({
           <main className="app-main">{children}</main>
 
           <footer className="app-footer">
-            <span>TicketFlow &copy; {new Date().getFullYear()}</span>
+            <span>Ticket Management &copy; {new Date().getFullYear()}</span>
           </footer>
         </div>
       </body>

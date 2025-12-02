@@ -1,6 +1,4 @@
-/* app/global.css */
 
-/* Basic reset */
 *,
 *::before,
 *::after {
@@ -27,8 +25,6 @@ a {
   display: flex;
   flex-direction: column;
 }
-
-/* Header */
 
 .app-header {
   display: flex;
@@ -64,8 +60,6 @@ a {
   border-color: #374151;
 }
 
-/* Main layout */
-
 .app-main {
   flex: 1;
   padding: 1.5rem 2rem 2.5rem;
@@ -77,8 +71,6 @@ a {
   font-size: 0.8rem;
   color: #9ca3af;
 }
-
-/* Page layout */
 
 .page-container {
   max-width: 1100px;
@@ -108,8 +100,6 @@ a {
   font-size: 0.9rem;
 }
 
-/* Cards */
-
 .card {
   background: #020617;
   border-radius: 0.75rem;
@@ -127,8 +117,6 @@ a {
   margin: 0;
   font-size: 1.1rem;
 }
-
-/* Buttons */
 
 .btn {
   display: inline-flex;
@@ -172,8 +160,6 @@ a {
   gap: 0.5rem;
 }
 
-/* Filter chips */
-
 .filters-row {
   display: flex;
   flex-wrap: wrap;
@@ -201,8 +187,6 @@ a {
   border-color: #2563eb;
   color: #e5e7eb;
 }
-
-/* Table */
 
 .table-wrapper {
   overflow-x: auto;
@@ -243,8 +227,6 @@ a {
   color: #9ca3af;
 }
 
-/* Status badge */
-
 .status-badge {
   display: inline-flex;
   align-items: center;
@@ -269,8 +251,6 @@ a {
   color: #e5e7eb;
 }
 
-/* Links */
-
 .link {
   color: #60a5fa;
   text-decoration: none;
@@ -279,8 +259,6 @@ a {
 .link:hover {
   text-decoration: underline;
 }
-
-/* Ticket details */
 
 .ticket-details {
   display: grid;
@@ -311,8 +289,6 @@ a {
   margin: 0;
   color: #e5e7eb;
 }
-
-/* Forms */
 
 .form-card {
   margin-top: 1.2rem;
@@ -360,8 +336,6 @@ a {
   margin-top: 1rem;
 }
 
-/* Popup header */
-
 .popup-header {
   margin-top: 0.5rem;
 }
@@ -369,8 +343,6 @@ a {
 .popup-header h1 {
   margin-bottom: 0.2rem;
 }
-
-/* Responsiveness */
 
 @media (max-width: 640px) {
   .app-main {
