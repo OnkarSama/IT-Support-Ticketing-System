@@ -1,40 +1,44 @@
-
 import "./globals.css";
-import type { Metadata } from "next";
+import type {Metadata} from "next";
+import {Providers} from "./providers";
+
 
 export const metadata: Metadata = {
-  title: "Ticket Management",
-  description: "Simple ticket management system UI built with Next.js",
+    title: "Ticket Management",
+    description: "Simple ticket management system UI built with Next.js",
 };
 
 export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
+                                       children,
+                                   }: {
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body>
+    return (
+        <html lang="en">
+        <body>
         <div className="app-shell">
-          <header className="app-header">
-            <div className="app-logo">Ticket Management</div>
-            <nav className="app-nav">
-              <a href="/" className="nav-link">
-                Home
-              </a>
-              <a href="/new-ticket" className="nav-link">
-                New Ticket
-              </a>
-            </nav>
-          </header>
+            <header className="app-header">
+                <div className="app-logo">Ticket Management</div>
+                <nav className="app-nav">
+                    <a href="/" className="nav-link">
+                        Home
+                    </a>
+                    <a href="/new-ticket" className="nav-link">
+                        New Ticket
+                    </a>
+                </nav>
+            </header>
+            <Providers themeProps={{attribute: "class", defaultTheme: "dark"}}>
 
-          <main className="app-main">{children}</main>
+                <main className="app-main">{children}</main>
 
-          <footer className="app-footer">
-            <span>Ticket Management &copy; {new Date().getFullYear()}</span>
-          </footer>
+                <footer className="app-footer">
+                    <span>Ticket Management &copy; {new Date().getFullYear()}</span>
+                </footer>
+            </Providers>
+
         </div>
-      </body>
-    </html>
-  );
+        </body>
+        </html>
+    );
 }
