@@ -107,9 +107,8 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                 })}
             </div>
 
-            {/* Table */}
             <Table
-                className="bg-table_bg rounded-[0.75rem] py-5 px-6 shadow-[0_18px_40px_rgba(0,0,0,0.35)]"
+                className="min-w-full w-full bg-table_bg py-5 px-6 shadow-[0_18px_40px_rgba(0,0,0,0.35)]"
                 removeWrapper
                 sortDescriptor={sortDescriptor}
                 onSortChange={setSortDescriptor}
