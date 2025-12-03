@@ -30,18 +30,14 @@ const config = {
                 light: {
                     layout: {},
                     colors: {
-                        background: "#0A1D37",
+                        background: "#0f172a",
                         table_bg :"#020617",
                         loading: "#739B7F",
                         heading: "#5B21B6",
-                        primary: {
-                            DEFAULT: "#ffffffff",
-                            foreground: "#000000",
-                        },
                         secondary: "#2d2d2dff",
                         hover: "#E9D5FF",
                         border:'#1f2937',
-                        text: "#9ca3af",
+                        text: "#e5e7eb",
                     },
                 },
                 dark: {

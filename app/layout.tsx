@@ -28,10 +28,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html suppressHydrationWarning lang="en">
+        <html className = "m-0 p-0" suppressHydrationWarning lang="en">
         <body
             className={clsx(
                 "min-h-screen text-foreground bg-background font-sans antialiased",
+                 "m-0 p-0"
             )}
         >
         <Providers themeProps={{ attribute: "class"}}>

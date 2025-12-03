@@ -1,68 +1,22 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import {useState} from "react";
 import TicketHeader from "@/components/TicketHeader";
 import TicketTable from "@/components/TicketTable";
+import {Filter} from "@/types";
+import {MOCK_TICKETS} from "@/types/MOCK_TICKETS";
 
-/* ---------------- Types ---------------- */
-
-type TicketStatus = "Open" | "In Progress" | "Closed";
-type Filter = "all" | "open" | "in-progress" | "closed";
-
-interface Ticket {
-    id: number;
-    title: string;
-    description: string;
-    status: TicketStatus;
-    requester: string;
-}
-
-/* ---------------- Mock Data ---------------- */
-
-const MOCK_TICKETS: Ticket[] = [
-    {
-        id: 101,
-        title: "Cannot login to portal",
-        description: "User reports an authentication error on login.",
-        status: "Open",
-        requester: "James Carter",
-    },
-    {
-        id: 102,
-        title: "Email not syncing",
-        description: "Mobile email app is not syncing new messages.",
-        status: "In Progress",
-        requester: "Rahima Patel",
-    },
-    {
-        id: 103,
-        title: "Printer offline",
-        description: "Office printer shows offline on all workstations.",
-        status: "Closed",
-        requester: "Alex Johnson",
-    },
-];
-
-/* ---------------- Page ---------------- */
 
 export default function HomePage() {
-    const [filter, setFilter] = useState<Filter>("all");
+    const [filter, setFilter] = useState<Filter | null>(null);
 
-    const filteredTickets = useMemo(() => {
-        switch (filter) {
-            case "open":
-                return MOCK_TICKETS.filter((t) => t.status === "Open");
-            case "in-progress":
-                return MOCK_TICKETS.filter((t) => t.status === "In Progress");
-            case "closed":
-                return MOCK_TICKETS.filter((t) => t.status === "Closed");
-            default:
-                // Show Open + In Progress by default
-                return MOCK_TICKETS.filter(
-                    (t) => t.status === "Open" || t.status === "In Progress"
-                );
-        }
-    }, [filter]);
+
+    const filteredTickets = filter
+        ? MOCK_TICKETS.filter(
+            t => t.status.toLowerCase().replace(" ", "-") === filter
+        )
+        : MOCK_TICKETS.filter((t) => t.status === "Open" || t.status === "In Progress");
+
 
     const handleNewTicketWindow = () => {
         const width = 600;

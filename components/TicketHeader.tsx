@@ -12,7 +12,7 @@ export default function TicketHeader({ onNewTicket }: Props) {
     return (
         <div className="flex items-center justify-between mb-6">
             <div>
-                <h1 className="text-3xl font-semibold">Tickets</h1>
+                <h1 className="text-heading text-3xl font-semibold">Tickets</h1>
                 <p className="text-text">
                     View, filter, and manage support tickets.
                 </p>
