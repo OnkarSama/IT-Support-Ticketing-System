@@ -1,41 +1,55 @@
+import "@/styles/globals.css";
+import type { Metadata, Viewport } from "next";
+import clsx from "clsx";
 
-import "./globals.css";
-import type { Metadata } from "next";
-import Link from "next/link";
+import { Providers } from "./providers";
+
+import { Navbar } from "@/components/Navbar"; // optional
+// import { Footer } from "@/components/Footer"; // if you want to replace app-footer
 
 export const metadata: Metadata = {
-  title: "Ticket Management",
-  description: "Simple ticket management system UI built with Next.js",
+    title: "Ticket Management",
+    description: "Simple ticket management system UI built with Next.js",
+    icons: {
+        icon: "/favicon.ico",
+    },
+};
+
+export const viewport: Viewport = {
+    themeColor: [
+        { media: "(prefers-color-scheme: light)", color: "white" },
+        { media: "(prefers-color-scheme: dark)", color: "black" },
+    ],
 };
 
 export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
+                                       children,
+                                   }: {
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body>
-        <div className="app-shell">
-          <header className="app-header">
-            <Link href="/" classname="app-logo"> Ticket Management</Link>
-            <nav className="app-nav">
-              <a href="/" className="nav-link">
-                Home
-              </a>
-              <a href="/new-ticket" className="nav-link">
-                New Ticket
-              </a>
-            </nav>
-          </header>
+    return (
+        <html suppressHydrationWarning lang="en">
+        <body
+            className={clsx(
+                "min-h-screen text-foreground bg-background font-sans antialiased",
+            )}
+        >
+        <Providers themeProps={{ attribute: "class"}}>
+            <div className="relative flex flex-col h-screen">
 
-          <main className="app-main">{children}</main>
+                <Navbar/>
 
-          <footer className="app-footer">
-            <span>Ticket Management &copy; {new Date().getFullYear()}</span>
-          </footer>
-        </div>
-      </body>
-    </html>
-  );
+                <main className="pt-6 px-8 pb-10 flex-1 p-6">{children}</main>
+
+                {/* --- App Footer (kept from original) --- */}
+                <footer className="px-8 py-3 border-t border-border text-sm text-text text-center">
+              <span>
+                Ticket Management &copy; {new Date().getFullYear()}
+              </span>
+                </footer>
+            </div>
+        </Providers>
+        </body>
+        </html>
+    );
 }
