@@ -61,39 +61,12 @@ a {
     border-color: #374151;
 }
 
-.app-main {
-    flex: 1;
-    padding: 1.5rem 2rem 2.5rem;
-}
 
-.app-footer {
-    padding: 0.75rem 2rem;
-    border-top: 1px solid #1f2937;
-    font-size: 0.8rem;
-    color: #9ca3af;
-}
-
-.page-container {
-    max-width: 1100px;
-    margin: 0 auto;
-}
 
 .page-container.narrow {
     max-width: 600px;
 }
 
-.page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.page-header h1 {
-    margin: 0;
-    font-size: 1.6rem;
-}
 
 .page-subtitle {
     margin: 0.25rem 0 0 0;

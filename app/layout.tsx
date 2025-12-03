@@ -4,7 +4,6 @@ import clsx from "clsx";
 
 import { Providers } from "./providers";
 
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { Navbar } from "@/components/Navbar"; // optional
 // import { Footer } from "@/components/Footer"; // if you want to replace app-footer
 
@@ -30,28 +29,20 @@ export default function RootLayout({
 }) {
     return (
         <html suppressHydrationWarning lang="en">
-        <head />
         <body
             className={clsx(
                 "min-h-screen text-foreground bg-background font-sans antialiased",
             )}
         >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+        <Providers themeProps={{ attribute: "class"}}>
             <div className="relative flex flex-col h-screen">
 
                 <Navbar/>
 
-                <main className="app-main flex-1 p-6">{children}</main>
-
-
-
-                {/* Theme Switcher */}
-                <div className="fixed bottom-4 right-4 z-50">
-                    <ThemeSwitcher className="transition-transform duration-300 hover:scale-110 hover:rotate-12" />
-                </div>
+                <main className="pt-6 px-8 pb-10 flex-1 p-6">{children}</main>
 
                 {/* --- App Footer (kept from original) --- */}
-                <footer className="app-footer text-center py-4 border-t">
+                <footer className="px-8 py-3 border-t border-border text-sm text-text text-center">
               <span>
                 Ticket Management &copy; {new Date().getFullYear()}
               </span>
