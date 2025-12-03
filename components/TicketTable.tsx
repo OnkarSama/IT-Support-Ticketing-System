@@ -19,14 +19,13 @@ interface Props {
 export default function TicketTable({ tickets, filter, setFilter }: Props) {
     return (
         <>
-            {/* Filters */}
+
             <div className="flex gap-3 mb-6">
-                {(["all", "open", "in-progress", "closed"] as Filter[]).map((f) => (
+                {(["open", "in-progress", "closed", "all"] as Filter[]).map((f) => (
                     <Chip
                         key={f}
                         color={
-                            filter === f
-                                ? f === "open"
+                            filter === f ? f === "open"
                                     ? "success"
                                     : f === "in-progress"
                                         ? "warning"
@@ -35,7 +34,6 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                                             : "primary"
                                 : "default"
                         }
-                        variant={filter === f ? "solid" : "bordered"}
                         className="cursor-pointer"
                         onClick={() => setFilter(f)}
                     >
@@ -47,8 +45,8 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
             </div>
 
             {/* Table */}
-            <Table aria-label="support tickets table" removeWrapper>
-                <TableHeader>
+            <Table className = "bg-table_bg rounded-[0.75rem] py-5 px-6 mt-4 shadow-[0_18px_40px_rgba(0,0,0,0.35)]" aria-label="support tickets table" removeWrapper>
+                <TableHeader className="">
                     <TableColumn>ID</TableColumn>
                     <TableColumn>Ticket</TableColumn>
                     <TableColumn>Status</TableColumn>
@@ -61,7 +59,7 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                     items={tickets}
                 >
                     {(ticket) => (
-                        <TableRow key={ticket.id}>
+                        <TableRow className = "m-4 p-4" key={ticket.id}>
                             <TableCell>
                                 <Link
                                     href={`/tickets/${ticket.id}`}

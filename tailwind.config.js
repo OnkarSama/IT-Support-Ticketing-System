@@ -31,6 +31,7 @@ const config = {
                     layout: {},
                     colors: {
                         background: "#0A1D37",
+                        table_bg :"#020617",
                         loading: "#739B7F",
                         heading: "#5B21B6",
                         primary: {
