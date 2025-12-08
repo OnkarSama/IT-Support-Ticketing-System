@@ -7,6 +7,17 @@ class User < ApplicationRecord
     validates :role, presence: true
     validate :role_must_be_valid
 
+
+    has_many :tickets_created,
+    class_name: "Ticket",
+    foreign_key: :creator_id,
+    dependent: :destroy
+
+    has_many :tickets_assigned,
+    class_name: "Ticket",
+    foreign_key: :assignee_id,
+    dependent: :nullify
+
     private
     def role_must_be_valid
         roles = ["student", "faculty", "staff"]

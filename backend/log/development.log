@@ -130,3 +130,69 @@ FOREIGN KEY ("assignee_id")
   [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
   [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
   [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'sarah@company.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Create (1.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at") VALUES ('sarah@company.com', 'Sarah Staff', '$2a$12$vuZxREVdv5h2dkFgpmj/JOCjQo9oe349Z0rOpR5aguMSBhS2BcWeW', 'staff', '2025-12-08 04:08:30.447135', '2025-12-08 04:08:30.447135') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob@company.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[31mROLLBACK /*application='Backend'*/[0m
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Create (3.1ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "assignee_id") VALUES ('Wifi broken', 'Wifi down in library', NULL, NULL, '2025-12-08 04:12:50.680241', '2025-12-08 04:12:50.680241', 1, NULL) RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK /*application='Backend'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to MakeTicketStatusNullable (20251208041440)
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to MakeTicketStatusNullable (20251208041440)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "tickets" ALTER COLUMN "status" DROP NOT NULL /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251208041440') RETURNING "version" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mUser Exists? (2.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'sarah@company.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK /*application='Backend'*/[0m
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."role" = 'staff' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Create (9.1ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "assignee_id") VALUES ('Wifi broken', 'The library wifi is down', NULL, NULL, '2025-12-08 04:17:37.326527', '2025-12-08 04:17:37.326527', 3, NULL) RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Create (0.6ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "assignee_id") VALUES ('Wifi broken', 'The library wifi is down', NULL, NULL, '2025-12-08 04:17:42.837186', '2025-12-08 04:17:42.837186', 3, NULL) RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mUser Exists? (3.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'sarah@company.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK /*application='Backend'*/[0m
+  [1m[36mUser Delete All (3.8ms)[0m  [1m[31mDELETE FROM "users" /*application='Backend'*/[0m
+  [1m[36mTicket Delete All (2.1ms)[0m  [1m[31mDELETE FROM "tickets" /*application='Backend'*/[0m
+  [1m[36mUser Delete All (3.0ms)[0m  [1m[31mDELETE FROM "users" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'sarah@company.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at") VALUES ('sarah@company.com', 'Sarah Staff', '$2a$12$U45YBFEtzL4qs60zIzm1t.srZLGOzqAWqSQHKHfBwi99X/yMsmRli', 'staff', '2025-12-08 04:19:31.899664', '2025-12-08 04:19:31.899664') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob@company.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at") VALUES ('bob@company.com', 'Bob User', '$2a$12$T3PHQqbtca17.NZGu3n2W.sIX/1SdK7or6RERkpFzEAAq.j9n1Oiy', 'student', '2025-12-08 04:19:32.076186', '2025-12-08 04:19:32.076186') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Create (2.1ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "assignee_id") VALUES ('Wifi broken', 'The library wifi is down', 'open', NULL, '2025-12-08 04:19:37.456957', '2025-12-08 04:19:37.456957', 5, NULL) RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Update (2.9ms)[0m  [1m[33mUPDATE "tickets" SET "updated_at" = '2025-12-08 04:20:22.013598', "assignee_id" = 4 WHERE "tickets"."id" = 4 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Update (3.3ms)[0m  [1m[33mUPDATE "tickets" SET "updated_at" = '2025-12-08 04:20:44.134759', "assignee_id" = 5 WHERE "tickets"."id" = 4 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
