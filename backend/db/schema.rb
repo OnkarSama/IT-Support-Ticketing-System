@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_02_185321) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_04_190059) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -22,6 +22,13 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_02_185321) do
     t.string "title", null: false
     t.datetime "updated_at", null: false
     t.index ["title", "description", "status", "category"], name: "index_tickets_on_title_and_description_and_status_and_category"
+  end
+
+  create_table "tickets_users", id: false, force: :cascade do |t|
+    t.bigint "ticket_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["ticket_id", "user_id"], name: "index_tickets_users_on_ticket_id_and_user_id"
+    t.index ["user_id", "ticket_id"], name: "index_tickets_users_on_user_id_and_ticket_id"
   end
 
   create_table "users", force: :cascade do |t|

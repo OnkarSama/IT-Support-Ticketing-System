@@ -84,3 +84,19 @@ Migrating to CreateTickets (20251202185321)
   [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice.johnson@example.com' LIMIT 1 /*application='Backend'*/[0m
   [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at") VALUES ('alice.johnson@example.com', 'Alice Johnson', '$2a$12$LUbVnZIsRVlWdQTQqmm.me35okzI8F1/2Ty9DqBGJwP6Kxopu6REK', 'student', '2025-12-02 19:22:11.422384', '2025-12-02 19:22:11.422384') RETURNING "id" /*application='Backend'*/[0m
   [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to CreateJoinTableUserTicket (20251204190059)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "tickets_users" ("user_id" bigint NOT NULL, "ticket_id" bigint NOT NULL) /*application='Backend'*/[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE INDEX "index_tickets_users_on_user_id_and_ticket_id" ON "tickets_users" ("user_id", "ticket_id") /*application='Backend'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_tickets_users_on_ticket_id_and_user_id" ON "tickets_users" ("ticket_id", "user_id") /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251204190059') RETURNING "version" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m

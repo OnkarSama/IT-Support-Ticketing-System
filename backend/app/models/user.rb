@@ -10,7 +10,6 @@ class User < ApplicationRecord
     private
     def role_must_be_valid
         roles = ["student", "faculty", "staff"]
-
         unless roles.include?(role)
             errors.add(:role, "must be one of #{roles.join(', ')}")
         end
