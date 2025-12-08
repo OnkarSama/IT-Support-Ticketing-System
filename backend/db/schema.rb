@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_08_041440) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_08_044653) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -41,9 +41,11 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_08_041440) do
     t.string "name", null: false
     t.string "password_digest", null: false
     t.string "role"
+    t.string "session_token", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name", "role"], name: "index_users_on_name_and_role"
+    t.index ["session_token"], name: "index_users_on_session_token"
   end
 
   add_foreign_key "tickets", "users", column: "assignee_id"
