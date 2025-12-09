@@ -229,3 +229,769 @@ Migrating to AddSessionTokenToUser (20251208044653)
   [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
   [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
   [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mTicket Delete All (2.1ms)[0m  [1m[31mDELETE FROM "tickets" /*application='Backend'*/[0m
+  [1m[36mUser Delete All (1.2ms)[0m  [1m[31mDELETE FROM "users" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'eHRDKa-n8uK00_HucPsYfw' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'eHRDKa-n8uK00_HucPsYfw' LIMIT 1[0m
+  [1m[36mUser Create (4.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('alice@example.com', 'Alice Admin', '$2a$12$hxu6VPPGa9tlpGUfliPpn.oSOVo0wDJa5pLnWm8Zjt4BNcIvN/snm', 'staff', '2025-12-08 23:25:10.755180', '2025-12-08 23:25:10.755180', 'eHRDKa-n8uK00_HucPsYfw') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '-imeDsAEc2dIx69cvsgfCw' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '-imeDsAEc2dIx69cvsgfCw' LIMIT 1[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[31mROLLBACK /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mTicket Delete All (1.1ms)[0m  [1m[31mDELETE FROM "tickets" /*application='Backend'*/[0m
+  [1m[36mUser Delete All (3.5ms)[0m  [1m[31mDELETE FROM "users" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'OHZmFoVWCTvzS9HScSETFA' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'OHZmFoVWCTvzS9HScSETFA' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('alice@example.com', 'Alice Admin', '$2a$12$5lgr.4V1CY8G6BExZNQRn.bU0OETwILjUKSIqvuShzMqTns.xl/H.', 'staff', '2025-12-08 23:25:51.058584', '2025-12-08 23:25:51.058584', 'OHZmFoVWCTvzS9HScSETFA') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'b0GHU2FnWEqlL4Ft-9McKg' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'b0GHU2FnWEqlL4Ft-9McKg' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('bob@example.com', 'Bob User', '$2a$12$JzGmXZMZvCksfRLcTPa.XO9pZcBBM2qZSVNr.l94kGmMD8b0Ceuo6', 'faculty', '2025-12-08 23:25:51.251039', '2025-12-08 23:25:51.251039', 'b0GHU2FnWEqlL4Ft-9McKg') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'uT8M_72MbUvPVeWuNWqjIg' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'carol@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'uT8M_72MbUvPVeWuNWqjIg' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('carol@example.com', 'Carol Staff', '$2a$12$bnQ7n4M5EZ0tzeQwPL7kTOghetGqeB5p6MfTUyKv8lbmVhlIcMz2e', 'staff', '2025-12-08 23:25:51.439309', '2025-12-08 23:25:51.439309', 'uT8M_72MbUvPVeWuNWqjIg') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'ZuYW8srxNMhJs4O7VLCROA' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'dave@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'ZuYW8srxNMhJs4O7VLCROA' LIMIT 1[0m
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('dave@example.com', 'Dave User', '$2a$12$najXTGHhAdkW61YKl6JzPuVyUqxFvnOLf75QChYXmor4eGMAn8sxS', 'faculty', '2025-12-08 23:25:51.624293', '2025-12-08 23:25:51.624293', 'ZuYW8srxNMhJs4O7VLCROA') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 8 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Create (0.7ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "assignee_id") VALUES ('Cannot login', 'User unable to login with correct credentials', 'open', 'login', '2025-12-08 23:25:51.632548', '2025-12-08 23:25:51.632548', 8, 7) RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mTicket Delete All (2.8ms)[0m  [1m[31mDELETE FROM "tickets" /*application='Backend'*/[0m
+  [1m[36mUser Delete All (1.8ms)[0m  [1m[31mDELETE FROM "users" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'wiUkwUPp5IyEkWi3Tzxwbg' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'wiUkwUPp5IyEkWi3Tzxwbg' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('alice@example.com', 'Alice Admin', '$2a$12$1FLoYZagOjsItCA50BGBHutxhTfrr.Q.vhCVR1EZlccPjSmnp33ga', 'staff', '2025-12-08 23:26:35.770993', '2025-12-08 23:26:35.770993', 'wiUkwUPp5IyEkWi3Tzxwbg') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'zhcIeRyAohSFE4CM-ycpHA' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'zhcIeRyAohSFE4CM-ycpHA' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('bob@example.com', 'Bob User', '$2a$12$636sQoSmjZH0p7heAMX1C.RoV4nnRztEHXVAWkJH7Ts9e8x5VjeEC', 'faculty', '2025-12-08 23:26:35.984184', '2025-12-08 23:26:35.984184', 'zhcIeRyAohSFE4CM-ycpHA') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'Txg-vRpFJCkJhc305_Wtog' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'carol@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'Txg-vRpFJCkJhc305_Wtog' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('carol@example.com', 'Carol Staff', '$2a$12$io31vFSaMiZoKFWABPqwGukRDN.yWahoqU48P8Bc7FHt042gJFbYW', 'staff', '2025-12-08 23:26:36.178854', '2025-12-08 23:26:36.178854', 'Txg-vRpFJCkJhc305_Wtog') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'z6__BuPrx93k7ewSPQiIfw' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'dave@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'z6__BuPrx93k7ewSPQiIfw' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('dave@example.com', 'Dave User', '$2a$12$TZEeSQC1dXLAeeEPON1w0uDBr6GTzYulVgG8zzD62d02oQoMYj.1q', 'faculty', '2025-12-08 23:26:36.364454', '2025-12-08 23:26:36.364454', 'z6__BuPrx93k7ewSPQiIfw') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Create (1.6ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "assignee_id") VALUES ('Cannot login', 'User unable to login with correct credentials', 'open', 'login', '2025-12-08 23:26:36.374184', '2025-12-08 23:26:36.374184', 12, 11) RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mTicket Delete All (1.6ms)[0m  [1m[31mDELETE FROM "tickets" /*application='Backend'*/[0m
+  [1m[36mUser Delete All (2.1ms)[0m  [1m[31mDELETE FROM "users" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'LQrTQqsTMY5sPsIhFBUSNg' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'testemail@gmail.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'LQrTQqsTMY5sPsIhFBUSNg' LIMIT 1[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('testemail@gmail.com', 'Joe B', '$2a$12$.Uwh8zzKwgnFg8p39u6PYeihy4fJ43ycncEo46v5TurXHHLwbH9ii', 'staff', '2025-12-08 23:27:45.611105', '2025-12-08 23:27:45.611105', 'LQrTQqsTMY5sPsIhFBUSNg') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'B146dLo6xn1fq2Y_lYofYg' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'B146dLo6xn1fq2Y_lYofYg' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('alice@example.com', 'Alice Admin', '$2a$12$o3aQiRKU2utZyL7RA.tsbeSD5AyyMWIzTeDj2Nl2h69V4kSAxmAxq', 'staff', '2025-12-08 23:27:45.797478', '2025-12-08 23:27:45.797478', 'B146dLo6xn1fq2Y_lYofYg') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'gd8hRLWwp2tn-j4fiBx0Fw' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'gd8hRLWwp2tn-j4fiBx0Fw' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('bob@example.com', 'Bob User', '$2a$12$qUrw22/jLeG2F438RtPT0uCjL6HIM10rq1EzDuYSyerKZUmmL8Di.', 'faculty', '2025-12-08 23:27:45.984593', '2025-12-08 23:27:45.984593', 'gd8hRLWwp2tn-j4fiBx0Fw') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'bRb5smrX45HbuT_dnTEbXA' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'carol@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'bRb5smrX45HbuT_dnTEbXA' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('carol@example.com', 'Carol Staff', '$2a$12$nFX5CYLn5gQ28zXXU16LCu70TqCuVMsuSa0nRfcZ15RUgjj9E6KH.', 'staff', '2025-12-08 23:27:46.169156', '2025-12-08 23:27:46.169156', 'bRb5smrX45HbuT_dnTEbXA') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'VF96kWhFPkPhtkzD91SZ7A' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'dave@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'VF96kWhFPkPhtkzD91SZ7A' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('dave@example.com', 'Dave User', '$2a$12$xhZ43xuqOiSPBvmp9Qzgbeb./6s6iMn0G4uJRTUNNL4HRFr3D6rf2', 'faculty', '2025-12-08 23:27:46.349980', '2025-12-08 23:27:46.349980', 'VF96kWhFPkPhtkzD91SZ7A') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 17 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Create (0.6ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "assignee_id") VALUES ('Cannot login', 'User unable to login with correct credentials', 'open', 'login', '2025-12-08 23:27:46.358281', '2025-12-08 23:27:46.358281', 17, 16) RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mTicket Delete All (1.5ms)[0m  [1m[31mDELETE FROM "tickets" /*application='Backend'*/[0m
+  [1m[36mUser Delete All (3.8ms)[0m  [1m[31mDELETE FROM "users" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '6gc3ECA3wjyqHnqACtlNcw' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '6gc3ECA3wjyqHnqACtlNcw' LIMIT 1[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('test@gmail.com', 'Joe B', '$2a$12$Cm8JzvbY1Bb0PFHjE5O5VOhh4.lZT4ahm3y1MvKXvOMSzeqlbWMRC', 'staff', '2025-12-08 23:28:13.590296', '2025-12-08 23:28:13.590296', '6gc3ECA3wjyqHnqACtlNcw') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'B7awWRV67X9JEzzjmXigtA' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'B7awWRV67X9JEzzjmXigtA' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('alice@example.com', 'Alice Admin', '$2a$12$nqCNDurUclbZn/lFQKlDcOvBhh/Mjbubqmj5crWDnI64nUkKsWAnC', 'staff', '2025-12-08 23:28:13.780351', '2025-12-08 23:28:13.780351', 'B7awWRV67X9JEzzjmXigtA') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'V2Ha_5Wl7snSTtHByWRDHA' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'V2Ha_5Wl7snSTtHByWRDHA' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('bob@example.com', 'Bob User', '$2a$12$CfEUiv8VxKZ.TiInBdL90evATHnemakCHVqF16z6XHCZbE2a.wpK.', 'faculty', '2025-12-08 23:28:13.976203', '2025-12-08 23:28:13.976203', 'V2Ha_5Wl7snSTtHByWRDHA') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'tOJk7uqwxeutEtaf_6XFnQ' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'carol@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'tOJk7uqwxeutEtaf_6XFnQ' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('carol@example.com', 'Carol Staff', '$2a$12$jo6Wwht4LvL1NCw.1DYPpOqpBILsF2R6ZClPFI3I6eH9I/parVqFS', 'staff', '2025-12-08 23:28:14.169566', '2025-12-08 23:28:14.169566', 'tOJk7uqwxeutEtaf_6XFnQ') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'uggJgeJTt5ctU-2tfakljA' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'dave@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'uggJgeJTt5ctU-2tfakljA' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('dave@example.com', 'Dave User', '$2a$12$ceDiUlG6kYk53L1F0q8BKusk/AWkBwG/2wfpZNd5qYW0L8/yvqfjm', 'faculty', '2025-12-08 23:28:14.359669', '2025-12-08 23:28:14.359669', 'uggJgeJTt5ctU-2tfakljA') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 22 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Create (0.5ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "assignee_id") VALUES ('Cannot login', 'User unable to login with correct credentials', 'open', 'login', '2025-12-08 23:28:14.368405', '2025-12-08 23:28:14.368405', 22, 21) RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+Started POST "/api/session" for ::1 at 2025-12-08 18:34:10 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  
+ActionDispatch::MissingController (uninitialized constant Api::SessionsController)
+Caused by: NameError (uninitialized constant Api::SessionsController)
+
+Information for: ActionDispatch::MissingController (uninitialized constant Api::SessionsController):
+  
+actionpack (8.1.1) lib/action_dispatch/http/request.rb:101:in 'ActionDispatch::Request#controller_class_for'
+actionpack (8.1.1) lib/action_dispatch/http/request.rb:90:in 'ActionDispatch::Request#controller_class'
+actionpack (8.1.1) lib/action_dispatch/routing/route_set.rb:61:in 'ActionDispatch::Routing::RouteSet::Dispatcher#controller'
+actionpack (8.1.1) lib/action_dispatch/routing/route_set.rb:48:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:35:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:86:in 'block in ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:66:in 'Array#each'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:66:in 'ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:31:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.1.1) lib/action_dispatch/routing/route_set.rb:906:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.1.1) lib/rails/engine/lazy_route_set.rb:60:in 'Rails::Engine::LazyRouteSet#call'
+rack (3.2.4) lib/rack/tempfile_reaper.rb:20:in 'Rack::TempfileReaper#call'
+rack (3.2.4) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.4) lib/rack/conditional_get.rb:44:in 'Rack::ConditionalGet#call'
+rack (3.2.4) lib/rack/head.rb:15:in 'Rack::Head#call'
+actionpack (8.1.1) lib/action_dispatch/http/content_security_policy.rb:38:in 'ActionDispatch::ContentSecurityPolicy::Middleware#call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in 'Rack::Session::Abstract::Persisted#context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in 'Rack::Session::Abstract::Persisted#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/cookies.rb:708:in 'ActionDispatch::Cookies#call'
+activerecord (8.1.1) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.1.1) lib/active_support/callbacks.rb:101:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.1) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.1) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.1) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.1) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.4) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.4) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.1) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.4) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+railties (8.1.1) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (7.1.0) lib/puma/configuration.rb:300:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (7.1.0) lib/puma/request.rb:101:in 'block in Puma::Request#handle_request'
+puma (7.1.0) lib/puma/thread_pool.rb:355:in 'Puma::ThreadPool#with_force_shutdown'
+puma (7.1.0) lib/puma/request.rb:100:in 'Puma::Request#handle_request'
+puma (7.1.0) lib/puma/server.rb:503:in 'Puma::Server#process_client'
+puma (7.1.0) lib/puma/server.rb:262:in 'block in Puma::Server#run'
+puma (7.1.0) lib/puma/thread_pool.rb:182:in 'block in Puma::ThreadPool#spawn_thread'
+
+Information for cause: NameError (uninitialized constant Api::SessionsController):
+  
+activesupport (8.1.1) lib/active_support/inflector/methods.rb:290:in 'ActiveSupport::Inflector#constantize'
+activesupport (8.1.1) lib/active_support/core_ext/string/inflections.rb:74:in 'String#constantize'
+actionpack (8.1.1) lib/action_dispatch/http/request.rb:98:in 'ActionDispatch::Request#controller_class_for'
+actionpack (8.1.1) lib/action_dispatch/http/request.rb:90:in 'ActionDispatch::Request#controller_class'
+actionpack (8.1.1) lib/action_dispatch/routing/route_set.rb:61:in 'ActionDispatch::Routing::RouteSet::Dispatcher#controller'
+actionpack (8.1.1) lib/action_dispatch/routing/route_set.rb:48:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:35:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:86:in 'block in ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:66:in 'Array#each'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:66:in 'ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:31:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.1.1) lib/action_dispatch/routing/route_set.rb:906:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.1.1) lib/rails/engine/lazy_route_set.rb:60:in 'Rails::Engine::LazyRouteSet#call'
+rack (3.2.4) lib/rack/tempfile_reaper.rb:20:in 'Rack::TempfileReaper#call'
+rack (3.2.4) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.4) lib/rack/conditional_get.rb:44:in 'Rack::ConditionalGet#call'
+rack (3.2.4) lib/rack/head.rb:15:in 'Rack::Head#call'
+actionpack (8.1.1) lib/action_dispatch/http/content_security_policy.rb:38:in 'ActionDispatch::ContentSecurityPolicy::Middleware#call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in 'Rack::Session::Abstract::Persisted#context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in 'Rack::Session::Abstract::Persisted#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/cookies.rb:708:in 'ActionDispatch::Cookies#call'
+activerecord (8.1.1) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.1.1) lib/active_support/callbacks.rb:101:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.1) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.1) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.1) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.1) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.4) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.4) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.1) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.4) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+railties (8.1.1) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (7.1.0) lib/puma/configuration.rb:300:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (7.1.0) lib/puma/request.rb:101:in 'block in Puma::Request#handle_request'
+puma (7.1.0) lib/puma/thread_pool.rb:355:in 'Puma::ThreadPool#with_force_shutdown'
+puma (7.1.0) lib/puma/request.rb:100:in 'Puma::Request#handle_request'
+puma (7.1.0) lib/puma/server.rb:503:in 'Puma::Server#process_client'
+puma (7.1.0) lib/puma/server.rb:262:in 'block in Puma::Server#run'
+puma (7.1.0) lib/puma/thread_pool.rb:182:in 'block in Puma::ThreadPool#spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mTicket Delete All (2.8ms)[0m  [1m[31mDELETE FROM "tickets" /*application='Backend'*/[0m
+  [1m[36mUser Delete All (1.3ms)[0m  [1m[31mDELETE FROM "users" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'HpAW3v1B1qsyQoRxrPXJ2g' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'HpAW3v1B1qsyQoRxrPXJ2g' LIMIT 1[0m
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('test@gmail.com', 'Joe B', '$2a$12$UxZfVJhCLgKtuEegkmgINOY4xYojTM14G/XDl/rrjMR3L5mz/sG7i', 'staff', '2025-12-08 23:36:59.321501', '2025-12-08 23:36:59.321501', 'HpAW3v1B1qsyQoRxrPXJ2g') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '-aO7AUN_3-B4e6GaV_rcXQ' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '-aO7AUN_3-B4e6GaV_rcXQ' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('alice@example.com', 'Alice Admin', '$2a$12$szB8tc7LPo/wXnK1ajQiw.EWTH9JXc4XE0ZK1su43qmlb/BtnK3YC', 'staff', '2025-12-08 23:36:59.512783', '2025-12-08 23:36:59.512783', '-aO7AUN_3-B4e6GaV_rcXQ') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'qATgLE-wvw28EILKw577BQ' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'qATgLE-wvw28EILKw577BQ' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('bob@example.com', 'Bob User', '$2a$12$S8EycwbOFnaTtNlEp1piN.EH7hUC9/aUaUP3YnqC63SlTIUAkP7bO', 'faculty', '2025-12-08 23:36:59.701643', '2025-12-08 23:36:59.701643', 'qATgLE-wvw28EILKw577BQ') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'y-JWeX3LHAI9ubuNLGO6Jg' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'carol@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'y-JWeX3LHAI9ubuNLGO6Jg' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('carol@example.com', 'Carol Staff', '$2a$12$Yqcc2fPJdrDMMzucCezAquT4w9Yrtfm53pToFD6a9K7HlqEEK.sC2', 'staff', '2025-12-08 23:36:59.896080', '2025-12-08 23:36:59.896080', 'y-JWeX3LHAI9ubuNLGO6Jg') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'pe8FWHtJRuuADYBXibla8w' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'dave@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'pe8FWHtJRuuADYBXibla8w' LIMIT 1[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('dave@example.com', 'Dave User', '$2a$12$PaX1vUzarN1cw5s8.AeJLuQEnfNxyCrEjo11UWquIyh79kN69Id7O', 'faculty', '2025-12-08 23:37:00.120823', '2025-12-08 23:37:00.120823', 'pe8FWHtJRuuADYBXibla8w') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 27 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Create (0.8ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "assignee_id") VALUES ('Cannot login', 'User unable to login with correct credentials', 'open', 'login', '2025-12-08 23:37:00.129145', '2025-12-08 23:37:00.129145', 27, 26) RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked hosts: 
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked hosts: 
+Started POST "/api/session" for ::1 at 2025-12-08 18:54:40 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  
+ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/Users/josephbergmann/Documents/SE project/IT-Support-Ticketing-System/backend/app/controllers/application_controller.rb:39: syntax errors found\n  \e[2m37 | \e[m  params.deep_transform_keys!(&:underscore)\n  \e[2m38 | \e[mend\n\e[1;31m> \e[m\e[2m39 | \e[m\n  \e[2m   | \e[m\e[1;31m^\e[m expected an `end` to close the `class` statement\n  \e[2m   | \e[m\e[1;31m^\e[m unexpected end-of-input, assuming it is closing the parent top level context\n">)
+Caused by: SyntaxError (/Users/josephbergmann/Documents/SE project/IT-Support-Ticketing-System/backend/app/controllers/application_controller.rb:39: syntax errors found
+  [2m37 | [m  params.deep_transform_keys!(&:underscore)
+  [2m38 | [mend
+[1;31m> [m[2m39 | [m
+  [2m   | [m[1;31m^[m expected an `end` to close the `class` statement
+  [2m   | [m[1;31m^[m unexpected end-of-input, assuming it is closing the parent top level context
+)
+
+Information for: ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/Users/josephbergmann/Documents/SE project/IT-Support-Ticketing-System/backend/app/controllers/application_controller.rb:39: syntax errors found\n  \e[2m37 | \e[m  params.deep_transform_keys!(&:underscore)\n  \e[2m38 | \e[mend\n\e[1;31m> \e[m\e[2m39 | \e[m\n  \e[2m   | \e[m\e[1;31m^\e[m expected an `end` to close the `class` statement\n  \e[2m   | \e[m\e[1;31m^\e[m unexpected end-of-input, assuming it is closing the parent top level context\n">):
+  
+activesupport (8.1.1) lib/active_support/error_reporter.rb:235:in 'ActiveSupport::ErrorReporter#report'
+actionpack (8.1.1) lib/action_dispatch/middleware/executor.rb:36:in 'ActionDispatch::Executor#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.1) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.1) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.1) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.4) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.4) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.1) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.4) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+railties (8.1.1) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (7.1.0) lib/puma/configuration.rb:300:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (7.1.0) lib/puma/request.rb:101:in 'block in Puma::Request#handle_request'
+puma (7.1.0) lib/puma/thread_pool.rb:355:in 'Puma::ThreadPool#with_force_shutdown'
+puma (7.1.0) lib/puma/request.rb:100:in 'Puma::Request#handle_request'
+puma (7.1.0) lib/puma/server.rb:503:in 'Puma::Server#process_client'
+puma (7.1.0) lib/puma/server.rb:262:in 'block in Puma::Server#run'
+puma (7.1.0) lib/puma/thread_pool.rb:182:in 'block in Puma::ThreadPool#spawn_thread'
+
+Information for cause: SyntaxError (/Users/josephbergmann/Documents/SE project/IT-Support-Ticketing-System/backend/app/controllers/application_controller.rb:39: syntax errors found
+  [2m37 | [m  params.deep_transform_keys!(&:underscore)
+  [2m38 | [mend
+[1;31m> [m[2m39 | [m
+  [2m   | [m[1;31m^[m expected an `end` to close the `class` statement
+  [2m   | [m[1;31m^[m unexpected end-of-input, assuming it is closing the parent top level context
+):
+  
+app/controllers/application_controller.rb:39: syntax errors found
+app/controllers/api/sessions_controller.rb:1:in '<main>'
+Started POST "/api/session" for ::1 at 2025-12-08 18:55:53 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"session" => {}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Content in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (8.1.1) lib/action_controller/metal/request_forgery_protection.rb:321:in 'ActionController::RequestForgeryProtection::ProtectionMethods::Exception#handle_unverified_request'
+actionpack (8.1.1) lib/action_controller/metal/request_forgery_protection.rb:415:in 'ActionController::RequestForgeryProtection#handle_unverified_request'
+actionpack (8.1.1) lib/action_controller/metal/request_forgery_protection.rb:404:in 'ActionController::RequestForgeryProtection#verify_authenticity_token'
+activesupport (8.1.1) lib/active_support/callbacks.rb:362:in 'block in ActiveSupport::Callbacks::CallTemplate::MethodCall#make_lambda'
+activesupport (8.1.1) lib/active_support/callbacks.rb:179:in 'block in ActiveSupport::Callbacks::Filters::Before#call'
+actionpack (8.1.1) lib/abstract_controller/callbacks.rb:36:in 'block (2 levels) in <module:Callbacks>'
+activesupport (8.1.1) lib/active_support/callbacks.rb:180:in 'ActiveSupport::Callbacks::Filters::Before#call'
+activesupport (8.1.1) lib/active_support/callbacks.rb:560:in 'block in ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.1) lib/active_support/callbacks.rb:560:in 'Array#each'
+activesupport (8.1.1) lib/active_support/callbacks.rb:560:in 'ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.1) lib/active_support/callbacks.rb:119:in 'block in ActiveSupport::Callbacks#run_callbacks'
+activesupport (8.1.1) lib/active_support/callbacks.rb:141:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.1) lib/abstract_controller/callbacks.rb:266:in 'AbstractController::Callbacks#process_action'
+actionpack (8.1.1) lib/action_controller/metal/rescue.rb:36:in 'ActionController::Rescue#process_action'
+actionpack (8.1.1) lib/action_controller/metal/instrumentation.rb:76:in 'block in ActionController::Instrumentation#process_action'
+activesupport (8.1.1) lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+activesupport (8.1.1) lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+activesupport (8.1.1) lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+actionpack (8.1.1) lib/action_controller/metal/instrumentation.rb:75:in 'ActionController::Instrumentation#process_action'
+actionpack (8.1.1) lib/action_controller/metal/params_wrapper.rb:259:in 'ActionController::ParamsWrapper#process_action'
+activerecord (8.1.1) lib/active_record/railties/controller_runtime.rb:39:in 'ActiveRecord::Railties::ControllerRuntime#process_action'
+actionpack (8.1.1) lib/abstract_controller/base.rb:154:in 'AbstractController::Base#process'
+actionview (8.1.1) lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+actionpack (8.1.1) lib/action_controller/metal.rb:252:in 'ActionController::Metal#dispatch'
+actionpack (8.1.1) lib/action_controller/metal.rb:335:in 'ActionController::Metal.dispatch'
+actionpack (8.1.1) lib/action_dispatch/routing/route_set.rb:65:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+actionpack (8.1.1) lib/action_dispatch/routing/route_set.rb:50:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:35:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:86:in 'block in ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:66:in 'Array#each'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:66:in 'ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:31:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.1.1) lib/action_dispatch/routing/route_set.rb:906:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.1.1) lib/rails/engine/lazy_route_set.rb:60:in 'Rails::Engine::LazyRouteSet#call'
+rack (3.2.4) lib/rack/tempfile_reaper.rb:20:in 'Rack::TempfileReaper#call'
+rack (3.2.4) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.4) lib/rack/conditional_get.rb:44:in 'Rack::ConditionalGet#call'
+rack (3.2.4) lib/rack/head.rb:15:in 'Rack::Head#call'
+actionpack (8.1.1) lib/action_dispatch/http/content_security_policy.rb:38:in 'ActionDispatch::ContentSecurityPolicy::Middleware#call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in 'Rack::Session::Abstract::Persisted#context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in 'Rack::Session::Abstract::Persisted#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/cookies.rb:708:in 'ActionDispatch::Cookies#call'
+activerecord (8.1.1) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.1.1) lib/active_support/callbacks.rb:101:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.1) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.1) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.1) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.1) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.4) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.4) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.1) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.4) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+railties (8.1.1) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (7.1.0) lib/puma/configuration.rb:300:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (7.1.0) lib/puma/request.rb:101:in 'block in Puma::Request#handle_request'
+puma (7.1.0) lib/puma/thread_pool.rb:355:in 'Puma::ThreadPool#with_force_shutdown'
+puma (7.1.0) lib/puma/request.rb:100:in 'Puma::Request#handle_request'
+puma (7.1.0) lib/puma/server.rb:503:in 'Puma::Server#process_client'
+puma (7.1.0) lib/puma/server.rb:262:in 'block in Puma::Server#run'
+puma (7.1.0) lib/puma/thread_pool.rb:182:in 'block in Puma::ThreadPool#spawn_thread'
+Started POST "/api/session" for ::1 at 2025-12-08 18:56:38 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"session" => {}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Content in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (8.1.1) lib/action_controller/metal/request_forgery_protection.rb:321:in 'ActionController::RequestForgeryProtection::ProtectionMethods::Exception#handle_unverified_request'
+actionpack (8.1.1) lib/action_controller/metal/request_forgery_protection.rb:415:in 'ActionController::RequestForgeryProtection#handle_unverified_request'
+actionpack (8.1.1) lib/action_controller/metal/request_forgery_protection.rb:404:in 'ActionController::RequestForgeryProtection#verify_authenticity_token'
+activesupport (8.1.1) lib/active_support/callbacks.rb:362:in 'block in ActiveSupport::Callbacks::CallTemplate::MethodCall#make_lambda'
+activesupport (8.1.1) lib/active_support/callbacks.rb:179:in 'block in ActiveSupport::Callbacks::Filters::Before#call'
+actionpack (8.1.1) lib/abstract_controller/callbacks.rb:36:in 'block (2 levels) in <module:Callbacks>'
+activesupport (8.1.1) lib/active_support/callbacks.rb:180:in 'ActiveSupport::Callbacks::Filters::Before#call'
+activesupport (8.1.1) lib/active_support/callbacks.rb:560:in 'block in ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.1) lib/active_support/callbacks.rb:560:in 'Array#each'
+activesupport (8.1.1) lib/active_support/callbacks.rb:560:in 'ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.1) lib/active_support/callbacks.rb:119:in 'block in ActiveSupport::Callbacks#run_callbacks'
+activesupport (8.1.1) lib/active_support/callbacks.rb:141:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.1) lib/abstract_controller/callbacks.rb:266:in 'AbstractController::Callbacks#process_action'
+actionpack (8.1.1) lib/action_controller/metal/rescue.rb:36:in 'ActionController::Rescue#process_action'
+actionpack (8.1.1) lib/action_controller/metal/instrumentation.rb:76:in 'block in ActionController::Instrumentation#process_action'
+activesupport (8.1.1) lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+activesupport (8.1.1) lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+activesupport (8.1.1) lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+actionpack (8.1.1) lib/action_controller/metal/instrumentation.rb:75:in 'ActionController::Instrumentation#process_action'
+actionpack (8.1.1) lib/action_controller/metal/params_wrapper.rb:259:in 'ActionController::ParamsWrapper#process_action'
+activerecord (8.1.1) lib/active_record/railties/controller_runtime.rb:39:in 'ActiveRecord::Railties::ControllerRuntime#process_action'
+actionpack (8.1.1) lib/abstract_controller/base.rb:154:in 'AbstractController::Base#process'
+actionview (8.1.1) lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+actionpack (8.1.1) lib/action_controller/metal.rb:252:in 'ActionController::Metal#dispatch'
+actionpack (8.1.1) lib/action_controller/metal.rb:335:in 'ActionController::Metal.dispatch'
+actionpack (8.1.1) lib/action_dispatch/routing/route_set.rb:65:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+actionpack (8.1.1) lib/action_dispatch/routing/route_set.rb:50:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:35:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:86:in 'block in ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:66:in 'Array#each'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:66:in 'ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:31:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.1.1) lib/action_dispatch/routing/route_set.rb:906:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.1.1) lib/rails/engine/lazy_route_set.rb:60:in 'Rails::Engine::LazyRouteSet#call'
+rack (3.2.4) lib/rack/tempfile_reaper.rb:20:in 'Rack::TempfileReaper#call'
+rack (3.2.4) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.4) lib/rack/conditional_get.rb:44:in 'Rack::ConditionalGet#call'
+rack (3.2.4) lib/rack/head.rb:15:in 'Rack::Head#call'
+actionpack (8.1.1) lib/action_dispatch/http/content_security_policy.rb:38:in 'ActionDispatch::ContentSecurityPolicy::Middleware#call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in 'Rack::Session::Abstract::Persisted#context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in 'Rack::Session::Abstract::Persisted#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/cookies.rb:708:in 'ActionDispatch::Cookies#call'
+activerecord (8.1.1) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.1.1) lib/active_support/callbacks.rb:101:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.1) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.1) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.1) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.1) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.4) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.4) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.1) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.4) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+railties (8.1.1) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (7.1.0) lib/puma/configuration.rb:300:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (7.1.0) lib/puma/request.rb:101:in 'block in Puma::Request#handle_request'
+puma (7.1.0) lib/puma/thread_pool.rb:355:in 'Puma::ThreadPool#with_force_shutdown'
+puma (7.1.0) lib/puma/request.rb:100:in 'Puma::Request#handle_request'
+puma (7.1.0) lib/puma/server.rb:503:in 'Puma::Server#process_client'
+puma (7.1.0) lib/puma/server.rb:262:in 'block in Puma::Server#run'
+puma (7.1.0) lib/puma/thread_pool.rb:182:in 'block in Puma::ThreadPool#spawn_thread'
+Started POST "/api/session" for ::1 at 2025-12-08 18:57:06 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"session" => {}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Content in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (8.1.1) lib/action_controller/metal/request_forgery_protection.rb:321:in 'ActionController::RequestForgeryProtection::ProtectionMethods::Exception#handle_unverified_request'
+actionpack (8.1.1) lib/action_controller/metal/request_forgery_protection.rb:415:in 'ActionController::RequestForgeryProtection#handle_unverified_request'
+actionpack (8.1.1) lib/action_controller/metal/request_forgery_protection.rb:404:in 'ActionController::RequestForgeryProtection#verify_authenticity_token'
+activesupport (8.1.1) lib/active_support/callbacks.rb:362:in 'block in ActiveSupport::Callbacks::CallTemplate::MethodCall#make_lambda'
+activesupport (8.1.1) lib/active_support/callbacks.rb:179:in 'block in ActiveSupport::Callbacks::Filters::Before#call'
+actionpack (8.1.1) lib/abstract_controller/callbacks.rb:36:in 'block (2 levels) in <module:Callbacks>'
+activesupport (8.1.1) lib/active_support/callbacks.rb:180:in 'ActiveSupport::Callbacks::Filters::Before#call'
+activesupport (8.1.1) lib/active_support/callbacks.rb:560:in 'block in ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.1) lib/active_support/callbacks.rb:560:in 'Array#each'
+activesupport (8.1.1) lib/active_support/callbacks.rb:560:in 'ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.1) lib/active_support/callbacks.rb:119:in 'block in ActiveSupport::Callbacks#run_callbacks'
+activesupport (8.1.1) lib/active_support/callbacks.rb:141:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.1) lib/abstract_controller/callbacks.rb:266:in 'AbstractController::Callbacks#process_action'
+actionpack (8.1.1) lib/action_controller/metal/rescue.rb:36:in 'ActionController::Rescue#process_action'
+actionpack (8.1.1) lib/action_controller/metal/instrumentation.rb:76:in 'block in ActionController::Instrumentation#process_action'
+activesupport (8.1.1) lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+activesupport (8.1.1) lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+activesupport (8.1.1) lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+actionpack (8.1.1) lib/action_controller/metal/instrumentation.rb:75:in 'ActionController::Instrumentation#process_action'
+actionpack (8.1.1) lib/action_controller/metal/params_wrapper.rb:259:in 'ActionController::ParamsWrapper#process_action'
+activerecord (8.1.1) lib/active_record/railties/controller_runtime.rb:39:in 'ActiveRecord::Railties::ControllerRuntime#process_action'
+actionpack (8.1.1) lib/abstract_controller/base.rb:154:in 'AbstractController::Base#process'
+actionview (8.1.1) lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+actionpack (8.1.1) lib/action_controller/metal.rb:252:in 'ActionController::Metal#dispatch'
+actionpack (8.1.1) lib/action_controller/metal.rb:335:in 'ActionController::Metal.dispatch'
+actionpack (8.1.1) lib/action_dispatch/routing/route_set.rb:65:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+actionpack (8.1.1) lib/action_dispatch/routing/route_set.rb:50:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:35:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:86:in 'block in ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:66:in 'Array#each'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:66:in 'ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.1) lib/action_dispatch/journey/router.rb:31:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.1.1) lib/action_dispatch/routing/route_set.rb:906:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.1.1) lib/rails/engine/lazy_route_set.rb:60:in 'Rails::Engine::LazyRouteSet#call'
+rack (3.2.4) lib/rack/tempfile_reaper.rb:20:in 'Rack::TempfileReaper#call'
+rack (3.2.4) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.4) lib/rack/conditional_get.rb:44:in 'Rack::ConditionalGet#call'
+rack (3.2.4) lib/rack/head.rb:15:in 'Rack::Head#call'
+actionpack (8.1.1) lib/action_dispatch/http/content_security_policy.rb:38:in 'ActionDispatch::ContentSecurityPolicy::Middleware#call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in 'Rack::Session::Abstract::Persisted#context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in 'Rack::Session::Abstract::Persisted#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/cookies.rb:708:in 'ActionDispatch::Cookies#call'
+activerecord (8.1.1) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.1.1) lib/active_support/callbacks.rb:101:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.1) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.1) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.1) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.1) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.4) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.4) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.1) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.1) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.1) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.4) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+railties (8.1.1) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (7.1.0) lib/puma/configuration.rb:300:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (7.1.0) lib/puma/request.rb:101:in 'block in Puma::Request#handle_request'
+puma (7.1.0) lib/puma/thread_pool.rb:355:in 'Puma::ThreadPool#with_force_shutdown'
+puma (7.1.0) lib/puma/request.rb:100:in 'Puma::Request#handle_request'
+puma (7.1.0) lib/puma/server.rb:503:in 'Puma::Server#process_client'
+puma (7.1.0) lib/puma/server.rb:262:in 'block in Puma::Server#run'
+puma (7.1.0) lib/puma/thread_pool.rb:182:in 'block in Puma::ThreadPool#spawn_thread'
+Started POST "/api/session" for ::1 at 2025-12-08 18:59:14 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"session" => {}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:6:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+Completed 422 Unprocessable Content in 54ms (Views: 0.2ms | ActiveRecord: 12.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2025-12-08 19:05:54 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"session" => {}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:6:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+Completed 422 Unprocessable Content in 50ms (Views: 0.3ms | ActiveRecord: 10.9ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+Started POST "/api/session" for ::1 at 2025-12-08 19:06:16 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"session" => {}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:6:in 'ApplicationController#current_user'
+Completed   in 51294ms (ActiveRecord: 3.5ms (1 query, 0 cached) | GC: 37.7ms)
+
+
+Started POST "/api/session" for ::1 at 2025-12-08 19:10:37 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"session" => {}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:6:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+Completed 422 Unprocessable Content in 44ms (Views: 0.1ms | ActiveRecord: 6.7ms (2 queries, 0 cached) | GC: 0.5ms)
+
+
+Started POST "/api/session" for ::1 at 2025-12-08 19:10:49 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"session" => {}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:6:in 'ApplicationController#current_user'
+Completed   in 238313ms (ActiveRecord: 4.3ms (1 query, 0 cached) | GC: 36.7ms)
+
+
+Started POST "/api/session" for ::1 at 2025-12-08 19:15:01 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"session" => {}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:6:in 'ApplicationController#current_user'
+Completed   in 164697ms (ActiveRecord: 8.4ms (1 query, 0 cached) | GC: 17.8ms)
+
+
+Started POST "/api/session/?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-08 19:18:50 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]", "session" => {}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:6:in 'ApplicationController#current_user'
+  [1m[36mUser Load (7.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'j5WOqNlniqTke98aqjPwZQ' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'j5WOqNlniqTke98aqjPwZQ' AND "users"."id" != 25 LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Update (3.9ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-12-09 00:19:00.362848', "session_token" = 'j5WOqNlniqTke98aqjPwZQ' WHERE "users"."id" = 25 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | GC: 0.0ms)
+Completed 200 OK in 9504ms (Views: 8.6ms | ActiveRecord: 31.1ms (5 queries, 0 cached) | GC: 19.7ms)
+
+

@@ -9,8 +9,8 @@ class User < ApplicationRecord
     validate :role_must_be_valid
     validates :session_token, presence: true, uniqueness: true
 
-    def self.find_by_credentials(username, password)
-        user = User.find_by(email: username)
+    def self.find_by_credentials(email, password)
+        user = User.find_by(email: email)
         user&.authenticate(password)
     end
 
