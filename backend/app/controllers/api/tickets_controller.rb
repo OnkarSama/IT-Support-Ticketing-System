@@ -6,7 +6,10 @@ class Api::TicketsController < ApplicationController
         @tickets = Ticket.all
         render :index
     end
-
+    def show
+        @ticket = Ticket.find_by(id: params[:id])
+        render :show
+    end
     def create
         
         @ticket = Ticket.new(ticket_params);
