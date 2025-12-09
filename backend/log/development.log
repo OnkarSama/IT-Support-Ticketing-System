@@ -1728,3 +1728,65 @@ Processing by Api::TicketsController#create as JSON
 Completed 200 OK in 64ms (Views: 3.8ms | ActiveRecord: 12.8ms (3 queries, 0 cached) | GC: 27.0ms)
 
 
+Started PATCH "/api/tickets/1?ticket[:title]=%22changing%20it%22&ticket[:description]=%22right%20now%22" for ::1 at 2025-12-09 00:35:04 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::TicketsController#update as JSON
+  Parameters: {"ticket" => {":title" => "\"changing it\"", ":description" => "\"right now\""}, "id" => "1"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='update',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mTicket Load (0.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = 1 LIMIT 1 /*action='update',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:23:in 'Api::TicketsController#update'
+Completed 401 Unauthorized in 18ms (Views: 0.2ms | ActiveRecord: 4.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mTicket Load (67.9ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+Started PATCH "/api/tickets/9?ticket[:title]=%22changing%20it%22&ticket[:description]=%22right%20now%22" for ::1 at 2025-12-09 00:39:43 -0500
+Processing by Api::TicketsController#update as JSON
+  Parameters: {"ticket" => {":title" => "\"changing it\"", ":description" => "\"right now\""}, "id" => "9"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='update',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = 9 LIMIT 1 /*action='update',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:23:in 'Api::TicketsController#update'
+[31mUnpermitted parameters: ::title, ::description. Context: { controller: Api::TicketsController, action: update, request: #<ActionDispatch::Request:0x00000001206737b8>, params: {"ticket" => {":title" => "\"changing it\"", ":description" => "\"right now\""}, "format" => :json, "controller" => "api/tickets", "action" => "update", "id" => "9"} }[0m
+  Rendering api/tickets/show.json.jbuilder
+  Rendered api/tickets/show.json.jbuilder (Duration: 0.8ms | GC: 0.0ms)
+Completed 200 OK in 48ms (Views: 20.1ms | ActiveRecord: 2.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started PATCH "/api/tickets/9?ticket[title]=%22changing%20it%22&ticket[description]=%22right%20now%22" for ::1 at 2025-12-09 00:44:04 -0500
+Processing by Api::TicketsController#update as JSON
+  Parameters: {"ticket" => {"title" => "\"changing it\"", "description" => "\"right now\""}, "id" => "9"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='update',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = 9 LIMIT 1 /*action='update',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:23:in 'Api::TicketsController#update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='update',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:32:in 'Api::TicketsController#update'
+  [1m[36mTicket Update (7.7ms)[0m  [1m[33mUPDATE "tickets" SET "title" = '"changing it"', "description" = '"right now"', "updated_at" = '2025-12-09 05:44:04.381874' WHERE "tickets"."id" = 9 /*action='update',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:32:in 'Api::TicketsController#update'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT /*action='update',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:32:in 'Api::TicketsController#update'
+  Rendering api/tickets/show.json.jbuilder
+  Rendered api/tickets/show.json.jbuilder (Duration: 0.1ms | GC: 0.0ms)
+Completed 200 OK in 38ms (Views: 0.8ms | ActiveRecord: 10.6ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/tickets/9" for ::1 at 2025-12-09 00:55:49 -0500
+Processing by Api::TicketsController#destroy as JSON
+  Parameters: {"id" => "9"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='destroy',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mTicket Load (1.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = 9 LIMIT 1 /*action='destroy',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:46:in 'Api::TicketsController#destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='destroy',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:52:in 'Api::TicketsController#destroy'
+  [1m[36mTicket Destroy (0.8ms)[0m  [1m[31mDELETE FROM "tickets" WHERE "tickets"."id" = 9 /*action='destroy',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:52:in 'Api::TicketsController#destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*action='destroy',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:52:in 'Api::TicketsController#destroy'
+  Rendering api/tickets/show.json.jbuilder
+  Rendered api/tickets/show.json.jbuilder (Duration: 0.3ms | GC: 0.0ms)
+Completed 200 OK in 102ms (Views: 1.1ms | ActiveRecord: 11.0ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mTicket Load (44.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
