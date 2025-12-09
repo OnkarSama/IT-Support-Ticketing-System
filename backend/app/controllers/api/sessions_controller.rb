@@ -8,7 +8,6 @@ class Api::SessionsController < ApplicationController
     def create
         email = params[:email]
         password = params[:password]
-        debugger
         @user = User.find_by_credentials(email, password)
         if @user
             login(@user)
@@ -19,5 +18,7 @@ class Api::SessionsController < ApplicationController
     end
 
     def destroy
+        logout
+        render json: {message: 'success'}
     end
 end
