@@ -32,6 +32,7 @@ const config = {
                     colors: {
                         background: "#0f172a",
                         table_bg :"#020617",
+                        table_border : "#1f2937",
                         loading: "#739B7F",
                         heading: "#5B21B6",
                         secondary: "#2d2d2dff",

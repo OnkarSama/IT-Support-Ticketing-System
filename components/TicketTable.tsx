@@ -26,7 +26,7 @@ interface Props {
 }
 
 export default function TicketTable({ tickets, filter, setFilter }: Props) {
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [rowsPerPage, setRowsPerPage] = React.useState(30);
     const [page, setPage] = React.useState(1);
     const [sortDescriptor, setSortDescriptor] = React.useState<SortDescriptor>({
         column: "id",
@@ -34,30 +34,35 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
     });
 
     const filteredTickets = React.useMemo(() => {
-        if (!filter || filter === "all") return tickets;
+        if (filter === null) return tickets;
 
-        return tickets.filter((t) =>
-            filter === "in-progress"
-                ? t.status.toLowerCase() === "in progress"
-                : t.status.toLowerCase() === filter
-        );
+        switch (filter) {
+            case "open":
+                return tickets.filter((t) => t.status.toLowerCase() === "open");
+            case "in-progress":
+                return tickets.filter((t) => t.status.toLowerCase() === "in progress");
+            case "closed":
+                return tickets.filter((t) => t.status.toLowerCase() === "closed");
+            default:
+                return tickets;
+        }
     }, [tickets, filter]);
+
+    React.useEffect(() => {
+        setPage(1);
+    }, [filter]);
 
     const sortedTickets = React.useMemo(() => {
         const sorted = [...filteredTickets];
         const { column, direction } = sortDescriptor;
-
         sorted.sort((a, b) => {
             let first: any = a[column as keyof Ticket];
             let second: any = b[column as keyof Ticket];
-
             if (typeof first === "string") first = first.toLowerCase();
             if (typeof second === "string") second = second.toLowerCase();
-
             const cmp = first < second ? -1 : first > second ? 1 : 0;
             return direction === "descending" ? -cmp : cmp;
         });
-
         return sorted;
     }, [filteredTickets, sortDescriptor]);
 
@@ -66,10 +71,10 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         return sortedTickets.slice(start, start + rowsPerPage);
     }, [sortedTickets, page, rowsPerPage]);
 
-    const onRowsPerPageChange = React.useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+    const onRowsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setRowsPerPage(Number(e.target.value));
         setPage(1);
-    }, []);
+    };
 
     const pages = Math.ceil(sortedTickets.length / rowsPerPage);
 
@@ -81,51 +86,62 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
 
     return (
         <>
-
             <div className="flex gap-3 mb-6 flex-wrap">
-                {(["open", "in-progress", "closed", "all"] as Filter[]).map((f) => {
-                    const activeColor =
-                        f === "open"
-                            ? "success"
-                            : f === "in-progress"
-                                ? "warning"
-                                : f === "closed"
-                                    ? "danger"
-                                    : "primary";
-                    const isActive = filter === f;
+                {(["open", "in-progress", "closed"] as Filter[]).map((f) => {
+                    const active = filter === f;
+
                     return (
                         <Chip
                             key={f}
-                            color={activeColor}
-                            variant={isActive ? "shadow" : "flat"}
+                            color={
+                                f === "open"
+                                    ? "success"
+                                    : f === "in-progress"
+                                        ? "warning"
+                                        : f === "closed"
+                                            ? "danger"
+                                            : "primary"
+                            }
+                            variant={active ? "shadow" : "flat"}
                             className="cursor-pointer transition"
-                            onClick={() => setFilter(isActive || f === "all" ? null : f)}
+                            onClick={() => {
+                                if (filter === f) setFilter(null);
+                                else setFilter(f);
+                            }}
                         >
-                            {f === "in-progress" ? "In Progress" : f.charAt(0).toUpperCase() + f.slice(1)}
+                            {f === "in-progress"
+                                ? "In Progress"
+                                : f.charAt(0).toUpperCase() + f.slice(1)}
                         </Chip>
                     );
                 })}
             </div>
 
             <Table
-                className="min-w-full w-full bg-table_bg py-5 px-6 shadow-[0_18px_40px_rgba(0,0,0,0.35)]"
                 removeWrapper
                 sortDescriptor={sortDescriptor}
                 onSortChange={setSortDescriptor}
+                className="
+                    bg-table_bg
+                    rounded-xl
+                    border border-table_border
+                    min-w-full w-full
+                    py-5 px-6
+                    shadow-[0_18px_40px_rgba(0,0,0,0.35)]
+                "
+                classNames={{
+                    wrapper: "bg-table_bg",
+                    thead: "bg-table_bg",
+                    th: "bg-table_bg text-text font-semibold",
+                    tr: "hover:bg-[#1a1a1a50]",
+                    td: "text-text",
+                }}
             >
                 <TableHeader>
-                    <TableColumn key="id" allowsSorting>
-                        ID
-                    </TableColumn>
-                    <TableColumn key="title" allowsSorting>
-                        Ticket
-                    </TableColumn>
-                    <TableColumn key="status" allowsSorting>
-                        Status
-                    </TableColumn>
-                    <TableColumn key="requester">
-                        Requester
-                    </TableColumn>
+                    <TableColumn key="id" allowsSorting>Number</TableColumn>
+                    <TableColumn key="title" allowsSorting>Title</TableColumn>
+                    <TableColumn key="status" allowsSorting>Status</TableColumn>
+                    <TableColumn key="requester">Requester</TableColumn>
                     <TableColumn key="description">Description</TableColumn>
                 </TableHeader>
 
@@ -147,24 +163,35 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                                     {ticket.status}
                                 </Chip>
                             </TableCell>
-                            <TableCell className="text-text">{ticket.requester}</TableCell>
-                            <TableCell className="text-text">{ticket.description}</TableCell>
+                            <TableCell>{ticket.requester}</TableCell>
+                            <TableCell>{ticket.description}</TableCell>
                         </TableRow>
                     )}
                 </TableBody>
             </Table>
 
-            <div className=" text-text flex justify-between items-center mt-4">
-                <Pagination showControls loop isCompact showShadow page={page} total={pages} variant="flat" onChange={setPage} />
+            <div className="text-text flex justify-between items-center mt-4">
+                <Pagination
+                    showControls
+                    loop
+                    isCompact
+                    showShadow
+                    page={page}
+                    total={pages}
+                    variant="flat"
+                    onChange={setPage}
+                />
+
                 <label className="flex items-center gap-2 text-default-400 text-small">
                     Rows per page:
                     <select
                         className="bg-transparent outline-none text-default-400 text-small"
+                        value={rowsPerPage}
                         onChange={onRowsPerPageChange}
                     >
                         <option value="5">5</option>
                         <option value="10">10</option>
-                        <option value="15">15</option>
+                        <option value="30">30</option>
                     </select>
                 </label>
             </div>
