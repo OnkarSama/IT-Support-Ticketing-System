@@ -17,7 +17,6 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
     themeColor: [
-        { media: "(prefers-color-scheme: light)", color: "white" },
         { media: "(prefers-color-scheme: dark)", color: "black" },
     ],
 };
@@ -34,7 +33,7 @@ export default function RootLayout({
                 "min-h-screen text-foreground bg-background font-sans antialiased",
             )}
         >
-        <Providers themeProps={{ attribute: "class"}}>
+        <Providers>
             <div className="relative flex flex-col h-screen">
 
                 <Navbar/>
