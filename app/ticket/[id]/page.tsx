@@ -9,13 +9,15 @@ interface TicketPageProps {
 export default function TicketPage({ params }: TicketPageProps) {
     const ticketId = Number(params.id);
 
+    console.log(params.id);
+
     const ticket = MOCK_TICKETS.find(t => t.id === ticketId);
 
     if (!ticket) {
         return (
             <div className="p-6">
                 <h1 className="text-2xl font-bold">Ticket not found</h1>
-                <p>No ticket exists with ID: {params.id}</p>
+                <p>No ticket exists with ID: {ticketId}</p>
             </div>
         );
     }
