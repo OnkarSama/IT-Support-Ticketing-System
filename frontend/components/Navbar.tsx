@@ -12,7 +12,7 @@ import {Input} from "@heroui/input";
 import React, { useEffect, useRef } from 'react';
 import clsx from "clsx";
 
-import {siteConfig} from "@/frontend/config/site";
+import {siteConfig} from "@/config/site";
 
 interface SearchIconProps extends React.SVGProps<SVGSVGElement> {
   size?: number;
@@ -68,7 +68,7 @@ export const Navbar = () => {
                     className="lg:hidden"
                 />
                 <NavbarBrand as="li" className="gap-3 max-w-fit">
-                    <Link className="flex justify-start items-center gap-1" href="/frontend/public">
+                    <Link className="flex justify-start items-center gap-1" href="/">
                         <p className="text-white font-bold text-inherit">Ticket Management</p>
                     </Link>
                 </NavbarBrand>

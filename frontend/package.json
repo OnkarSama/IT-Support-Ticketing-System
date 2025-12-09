@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "../node_modules/next dev",
-    "build": "../node_modules/next build",
-    "start": "../node_modules/next start"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "@heroui/button": "^2.2.27",
@@ -16,6 +16,7 @@
     "@heroui/react": "^2.8.5",
     "@heroui/switch": "^2.2.24",
     "@heroui/system": "^2.4.23",
+    "@heroui/theme": "^2.4.23",
     "@heroui/toast": "^2.0.17",
     "@iconify/react": "^6.0.2",
     "next": "^16.0.3",
