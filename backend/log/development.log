@@ -1098,3 +1098,50 @@ Can't verify CSRF token authenticity.
 Completed 200 OK in 258ms (Views: 0.4ms | ActiveRecord: 5.6ms (5 queries, 0 cached) | GC: 0.0ms)
 
 
+Started POST "/api/session/?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-08 23:08:47 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]", "session" => {}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:6:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'ukBbGSa1HpZy0H1-8WELgQ' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'ukBbGSa1HpZy0H1-8WELgQ' AND "users"."id" != 25 LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-12-09 04:08:48.251877', "session_token" = 'ukBbGSa1HpZy0H1-8WELgQ' WHERE "users"."id" = 25 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 262ms (Views: 6.8ms | ActiveRecord: 15.2ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/session/?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-08 23:14:12 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]", "session" => {}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'ygRMp9-LsGuP7zXEm2a-LA' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'ygRMp9-LsGuP7zXEm2a-LA' AND "users"."id" != 25 LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-12-09 04:14:13.204313', "session_token" = 'ygRMp9-LsGuP7zXEm2a-LA' WHERE "users"."id" = 25 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | GC: 0.0ms)
+Completed 200 OK in 250ms (Views: 6.2ms | ActiveRecord: 11.5ms (5 queries, 0 cached) | GC: 0.0ms)
+
+

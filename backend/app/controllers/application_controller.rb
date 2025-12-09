@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
-# include ActionController::RequestForgeryProtection
+include ActionController::RequestForgeryProtection
 before_action :snake_case_params
-protect_from_forgery with: :null_session
+protect_from_forgery with: :exception
+skip_forgery_protection
+
 def current_user
 @current_user ||= User.find_by(session_token: session[:session_token])
 end
