@@ -21,7 +21,7 @@ export const MOCK_TICKETS: Ticket[] = Array.from({ length: 100 }, (_, i) => {
         "VPN slow", "Outlook crash on startup", "Cannot access intranet"
     ];
     const descriptions = [
-        "User reports an authentication error on login.",
+        "User reports an authentication error on login. User reports an authentication error on login. User reports an authentication error on login. User reports an authentication error on login. User reports an authentication error on login.",
         "Mobile email app is not syncing new messages.",
         "Office printer shows offline on all workstations.",
         "Remote VPN connection fails intermittently.",

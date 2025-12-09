@@ -11,12 +11,12 @@ import {
     SortDescriptor,
 } from "@heroui/react";
 import Link from "next/link";
-import { Ticket, Filter } from "@/types";
+import {Ticket, Filter} from "@/types";
 
 export const statusOptions = [
-    { name: "Open", uid: "open" },
-    { name: "In Progress", uid: "in-progress" },
-    { name: "Closed", uid: "closed" },
+    {name: "Open", uid: "open"},
+    {name: "In Progress", uid: "in-progress"},
+    {name: "Closed", uid: "closed"},
 ];
 
 interface Props {
@@ -25,7 +25,7 @@ interface Props {
     setFilter: (f: Filter | null) => void;
 }
 
-export default function TicketTable({ tickets, filter, setFilter }: Props) {
+export default function TicketTable({tickets, filter, setFilter}: Props) {
     const [rowsPerPage, setRowsPerPage] = React.useState(30);
     const [page, setPage] = React.useState(1);
     const [sortDescriptor, setSortDescriptor] = React.useState<SortDescriptor>({
@@ -54,7 +54,7 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
 
     const sortedTickets = React.useMemo(() => {
         const sorted = [...filteredTickets];
-        const { column, direction } = sortDescriptor;
+        const {column, direction} = sortDescriptor;
         sorted.sort((a, b) => {
             let first: any = a[column as keyof Ticket];
             let second: any = b[column as keyof Ticket];
@@ -84,9 +84,16 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         closed: "danger",
     };
 
+    const truncateWords = (text: string, limit: number) => {
+        const words = text.split(" ");
+        if (words.length <= limit) return text;
+        return words.slice(0, limit).join(" ") + "...";
+    };
+
+
     return (
         <>
-            <div className="flex gap-3 mb-6 flex-wrap">
+            <div className="flex mb-6 flex-wrap">
                 {(["open", "in-progress", "closed"] as Filter[]).map((f) => {
                     const active = filter === f;
 
@@ -119,25 +126,28 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
 
             <Table
                 removeWrapper
+                isHeaderSticky
                 sortDescriptor={sortDescriptor}
                 onSortChange={setSortDescriptor}
                 className="
-                    bg-table_bg
-                    rounded-xl
-                    border border-table_border
-                    min-w-full w-full
-                    py-5 px-6
-                    shadow-[0_18px_40px_rgba(0,0,0,0.35)]
+                  bg-table_bg
+                  rounded-xl
+                  border border-table_border
+                  min-w-full w-full
+                  py-6 px-8
+                  shadow-[0_18px_40px_rgba(0,0,0,0.35)]
                 "
+
+
                 classNames={{
                     wrapper: "bg-table_bg",
                     thead: "bg-table_bg",
-                    th: "bg-table_bg text-text font-semibold",
+                    th: "bg-table_bg text-subheading font-semibold",
                     tr: "hover:bg-[#1a1a1a50]",
                     td: "text-text",
                 }}
             >
-                <TableHeader>
+                <TableHeader className="bg-table_border">
                     <TableColumn key="id" allowsSorting>Number</TableColumn>
                     <TableColumn key="title" allowsSorting>Title</TableColumn>
                     <TableColumn key="status" allowsSorting>Status</TableColumn>
@@ -164,7 +174,7 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                                 </Chip>
                             </TableCell>
                             <TableCell>{ticket.requester}</TableCell>
-                            <TableCell>{ticket.description}</TableCell>
+                            <TableCell>{truncateWords(ticket.description, 20)}</TableCell>
                         </TableRow>
                     )}
                 </TableBody>

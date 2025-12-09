@@ -6,7 +6,7 @@ export const siteConfig = {
     navItems: [
         {
             label: "Home",
-            href: "/",
+            href: "/dashboard",
         },
         {
             label: "New Ticket",
@@ -17,7 +17,7 @@ export const siteConfig = {
     navMenuItems: [
         {
             label: "Home",
-            href: "/",
+            href: "/dashboard",
         },
         {
             label: "New Ticket",

@@ -31,15 +31,18 @@ const config = {
                     layout: {},
                     colors: {
                         background: "#0f172a",
-                        table_bg :"#020617",
-                        table_border : "#1f2937",
-                        loading: "#739B7F",
-                        heading: "#5B21B6",
-                        secondary: "#2d2d2dff",
-                        hover: "#E9D5FF",
-                        border:'#1f2937',
-                        text: "#e5e7eb",
-                    },
+                        table_bg: "#020617",
+                        table_border: "#164e63",
+                        text: "#e0f2f1",
+                        secondary: "#0f766e",
+                        hover: "#115e59",
+                        heading: "#5eead4",
+                        subheading: "#22d3ee",
+                        loading: "#99f6e4",
+                        border: "#164e63",
+                    }
+
+
                 },
             }
         })
