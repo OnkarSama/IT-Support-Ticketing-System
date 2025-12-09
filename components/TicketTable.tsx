@@ -159,12 +159,12 @@ export default function TicketTable({tickets, filter, setFilter}: Props) {
                     {(ticket) => (
                         <TableRow key={ticket.id}>
                             <TableCell>
-                                <Link href={`/tickets/${ticket.id}`} className="text-text hover:underline">
+                                <Link href={`/ticket/${ticket.id}`} className="text-text hover:underline">
                                     #{ticket.id}
                                 </Link>
                             </TableCell>
                             <TableCell>
-                                <Link href={`/tickets/${ticket.id}`} className="text-text hover:underline">
+                                <Link href={`/ticket/${ticket.id}`} className="text-text hover:underline">
                                     {ticket.title}
                                 </Link>
                             </TableCell>
