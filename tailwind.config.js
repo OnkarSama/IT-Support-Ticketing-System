@@ -27,7 +27,7 @@ const config = {
             defaultExtendTheme: "dark",
             layout: {},
             themes: {
-                light: {
+                dark: {
                     layout: {},
                     colors: {
                         background: "#0f172a",
@@ -39,21 +39,6 @@ const config = {
                         hover: "#E9D5FF",
                         border:'#1f2937',
                         text: "#e5e7eb",
-                    },
-                },
-                dark: {
-                    layout: {},
-                    colors: {
-                        background: "#000000",
-                        subheading: "#C4B5FD",
-                        heading: "#6D28D9",
-                        primary: {
-                            DEFAULT: "#4d4e5b9a",
-                            foreground: "#FFFFFF",
-                        },
-                        accent: "#7C3AED",
-                        hover: "#581C87",
-                        text: "#D1D5DB",
                     },
                 },
             }

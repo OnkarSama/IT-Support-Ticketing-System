@@ -41,7 +41,6 @@ export default function RootLayout({
 
                 <main className="pt-6 px-8 pb-10 flex-1 p-6">{children}</main>
 
-                {/* --- App Footer (kept from original) --- */}
                 <footer className="px-8 py-3 border-t border-border text-sm text-text text-center">
               <span>
                 Ticket Management &copy; {new Date().getFullYear()}
