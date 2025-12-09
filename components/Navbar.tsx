@@ -6,10 +6,7 @@ import {
     NavbarMenuToggle,
     NavbarBrand,
     NavbarItem,
-    NavbarMenuItem,
 } from "@heroui/navbar";
-import {Button} from "@heroui/button";
-import {Kbd} from "@heroui/kbd";
 import {Link} from "@heroui/link";
 import {Input} from "@heroui/input";
 import React, { useEffect, useRef } from 'react';
@@ -17,36 +14,55 @@ import clsx from "clsx";
 
 import {siteConfig} from "@/config/site";
 
-export const Navbar = () => {
+interface SearchIconProps extends React.SVGProps<SVGSVGElement> {
+  size?: number;
+  strokeWidth?: number;
+  width?: number;
+  height?: number;
+}
 
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-
-    /*const searchInput = (
-      <Input
-        aria-label="Search"
-        classNames={{
-          inputWrapper: "bg-default-100",
-          input: "text-sm",
-        }}
-        endContent={
-          <Kbd className="hidden lg:inline-block" keys={["command"]}>
-            K
-          </Kbd>
-        }
-        labelPlacement="outside"
-        placeholder="Search..."
-        startContent={
-          <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-        }
-        type="search"
+export const SearchIcon = ({
+    size = 24, 
+    strokeWidth = 1.5, 
+    width, 
+    height, ...props
+}: SearchIconProps) => {
+  return (
+    <svg
+      aria-hidden="true"
+      fill="none"
+      focusable="false"
+      height={height || size}
+      role="presentation"
+      viewBox="0 0 24 24"
+      width={width || size}
+      {...props}
+    >
+      <path
+        d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={strokeWidth}
       />
-    );*/
+      <path
+        d="M22 22L20 20"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={strokeWidth}
+      />
+    </svg>
+  );
+};
+
+export const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     return (
         <HeroUINavbar isMenuOpen={isMenuOpen}
-                      onMenuOpenChange={setIsMenuOpen} maxWidth="xl" position="static" shouldHideOnScroll>
-            <NavbarContent className="basis-1/5 lg:basis-full" justify="center">
+                onMenuOpenChange={setIsMenuOpen} maxWidth="xl" position="static" shouldHideOnScroll>
+            <NavbarContent className="flex-1 justify-start items-center gap-4">
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                     className="lg:hidden"
@@ -75,15 +91,25 @@ export const Navbar = () => {
 
             <NavbarContent
                 className="hidden sm:flex basis-1/5 sm:basis-full"
-                justify="end"
-            >
+                justify="end">
                 <NavbarItem className="hidden sm:flex gap-2">
+                    <Input 
+                        classNames={{
+                            base: "h-10 w-[200px]",
+                            mainWrapper: "h-full",
+                            input: "text-small",
+                            inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+                        }}
+                        placeholder="Search..."
+                        size="sm"
+                        startContent={<SearchIcon size={18} />}
+                        type="search"
+                    />
                 </NavbarItem>
             </NavbarContent>
 
 
             <NavbarMenu>
-                {/*searchInput*/}
                 <div className="mx-4 mt-2 flex flex-col gap-2">
                     {siteConfig.navItems.map((item) => (
                         <NavbarItem key={item.href}>
