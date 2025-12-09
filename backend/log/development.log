@@ -1145,3 +1145,53 @@ Processing by Api::SessionsController#create as JSON
 Completed 200 OK in 250ms (Views: 6.2ms | ActiveRecord: 11.5ms (5 queries, 0 cached) | GC: 0.0ms)
 
 
+Started POST "/api/session/?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-08 23:15:32 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]", "session" => {}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'ygRMp9-LsGuP7zXEm2a-LA' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Filter chain halted as :require_logged_out rendered or redirected
+Completed 200 OK in 54ms (Views: 0.1ms | ActiveRecord: 9.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/session/?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-08 23:15:45 -0500
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]", "session" => {}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'ygRMp9-LsGuP7zXEm2a-LA' LIMIT 1 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '3dCrGl64uzVc6ioxqKfDdw' LIMIT 1 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '3dCrGl64uzVc6ioxqKfDdw' AND "users"."id" != 25 LIMIT 1 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-12-09 04:15:45.900763', "session_token" = '3dCrGl64uzVc6ioxqKfDdw' WHERE "users"."id" = 25 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+Completed 200 OK in 19ms (Views: 0.1ms | ActiveRecord: 7.6ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/session/?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-08 23:15:49 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]", "session" => {}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' AND "users"."id" != 25 LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-12-09 04:15:50.010536', "session_token" = 'KivmGbo0nN0JUBfKnQgLXw' WHERE "users"."id" = 25 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | GC: 0.0ms)
+Completed 200 OK in 220ms (Views: 9.4ms | ActiveRecord: 4.5ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
