@@ -1273,3 +1273,458 @@ Processing by Api::TicketsController#index as JSON
 Completed 200 OK in 25ms (Views: 20.1ms | ActiveRecord: 4.1ms (3 queries, 0 cached) | GC: 2.1ms)
 
 
+Started POST "/api/tickets" for ::1 at 2025-12-08 23:36:48 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 400 Bad Request in 15ms (ActiveRecord: 2.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: ticket):
+  
+app/controllers/api/tickets_controller.rb:57:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#create'
+Started POST "/api/tickets?{=&%22ticket%22=%20{&%22title%22=%20%22Test%20Ticket%22,&%22description%22=%20%22Something%20broke%22&}=&}=" for ::1 at 2025-12-08 23:37:06 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"{" => "", "\"ticket\"" => " {", "\"title\"" => " \"Test Ticket\",", "\"description\"" => " \"Something broke\"", "}" => "", "ticket" => {}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 400 Bad Request in 11ms (ActiveRecord: 1.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: ticket):
+  
+app/controllers/api/tickets_controller.rb:57:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#create'
+Started POST "/api/tickets" for ::1 at 2025-12-08 23:37:28 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 400 Bad Request in 9ms (ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: ticket):
+  
+app/controllers/api/tickets_controller.rb:57:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#create'
+Started POST "/api/tickets" for ::1 at 2025-12-08 23:39:20 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 400 Bad Request in 10ms (ActiveRecord: 2.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: ticket):
+  
+app/controllers/api/tickets_controller.rb:57:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#create'
+Started POST "/api/tickets?ticket=title:%20%22Joe%27s%20title%22,%20description:%20%22Joe%27s%20description%22" for ::1 at 2025-12-08 23:41:20 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => "title: \"Joe's title\", description: \"Joe's description\""}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method 'permit' for an instance of String):
+  
+app/controllers/api/tickets_controller.rb:57:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#create'
+Started POST "/api/tickets?ticket=title:%20%22Joe%27s%20title%22,%20description:%20%22Joe%27s%20description%22" for ::1 at 2025-12-08 23:45:17 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => "title: \"Joe's title\", description: \"Joe's description\""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed   in 15863ms (ActiveRecord: 1.8ms (1 query, 0 cached) | GC: 69.6ms)
+
+
+Started POST "/api/tickets" for ::1 at 2025-12-08 23:45:41 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed   in 40167ms (ActiveRecord: 2.4ms (1 query, 0 cached) | GC: 16.9ms)
+
+
+Started POST "/api/tickets?title=%22Won%27t%20turn%20on%22&description=%22please%20help%22" for ::1 at 2025-12-08 23:46:50 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"title" => "\"Won't turn on\"", "description" => "\"please help\"", "ticket" => {}}
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 400 Bad Request in 17ms (ActiveRecord: 6.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: ticket):
+  
+app/controllers/api/tickets_controller.rb:57:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#create'
+Started POST "/api/tickets?ticket=%20{title:%22Won%27t%20turn%20on%22,%20description:%22please%20help%22}" for ::1 at 2025-12-08 23:47:13 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => " {title:\"Won't turn on\", description:\"please help\"}"}
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 2.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method 'permit' for an instance of String):
+  
+app/controllers/api/tickets_controller.rb:57:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#create'
+Started POST "/api/tickets?ticket=%20{title:%22Won%27t%20turn%20on%22,%20description:%22please%20help%22}" for ::1 at 2025-12-08 23:49:16 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => " {title:\"Won't turn on\", description:\"please help\"}"}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 2.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method 'permit' for an instance of String):
+  
+app/controllers/api/tickets_controller.rb:57:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#create'
+Started POST "/api/tickets?ticket=%20{title:%22Won%27t%20turn%20on%22,%20description:%22please%20help%22}" for ::1 at 2025-12-08 23:51:30 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => " {title:\"Won't turn on\", description:\"please help\"}"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 500 Internal Server Error in 25548ms (ActiveRecord: 2.9ms (1 query, 0 cached) | GC: 16.2ms)
+
+
+  
+NoMethodError (undefined method 'permit' for an instance of String):
+  
+app/controllers/api/tickets_controller.rb:58:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#create'
+Started POST "/api/tickets?ticket=%20title:%22Won%27t%20turn%20on%22,%20description:%22please%20help%22" for ::1 at 2025-12-08 23:52:01 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => " title:\"Won't turn on\", description:\"please help\""}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 500 Internal Server Error in 3690ms (ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method 'permit' for an instance of String):
+  
+app/controllers/api/tickets_controller.rb:58:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#create'
+Started POST "/api/tickets?ticket=%20title:%22Won%27t%20turn%20on%22,%20description:%22please%20help%22" for ::1 at 2025-12-08 23:52:46 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => " title:\"Won't turn on\", description:\"please help\""}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 500 Internal Server Error in 8144ms (ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method 'permit' for an instance of String):
+  
+app/controllers/api/tickets_controller.rb:58:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#create'
+Started POST "/api/tickets" for ::1 at 2025-12-08 23:53:18 -0500
+Processing by Api::TicketsController#create as JSON
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 400 Bad Request in 2447ms (ActiveRecord: 1.3ms (1 query, 0 cached) | GC: 17.5ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: ticket):
+  
+app/controllers/api/tickets_controller.rb:58:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#create'
+Started POST "/api/tickets" for ::1 at 2025-12-08 23:53:24 -0500
+Processing by Api::TicketsController#create as JSON
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 400 Bad Request in 8000ms (ActiveRecord: 1.4ms (1 query, 0 cached) | GC: 20.5ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: ticket):
+  
+app/controllers/api/tickets_controller.rb:58:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#create'
+Started POST "/api/tickets" for ::1 at 2025-12-08 23:57:16 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+[31mUnpermitted parameters: :format, :ticket. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x000000013df27b30>, params: {"format" => :json, "controller" => "api/tickets", "action" => "create", "ticket" => {}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 25 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+Completed 422 Unprocessable Content in 11521ms (Views: 1.0ms | ActiveRecord: 9.6ms (2 queries, 0 cached) | GC: 46.6ms)
+
+
+Started POST "/api/tickets" for ::1 at 2025-12-08 23:57:55 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed   in 197602ms (ActiveRecord: 1.8ms (1 query, 0 cached) | GC: 54.0ms)
+
+
+Started POST "/api/tickets?{=&%22title%22=%20%22New%20test%20ticket%22,&%22description%22=%20%22Testing%20create%20endpoint%22&}=" for ::1 at 2025-12-09 00:01:17 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"{" => "", "\"title\"" => " \"New test ticket\",", "\"description\"" => " \"Testing create endpoint\"", "}" => "", "ticket" => {}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+[31mUnpermitted parameters: :{, :"title", :"description", :}, :format, :ticket. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x00000001244f3998>, params: {"{" => "", "\"title\"" => " \"New test ticket\",", "\"description\"" => " \"Testing create endpoint\"", "}" => "", "format" => :json, "controller" => "api/tickets", "action" => "create", "ticket" => {}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 25 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+Completed 422 Unprocessable Content in 10072ms (Views: 0.4ms | ActiveRecord: 7.2ms (2 queries, 0 cached) | GC: 16.8ms)
+
+
+Started POST "/api/tickets?{=&%22title%22=%20%22New%20test%20ticket%22,&%22description%22=%20%22Testing%20create%20endpoint%22&}=" for ::1 at 2025-12-09 00:04:07 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"{" => "", "\"title\"" => " \"New test ticket\",", "\"description\"" => " \"Testing create endpoint\"", "}" => "", "ticket" => {}}
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+[31mUnpermitted parameters: :{, :"title", :"description", :}, :format, :ticket. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x0000000127ef7810>, params: {"{" => "", "\"title\"" => " \"New test ticket\",", "\"description\"" => " \"Testing create endpoint\"", "}" => "", "format" => :json, "controller" => "api/tickets", "action" => "create", "ticket" => {}} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 25 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+Completed 422 Unprocessable Content in 3893ms (Views: 1.3ms | ActiveRecord: 7.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/tickets" for ::1 at 2025-12-09 00:04:22 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+[31mUnpermitted parameters: :format, :ticket. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x00000001327d6918>, params: {"format" => :json, "controller" => "api/tickets", "action" => "create", "ticket" => {}} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 25 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+Completed 422 Unprocessable Content in 2718ms (Views: 0.4ms | ActiveRecord: 7.8ms (2 queries, 0 cached) | GC: 31.4ms)
+
+
+Started POST "/api/tickets" for ::1 at 2025-12-09 00:04:29 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+[31mUnpermitted parameters: :format, :ticket. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x00000001305700b8>, params: {"format" => :json, "controller" => "api/tickets", "action" => "create", "ticket" => {}} }[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 25 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+Completed 422 Unprocessable Content in 133159ms (Views: 0.4ms | ActiveRecord: 8.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/tickets" for ::1 at 2025-12-09 00:08:41 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 400 Bad Request in 13061ms (ActiveRecord: 2.4ms (1 query, 0 cached) | GC: 28.1ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: ticket):
+  
+app/controllers/api/tickets_controller.rb:61:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#create'
+Started POST "/api/tickets" for ::1 at 2025-12-09 00:10:25 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 400 Bad Request in 3548ms (ActiveRecord: 1.9ms (1 query, 0 cached) | GC: 24.4ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: ticket):
+  
+app/controllers/api/tickets_controller.rb:60:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:13:in 'Api::TicketsController#create'
+Started POST "/api/tickets" for ::1 at 2025-12-09 00:11:21 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+[31mUnpermitted parameters: :format, :ticket. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x00000001309f3ae0>, params: {"format" => :json, "controller" => "api/tickets", "action" => "create", "ticket" => {}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:16:in 'Api::TicketsController#create'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 25 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:16:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:16:in 'Api::TicketsController#create'
+Completed 422 Unprocessable Content in 3009ms (Views: 1.1ms | ActiveRecord: 5.1ms (2 queries, 0 cached) | GC: 43.9ms)
+
+
+Started POST "/api/tickets" for ::1 at 2025-12-09 00:11:58 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+[31mUnpermitted parameters: :format, :ticket. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x0000000130fb8340>, params: {"format" => :json, "controller" => "api/tickets", "action" => "create", "ticket" => {}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:16:in 'Api::TicketsController#create'
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 25 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:16:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:16:in 'Api::TicketsController#create'
+Completed 422 Unprocessable Content in 1867ms (Views: 0.4ms | ActiveRecord: 3.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/tickets" for ::1 at 2025-12-09 00:13:24 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+[31mUnpermitted parameters: :format, :ticket. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x0000000130873b70>, params: {"format" => :json, "controller" => "api/tickets", "action" => "create", "ticket" => {}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:19:in 'Api::TicketsController#create'
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 25 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:19:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:19:in 'Api::TicketsController#create'
+Completed 422 Unprocessable Content in 2768ms (Views: 0.3ms | ActiveRecord: 5.9ms (2 queries, 0 cached) | GC: 12.0ms)
+
+
+Started POST "/api/tickets" for ::1 at 2025-12-09 00:13:55 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+[31mUnpermitted parameters: :format, :ticket. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x0000000130e1fc90>, params: {"format" => :json, "controller" => "api/tickets", "action" => "create", "ticket" => {}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:19:in 'Api::TicketsController#create'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 25 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:19:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:19:in 'Api::TicketsController#create'
+Completed 422 Unprocessable Content in 3630ms (Views: 0.3ms | ActiveRecord: 10.8ms (2 queries, 0 cached) | GC: 15.4ms)
+
+
+Started POST "/api/tickets" for ::1 at 2025-12-09 00:15:38 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+[31mUnpermitted parameters: :format, :ticket. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x0000000133dbc138>, params: {"format" => :json, "controller" => "api/tickets", "action" => "create", "ticket" => {}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:76:in 'Api::TicketsController#create'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 25 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:76:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:76:in 'Api::TicketsController#create'
+Completed 422 Unprocessable Content in 11ms (Views: 0.1ms | ActiveRecord: 7.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/tickets" for ::1 at 2025-12-09 00:17:54 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+Can't verify CSRF token authenticity.
+[31mUnpermitted parameters: :format, :ticket. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x0000000124479080>, params: {"format" => :json, "controller" => "api/tickets", "action" => "create", "ticket" => {}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:77:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:77:in 'Api::TicketsController#create'
+Completed 422 Unprocessable Content in 9ms (Views: 0.1ms | ActiveRecord: 6.2ms (0 queries, 0 cached) | GC: 1.5ms)
+
+
+Started POST "/api/tickets" for ::1 at 2025-12-09 00:18:05 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Can't verify CSRF token authenticity.
+[31mUnpermitted parameters: :format, :ticket. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x0000000130812280>, params: {"format" => :json, "controller" => "api/tickets", "action" => "create", "ticket" => {}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:20:in 'Api::TicketsController#create'
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 25 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:20:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:20:in 'Api::TicketsController#create'
+Completed 422 Unprocessable Content in 3690ms (Views: 0.1ms | ActiveRecord: 7.7ms (2 queries, 0 cached) | GC: 17.9ms)
+
+
+Started POST "/api/tickets" for ::1 at 2025-12-09 00:18:33 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+[31mUnpermitted parameters: :format, :ticket. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x0000000127ed6188>, params: {"format" => :json, "controller" => "api/tickets", "action" => "create", "ticket" => {}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:15:in 'Api::TicketsController#create'
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 25 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:15:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:15:in 'Api::TicketsController#create'
+Completed 422 Unprocessable Content in 3122ms (Views: 0.4ms | ActiveRecord: 4.9ms (2 queries, 0 cached) | GC: 9.2ms)
+
+
+Started POST "/api/tickets" for ::1 at 2025-12-09 00:21:13 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Filter chain halted as :require_logged_in rendered or redirected
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 5.1ms (1 query, 0 cached) | GC: 2.9ms)
+
+
+Started POST "/api/tickets?|%20Key%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20|%20Value%20%20%20%20%20%20%20%20%20%20%20%20|=&|%20-------------------%20|%20----------------%20|=&|%20ticket[title]%20%20%20%20%20%20%20|%20Test%20Ticket%20%20%20%20%20%20|=&|%20ticket[description]%20|%20Some%20description%20|=" for ::1 at 2025-12-09 00:23:19 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"| Key                 | Value            |" => "", "| ------------------- | ---------------- |" => "", "| ticket" => {"title" => {"       | Test Ticket      |" => ""}, "description" => {" | Some description |" => ""}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 400 Bad Request in 13ms (ActiveRecord: 2.9ms (1 query, 0 cached) | GC: 2.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: ticket):
+  
+app/controllers/api/tickets_controller.rb:58:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:12:in 'Api::TicketsController#create'
+Started POST "/api/tickets?ticket[title]=Something%20isn%27t%20working&ticket[description]=it%27s%20really%20broken" for ::1 at 2025-12-09 00:24:27 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {"title" => "Something isn't working", "description" => "it's really broken"}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'KivmGbo0nN0JUBfKnQgLXw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:15:in 'Api::TicketsController#create'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 25 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:15:in 'Api::TicketsController#create'
+  [1m[36mTicket Create (8.4ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "assignee_id") VALUES ('Something isn''t working', 'it''s really broken', NULL, NULL, '2025-12-09 05:24:27.562205', '2025-12-09 05:24:27.562205', 25, NULL) RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:15:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:15:in 'Api::TicketsController#create'
+  Rendering api/tickets/show.json.jbuilder
+  Rendered api/tickets/show.json.jbuilder (Duration: 0.6ms | GC: 0.0ms)
+Completed 200 OK in 64ms (Views: 3.8ms | ActiveRecord: 12.8ms (3 queries, 0 cached) | GC: 27.0ms)
+
+
