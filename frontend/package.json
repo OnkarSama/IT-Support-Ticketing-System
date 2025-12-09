@@ -3,17 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "../node_modules/next dev",
+    "build": "../node_modules/next build",
+    "start": "../node_modules/next start"
   },
   "dependencies": {
-    "@heroui/button": "^2.2.27",
-    "@heroui/input": "^2.4.28",
-    "@heroui/kbd": "^2.2.22",
-    "@heroui/link": "^2.2.23",
-    "@heroui/navbar": "^2.2.25",
-    "@heroui/switch": "^2.2.24",
     "@heroui/button": "^2.2.27",
     "@heroui/input": "^2.4.28",
     "@heroui/kbd": "^2.2.22",
@@ -24,10 +18,10 @@
     "@heroui/system": "^2.4.23",
     "@heroui/toast": "^2.0.17",
     "@iconify/react": "^6.0.2",
-    "next": "16.0.3",
+    "next": "^16.0.3",
     "next-themes": "^0.4.6",
-    "react": "^19.2.0",
-    "react-dom": "19.2.0"
+    "react": "^19.2.1",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

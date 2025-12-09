@@ -39,5 +39,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-.idea/it-support-ticket-system.iml .idea/modules.xml .idea/vcs.xml .idea/workspace.xml
-.idea/
+frontend/.idea/it-support-ticket-system.iml .idea/modules.xml .idea/vcs.xml .idea/workspace.xml
+frontend/.idea/

@@ -1,8 +1,8 @@
 "use client";
 
 import {useState} from "react";
-import TicketHeader from "@/components/TicketHeader";
-import TicketTable from "@/components/TicketTable";
+import TicketHeader from "@/frontend/components/TicketHeader";
+import TicketTable from "@/frontend/components/TicketTable";
 import {Filter} from "@/types";
 import {MOCK_TICKETS} from "@/types/MOCK_TICKETS";
 
