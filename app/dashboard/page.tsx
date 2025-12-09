@@ -24,7 +24,7 @@ export default function HomePage() {
         const top = window.screenY + (window.outerHeight - height) / 2;
 
         window.open(
-            "/new-ticket",
+            "ticket/create",
             "newTicketWindow",
             `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`
         );

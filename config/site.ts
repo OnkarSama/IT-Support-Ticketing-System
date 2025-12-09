@@ -10,7 +10,7 @@ export const siteConfig = {
         },
         {
             label: "New Ticket",
-            href: "/new-ticket",
+            href: "/ticket/create",
         },
 
     ],
@@ -21,7 +21,7 @@ export const siteConfig = {
         },
         {
             label: "New Ticket",
-            href: "/new-ticket",
+            href: "/ticket/create",
         },
     ],
     links: {
