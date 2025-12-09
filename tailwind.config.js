@@ -18,7 +18,6 @@ const config = {
             },
         },
     },
-
     darkMode: "class",
     plugins: [
         heroui({
@@ -57,4 +56,9 @@ const config = {
                         text: "#D1D5DB",
                     },
                 },
+            }
+        })
+    ],
 }
+
+module.exports = config
