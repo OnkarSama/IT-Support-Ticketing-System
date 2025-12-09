@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 type TicketStatus = "Open" | "In Progress" | "Closed";
@@ -41,19 +42,36 @@ type Filter = "all" | "open" | "in-progress" | "closed";
 
 export default function HomePage() {
   const [filter, setFilter] = useState<Filter>("all");
+  const params = useSearchParams();
+  const query = params.get("q") || "";
 
-  const filteredTickets = useMemo(() => {
-    switch (filter) {
-      case "open":
-        return MOCK_TICKETS.filter((t) => t.status === "Open");
-      case "in-progress":
-        return MOCK_TICKETS.filter((t) => t.status === "In Progress");
-      case "closed":
-        return MOCK_TICKETS.filter((t) => t.status === "Closed");
-      default:
-        return MOCK_TICKETS;
-    }
-  }, [filter]);
+const filteredTickets = useMemo(() => {
+  let tickets = MOCK_TICKETS;
+
+switch (filter) {
+  case "open":
+    tickets = tickets.filter((t) => t.status === "Open");
+    break;
+  case "in-progress":
+    tickets = tickets.filter((t) => t.status === "In Progress");
+    break;
+  case "closed":
+    tickets = tickets.filter((t) => t.status === "Closed");
+    break;
+}
+
+if (query.trim() !== "") {
+  const q = query.toLowerCase();
+  tickets = tickets.filter((t) =>
+    t.title.toLowerCase().includes(q) ||
+    t.description.toLowerCase().includes(q) ||
+    t.requester.toLowerCase().includes(q) ||
+    t.id.toString().includes(q)
+  );
+}
+
+return tickets;
+}, [filter, query]);
 
   const handleOpenNewTicketWindow = () => {
     if (typeof window === "undefined") return;

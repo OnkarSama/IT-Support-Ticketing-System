@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
 import clsx from "clsx";
+import React from "react";
 
 import { Providers } from "./providers";
 
@@ -39,7 +40,7 @@ export default function RootLayout({
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
             <div className="relative flex flex-col h-screen">
 
-                <Navbar/>
+                <Navbar/> 
 
                 <main className="app-main flex-1 p-6">{children}</main>
 

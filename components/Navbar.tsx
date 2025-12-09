@@ -10,6 +10,7 @@ import {
 import {Link} from "@heroui/link";
 import {Input} from "@heroui/input";
 import React, { useEffect, useRef } from 'react';
+import { useRouter } from "next/navigation";
 import clsx from "clsx";
 
 import {siteConfig} from "@/config/site";
@@ -58,6 +59,14 @@ export const SearchIcon = ({
 
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [searchItem, setSearchItem] = React.useState("");
+    const route = useRouter();
+
+    const findSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter"){
+            route.push(`/search?q=${searchItem}`);
+        }
+    };
 
     return (
         <HeroUINavbar isMenuOpen={isMenuOpen}
@@ -104,6 +113,9 @@ export const Navbar = () => {
                         size="sm"
                         startContent={<SearchIcon size={18} />}
                         type="search"
+                        value={searchItem}
+                        onValueChange={setSearchItem}
+                        onKeyDown={findSearch}
                     />
                 </NavbarItem>
             </NavbarContent>
