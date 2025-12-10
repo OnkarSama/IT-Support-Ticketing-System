@@ -1,10 +1,13 @@
 import api from './index'
 
 type ticketPayload = {
+    ticket: {
+
         title: string,
         description: string,
         status: string | null,
         assigneeID: number | null,
+    }
 };
 
 const endpoints = {
@@ -16,9 +19,10 @@ const endpoints = {
     createTicket: async (payload: ticketPayload) => {
         return await api('/tickets', {
             method: 'post',
-            data: payload,
+            data: payload,   // ← FIXED
         });
     }
+
 }
 
 export default endpoints;

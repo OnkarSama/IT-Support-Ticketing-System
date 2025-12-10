@@ -4,11 +4,11 @@ import baseUrl from "@/api/baseUrl";
 
 const axiosInstance = axios.create({
     baseURL: baseUrl,
-    timeout: 1000,
+    timeout: 10000,
 })
 
 type ApiOptions = {
-    data?: object,
+    data?: object | string,
     method?: 'get' | 'post' | 'put' | 'delete',
     params?: object,
 }
