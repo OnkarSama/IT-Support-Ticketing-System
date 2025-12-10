@@ -1,4 +1,4 @@
-if @tickets.length > 1
+if @tickets.length >= 1
 json.array! @tickets do |ticket|
         json.extract! ticket, :id, :title, :description, :status, :created_at, :updated_at
 

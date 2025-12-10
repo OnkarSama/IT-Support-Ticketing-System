@@ -5,10 +5,8 @@ class Api::TicketsController < ApplicationController
     def index
         if current_user.role == "staff"
             @tickets = Ticket.all
-            
         else
             @tickets = [Ticket.find_by(creator_id: current_user.id)]
-            @tickets || []
         end
         render :index
     end
