@@ -30,7 +30,10 @@ module Backend
 
     # config/application.rb
     config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore, key: '_my_app_session'
+    config.middleware.use ActionDispatch::Session::CookieStore,
+                          key: '_appname_session',
+                          same_site: :lax,
+                          secure: Rails.env.production?
 
     # Configuration for the application, engines, and railties goes here.
     #
