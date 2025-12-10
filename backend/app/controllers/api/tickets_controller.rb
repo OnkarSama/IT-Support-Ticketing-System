@@ -1,9 +1,14 @@
 class Api::TicketsController < ApplicationController
     wrap_parameters include: Ticket.attribute_names
-    before_action :require_logged_in, only: [:create, :update, :destroy]
+    before_action :require_logged_in, only: [:index, :show, :create, :update, :destroy]
 
     def index
-        @tickets = Ticket.all
+        if current_user.role == "staff"
+            @tickets = Ticket.all
+            
+        else
+            @tickets = [Ticket.find_by(creator_id: current_user.id)]
+        end
         render :index
     end
     def show
