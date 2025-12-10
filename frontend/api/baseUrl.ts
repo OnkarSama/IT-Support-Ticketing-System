@@ -1,5 +1,5 @@
 const baseUrls = {
-    development: 'http://localhost:3000',
+    development: 'http://localhost:4000/api',
     staging: '',
     production: '',
     test: '',
