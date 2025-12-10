@@ -1,12 +1,10 @@
 import api from './index'
 
 type ticketPayload = {
-    ticket: {
         title: string,
         description: string,
         status: string | null,
-        assigneeID: BigInteger | null,
-    }
+        assigneeID: number | null,
 };
 
 const endpoints = {

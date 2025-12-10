@@ -32,7 +32,7 @@ export const api =  async(url: string, options: ApiOptions =  {}) => {
         })
         return response.data;
     } catch (error) {
-        throw new Error(error.response?.data?.errors);
+        throw new Error(JSON.stringify(error));
     }
 }
 
