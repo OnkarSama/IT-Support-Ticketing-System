@@ -31,6 +31,7 @@ export default function Component() {
             password: formData.get("password"),
         };
 
+        console.log(payload);
 
         loginMutation.mutate(payload);
     };

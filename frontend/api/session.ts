@@ -8,7 +8,7 @@ type LoginPayload = {
 
 const endpoints = {
     createSession: async (payload: LoginPayload) => {
-        return await api('/session?', {
+        return await api('/session', {
             method: 'post',
             data: payload,
         });
