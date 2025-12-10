@@ -41,3 +41,6 @@ yarn-error.log*
 next-env.d.ts
 frontend/.idea/it-support-ticket-system.iml .idea/modules.xml .idea/vcs.xml .idea/workspace.xml
 frontend/.idea/
+
+../backend/tmp
+../node_modules
