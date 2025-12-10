@@ -11,9 +11,6 @@ export default function NewTicketPage() {
     const router = useRouter();
     const [submitting, setSubmitting] = useState(false);
 
-    // ------------------------------
-    // 🔥 CREATE TICKET MUTATION
-    // ------------------------------
     const createMutation = useMutation({
         mutationFn: async (formData: any) => {
             return await apiRouter.tickets.createTicket({
@@ -28,7 +25,7 @@ export default function NewTicketPage() {
 
         onSuccess: () => {
             setSubmitting(false);
-            router.push("/dashboard");
+            // router.push("/dashboard");
         },
 
         onError: (error) => {

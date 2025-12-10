@@ -5,8 +5,10 @@ import {Button, Input, Checkbox, Link, Form, Divider} from "@heroui/react";
 import {Icon} from "@iconify/react";
 import {useMutation} from "@tanstack/react-query";
 import apiRouter from "@/api/router";
+import { useRouter } from "next/navigation";
 
 export default function Component() {
+    const router = useRouter();
     const [isVisible, setIsVisible] = React.useState(false);
 
     const toggleVisibility = () => setIsVisible(!isVisible);
@@ -16,6 +18,7 @@ export default function Component() {
         mutationFn: apiRouter.sessions.createSession,
         onSuccess: (data) => {
             console.log("Login Success:", data);
+            router.push("/dashboard");
         },
         onError: (error) => {
             console.error("Login Error:", error);
