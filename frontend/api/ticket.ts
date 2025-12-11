@@ -4,7 +4,7 @@ type ticketPayload = {
     ticket: {
         title: string,
         description: string,
-        status: string | null,
+        status: string,
         assigneeID: number | null,
     }
 };
@@ -15,11 +15,23 @@ const endpoints = {
         return await api('/tickets')
     },
 
+    getTicketById: async (id: number) => {
+        return await api(`/api/tickets/${id}`)
+    },
+
     createTicket: async (payload: ticketPayload) => {
         return await api('/tickets', {
             method: 'post',
             data: payload,   // ← FIXED
         });
+    },
+
+    updateTicket: async (id: number, payload: ticketPayload) => {
+        return await api(`/api/tickets/${id}`, {
+            method: 'patch',
+            data: payload,
+
+        })
     }
 
 }

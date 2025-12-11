@@ -9,7 +9,7 @@ import apiRouter from "@/api/router";
 
 export default function NewTicketPage() {
     const router = useRouter();
-    const queryClient = useQueryClient(); // ✅ React Query client
+    const queryClient = useQueryClient();
     const [submitting, setSubmitting] = useState(false);
     const [action, setAction] = useState<string | null>(null);
 
@@ -26,8 +26,8 @@ export default function NewTicketPage() {
         },
         onSuccess: () => {
             setSubmitting(false);
-            queryClient.invalidateQueries(["getTickets"]); // 🔥 Refresh ticket list
-            router.push("/dashboard"); // Optional redirect
+            queryClient.invalidateQueries(["getTickets"]); // refresh ticket list
+            router.push("/dashboard");
         },
         onError: (error) => {
             console.error("Create Ticket Error:", error);
@@ -76,12 +76,12 @@ export default function NewTicketPage() {
                                 <label className="text-sm font-medium text-slate-200">Status</label>
                                 <select
                                     name="status"
-                                    defaultValue="Open"
+                                    defaultValue="open"
                                     className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm"
                                 >
-                                    <option value="Open">Open</option>
-                                    <option value="In Progress">In Progress</option>
-                                    <option value="Closed">Closed</option>
+                                    <option value="open">Open</option>
+                                    <option value="in progress">In Progress</option>
+                                    <option value="closed">Closed</option>
                                 </select>
                             </div>
 
@@ -144,12 +144,6 @@ export default function NewTicketPage() {
                                 {submitting ? "Creating..." : "Create Ticket"}
                             </Button>
                         </div>
-
-                        {action && (
-                            <div className="text-small text-default-500">
-                                Action: <code>{action}</code>
-                            </div>
-                        )}
                     </Form>
                 </Card>
             </div>

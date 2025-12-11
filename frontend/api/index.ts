@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 
 type ApiOptions = {
     data?: object | string;
-    method?: "get" | "post" | "put" | "delete";
+    method?: "get" | "post" | "put" | "delete" | "patch";
     params?: object;
 };
 

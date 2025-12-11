@@ -12,7 +12,14 @@ const endpoints = {
             method: 'post',
             data: payload,
         });
+    },
+
+    destroySession: async () => {
+        return await api('/session', {
+            method: 'delete'
+        })
     }
+
 };
 
 export default endpoints;

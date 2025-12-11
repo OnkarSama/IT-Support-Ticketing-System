@@ -1,6 +1,6 @@
-export type TicketStatus = "open" | "in progress" | "closed" | null;
+export type TicketStatus = "open" | "in progress" | "closed" ;
 
-export type Filter = "all" | "open" | "in-progress" | "closed";
+export type Filter =  "open" | "in-progress" | "closed" | "all";
 
 export interface Ticket {
     id: number;
