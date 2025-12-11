@@ -71,3 +71,4 @@ backend/tmp/*
 tmp/*
 backend/tmp/*
 backend/log/*
+backend/log/development.log
