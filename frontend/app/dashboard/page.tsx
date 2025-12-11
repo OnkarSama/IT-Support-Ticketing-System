@@ -6,16 +6,9 @@ import TicketTable from "@/components/TicketTable";
 import {Filter} from "@/types";
 import {MOCK_TICKETS} from "@/types/MOCK_TICKETS";
 
-import { useQuery, useMutation } from "@tanstack/react-query";
-
-import apiRouter from '@/api/router'
-
 
 export default function HomePage() {
     const [filter, setFilter] = useState<Filter | null>(null);
-
-    const { data, refetch } = useQuery({ queryKey: ['getTickets'], queryFn: apiRouter.tickets.getTickets })
-
 
     const filteredTickets = filter
         ? MOCK_TICKETS.filter(
@@ -40,7 +33,6 @@ export default function HomePage() {
     return (
         <main className="max-w-7xl mx-auto p-6">
             <TicketHeader onNewTicket={handleNewTicketWindow} />
-
 
             <TicketTable
                 tickets={filteredTickets}

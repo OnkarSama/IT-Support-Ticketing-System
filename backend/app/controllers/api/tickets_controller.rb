@@ -19,6 +19,7 @@ class Api::TicketsController < ApplicationController
         end
     end
     def create
+        
         @ticket = Ticket.new(ticket_params);
         @ticket.creator_id = current_user.id
 
