@@ -2,7 +2,6 @@ import api from './index'
 
 type ticketPayload = {
     ticket: {
-
         title: string,
         description: string,
         status: string | null,

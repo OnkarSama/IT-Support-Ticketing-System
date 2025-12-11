@@ -11,12 +11,12 @@ import {
     SortDescriptor,
 } from "@heroui/react";
 import Link from "next/link";
-import {Ticket, Filter} from "@/types";
+import { Ticket, Filter } from "@/types";
 
 export const statusOptions = [
-    {name: "Open", uid: "open"},
-    {name: "In Progress", uid: "in-progress"},
-    {name: "Closed", uid: "closed"},
+    { name: "Open", uid: "open" },
+    { name: "In Progress", uid: "in-progress" },
+    { name: "Closed", uid: "closed" },
 ];
 
 interface Props {
@@ -25,7 +25,7 @@ interface Props {
     setFilter: (f: Filter | null) => void;
 }
 
-export default function TicketTable({tickets, filter, setFilter}: Props) {
+export default function TicketTable({ tickets, filter, setFilter }: Props) {
     const [rowsPerPage, setRowsPerPage] = React.useState(30);
     const [page, setPage] = React.useState(1);
     const [sortDescriptor, setSortDescriptor] = React.useState<SortDescriptor>({
@@ -33,36 +33,42 @@ export default function TicketTable({tickets, filter, setFilter}: Props) {
         direction: "ascending",
     });
 
+    // SAFELY FILTER TICKETS
     const filteredTickets = React.useMemo(() => {
-        if (filter === null) return tickets;
+        if (!Array.isArray(tickets)) return [];
 
-        switch (filter) {
-            case "open":
-                return tickets.filter((t) => t.status.toLowerCase() === "open");
-            case "in-progress":
-                return tickets.filter((t) => t.status.toLowerCase() === "in progress");
-            case "closed":
-                return tickets.filter((t) => t.status.toLowerCase() === "closed");
-            default:
-                return tickets;
-        }
+        return tickets.filter((t) => {
+            const status = (t.status ?? "").toLowerCase();
+
+            if (filter === "open") return status === "open";
+            if (filter === "in-progress") return status === "in progress";
+            if (filter === "closed") return status === "closed";
+
+            return true; // no filter selected
+        });
     }, [tickets, filter]);
 
     React.useEffect(() => {
         setPage(1);
     }, [filter]);
 
+    // SAFE SORTING
     const sortedTickets = React.useMemo(() => {
-        const sorted = [...filteredTickets];
-        const {column, direction} = sortDescriptor;
+        const list = Array.isArray(filteredTickets) ? filteredTickets : [];
+        const sorted = [...list];
+        const { column, direction } = sortDescriptor;
+
         sorted.sort((a, b) => {
             let first: any = a[column as keyof Ticket];
             let second: any = b[column as keyof Ticket];
+
             if (typeof first === "string") first = first.toLowerCase();
             if (typeof second === "string") second = second.toLowerCase();
+
             const cmp = first < second ? -1 : first > second ? 1 : 0;
             return direction === "descending" ? -cmp : cmp;
         });
+
         return sorted;
     }, [filteredTickets, sortDescriptor]);
 
@@ -70,11 +76,6 @@ export default function TicketTable({tickets, filter, setFilter}: Props) {
         const start = (page - 1) * rowsPerPage;
         return sortedTickets.slice(start, start + rowsPerPage);
     }, [sortedTickets, page, rowsPerPage]);
-
-    const onRowsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setRowsPerPage(Number(e.target.value));
-        setPage(1);
-    };
 
     const pages = Math.ceil(sortedTickets.length / rowsPerPage);
 
@@ -90,9 +91,14 @@ export default function TicketTable({tickets, filter, setFilter}: Props) {
         return words.slice(0, limit).join(" ") + "...";
     };
 
+    const onRowsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setRowsPerPage(Number(e.target.value));
+        setPage(1);
+    };
 
     return (
         <>
+            {/* FILTER CHIPS */}
             <div className="flex mb-6 flex-wrap">
                 {(["open", "in-progress", "closed"] as Filter[]).map((f) => {
                     const active = filter === f;
@@ -105,9 +111,7 @@ export default function TicketTable({tickets, filter, setFilter}: Props) {
                                     ? "success"
                                     : f === "in-progress"
                                         ? "warning"
-                                        : f === "closed"
-                                            ? "danger"
-                                            : "primary"
+                                        : "danger"
                             }
                             variant={active ? "shadow" : "flat"}
                             className="cursor-pointer transition"
@@ -124,21 +128,20 @@ export default function TicketTable({tickets, filter, setFilter}: Props) {
                 })}
             </div>
 
+            {/* TABLE */}
             <Table
                 removeWrapper
                 isHeaderSticky
                 sortDescriptor={sortDescriptor}
                 onSortChange={setSortDescriptor}
                 className="
-                  bg-table_bg
-                  rounded-xl
-                  border border-table_border
-                  min-w-full w-full
-                  py-6 px-8
-                  shadow-[0_18px_40px_rgba(0,0,0,0.35)]
+                    bg-table_bg
+                    rounded-xl
+                    border border-table_border
+                    min-w-full w-full
+                    py-6 px-8
+                    shadow-[0_18px_40px_rgba(0,0,0,0.35)]
                 "
-
-
                 classNames={{
                     wrapper: "bg-table_bg",
                     thead: "bg-table_bg",
@@ -148,9 +151,15 @@ export default function TicketTable({tickets, filter, setFilter}: Props) {
                 }}
             >
                 <TableHeader className="bg-table_border">
-                    <TableColumn key="id" allowsSorting>Number</TableColumn>
-                    <TableColumn key="title" allowsSorting>Title</TableColumn>
-                    <TableColumn key="status" allowsSorting>Status</TableColumn>
+                    <TableColumn key="id" allowsSorting>
+                        Number
+                    </TableColumn>
+                    <TableColumn key="title" allowsSorting>
+                        Title
+                    </TableColumn>
+                    <TableColumn key="status" allowsSorting>
+                        Status
+                    </TableColumn>
                     <TableColumn key="requester">Requester</TableColumn>
                     <TableColumn key="description">Description</TableColumn>
                 </TableHeader>
@@ -159,27 +168,47 @@ export default function TicketTable({tickets, filter, setFilter}: Props) {
                     {(ticket) => (
                         <TableRow key={ticket.id}>
                             <TableCell>
-                                <Link href={`/ticket/${ticket.id}`} className="text-text hover:underline">
+                                <Link
+                                    href={`/ticket/${ticket.id}`}
+                                    className="text-text hover:underline"
+                                >
                                     #{ticket.id}
                                 </Link>
                             </TableCell>
+
                             <TableCell>
-                                <Link href={`/ticket/${ticket.id}`} className="text-text hover:underline">
+                                <Link
+                                    href={`/ticket/${ticket.id}`}
+                                    className="text-text hover:underline"
+                                >
                                     {ticket.title}
                                 </Link>
                             </TableCell>
+
                             <TableCell>
-                                <Chip size="sm" color={statusColorMap[ticket.status.toLowerCase()]}>
-                                    {ticket.status}
+                                <Chip
+                                    size="sm"
+                                    color={
+                                        statusColorMap[
+                                            (ticket.status ?? "").toLowerCase()
+                                            ] || "default"
+                                    }
+                                >
+                                    {ticket.status ?? "Unknown"}
                                 </Chip>
                             </TableCell>
-                            <TableCell>{ticket.requester}</TableCell>
-                            <TableCell>{truncateWords(ticket.description, 20)}</TableCell>
+
+                            <TableCell>{ticket.creator.name}</TableCell>
+
+                            <TableCell>
+                                {truncateWords(ticket.description, 20)}
+                            </TableCell>
                         </TableRow>
                     )}
                 </TableBody>
             </Table>
 
+            {/* PAGINATION */}
             <div className="text-text flex justify-between items-center mt-4">
                 <Pagination
                     showControls

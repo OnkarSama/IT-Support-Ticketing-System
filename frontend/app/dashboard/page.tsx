@@ -1,49 +1,31 @@
 "use client";
 
-import {useState} from "react";
+import { useState } from "react";
 import TicketHeader from "@/components/TicketHeader";
 import TicketTable from "@/components/TicketTable";
-import {Filter} from "@/types";
-import {MOCK_TICKETS} from "@/types/MOCK_TICKETS";
+import { useRouter } from "next/navigation";
+import { Filter, Ticket } from "@/types";
 
 import { useQuery, useMutation } from "@tanstack/react-query";
-
-import apiRouter from '@/api/router'
-
+import apiRouter from "@/api/router";
 
 export default function HomePage() {
+    const router = useRouter();
     const [filter, setFilter] = useState<Filter | null>(null);
 
-    const { data, refetch } = useQuery({ queryKey: ['getTickets'], queryFn: apiRouter.tickets.getTickets })
+    const { data, refetch } = useQuery<Ticket[]>({ queryKey: ['getUsers'], queryFn: apiRouter.tickets.getTickets})
 
-
-    const filteredTickets = filter
-        ? MOCK_TICKETS.filter(
-            t => t.status.toLowerCase().replace(" ", "-") === filter
-        )
-        : MOCK_TICKETS.filter((t) => t.status === "Open" || t.status === "In Progress");
-
-
+    console.log(data);
     const handleNewTicketWindow = () => {
-        const width = 600;
-        const height = 700;
-        const left = window.screenX + (window.outerWidth - width) / 2;
-        const top = window.screenY + (window.outerHeight - height) / 2;
-
-        window.open(
-            "ticket/create",
-            "newTicketWindow",
-            `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`
-        );
+        router.push("/ticket/create");
     };
 
     return (
         <main className="max-w-7xl mx-auto p-6">
             <TicketHeader onNewTicket={handleNewTicketWindow} />
 
-
             <TicketTable
-                tickets={filteredTickets}
+                tickets={data || []}
                 filter={filter}
                 setFilter={setFilter}
             />
