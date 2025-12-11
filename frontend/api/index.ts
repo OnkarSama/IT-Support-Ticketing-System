@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import baseUrl from "@/api/baseUrl";
 
 const axiosInstance = axios.create({
@@ -8,17 +8,13 @@ const axiosInstance = axios.create({
 });
 
 type ApiOptions = {
-    data?: object | string,
-    method?: 'get' | 'post' | 'put' | 'delete',
-    params?: object,
-}
+    data?: object | string;
+    method?: "get" | "post" | "put" | "delete";
+    params?: object;
+};
 
 export const api = async (url: string, options: ApiOptions = {}) => {
-    const { data, method = 'get', params } = options;
-
-    const cookieString = document._my_app_session;
-
-    console.log(cookieString);
+    const { data, method = "get", params } = options;
 
     try {
         const response = await axiosInstance.request({
@@ -26,18 +22,14 @@ export const api = async (url: string, options: ApiOptions = {}) => {
             method,
             data,
             params,
-            responseType: 'json',
-            headers: {
-                'Cookie': cookieString,    // ← attach manually
-            },
+            responseType: "json",
         });
 
         return response.data;
-
     } catch (error) {
-        throw new Error(JSON.stringify(error));
+        console.error(error);
+        throw error;
     }
 };
-
 
 export default api;

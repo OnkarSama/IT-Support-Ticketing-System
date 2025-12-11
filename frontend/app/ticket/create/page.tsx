@@ -25,7 +25,7 @@ export default function NewTicketPage() {
 
         onSuccess: () => {
             setSubmitting(false);
-            // router.push("/dashboard");
+            router.push("/dashboard");
         },
 
         onError: (error) => {
