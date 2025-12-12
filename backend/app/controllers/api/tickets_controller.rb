@@ -6,7 +6,7 @@ class Api::TicketsController < ApplicationController
         if current_user.role == "staff"
             @tickets = Ticket.all
         else
-            @tickets = [Ticket.find_by(creator_id: current_user.id)]
+            @tickets = Ticket.where(creator_id: current_user.id)
         end
         render :index
     end

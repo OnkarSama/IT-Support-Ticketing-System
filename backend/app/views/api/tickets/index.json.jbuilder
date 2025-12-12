@@ -1,21 +1,25 @@
-if @tickets.length >= 1
-json.array! @tickets do |ticket|
-        json.extract! ticket, :id, :title, :description, :status, :created_at, :updated_at
+json.array! @tickets.compact do |ticket|
+  next unless ticket
 
-        json.creator do
-            json.id ticket.creator.id
-            json.name ticket.creator.name
-            json.email ticket.creator.email
-        end
+  json.extract! ticket, :id, :title, :description, :status, :created_at, :updated_at
 
-        json.assignee do
-            if ticket.assignee
-                json.id ticket.assignee.id
-                json.name ticket.assignee.name
-                json.email ticket.assignee.email
-            end
-        end
+  if ticket.creator
+    json.creator do
+      json.id    ticket.creator.id
+      json.name  ticket.creator.name
+      json.email ticket.creator.email
     end
-else
-    json.array! []
+  else
+    json.creator nil
+  end
+
+  if ticket.assignee
+    json.assignee do
+      json.id    ticket.assignee.id
+      json.name  ticket.assignee.name
+      json.email ticket.assignee.email
+    end
+  else
+    json.assignee nil
+  end
 end

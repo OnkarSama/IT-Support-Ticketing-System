@@ -18,6 +18,12 @@ const endpoints = {
         return await api('/session', {
             method: 'delete'
         })
+    },
+
+    showUser: async () => {
+        return await api('/session', {
+            method: 'get'
+        })
     }
 
 };
