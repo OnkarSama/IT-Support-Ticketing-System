@@ -22,7 +22,7 @@ const endpoints = {
     createTicket: async (payload: ticketPayload) => {
         return await api('/tickets', {
             method: 'post',
-            data: payload,   // ← FIXED
+            data: payload,
         });
     },
 
