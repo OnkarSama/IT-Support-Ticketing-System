@@ -16,7 +16,7 @@ const endpoints = {
     },
 
     getTicketById: async (id: number) => {
-        return await api(`/api/tickets/${id}`)
+        return await api(`/tickets/${id}`)
     },
 
     createTicket: async (payload: ticketPayload) => {
@@ -27,7 +27,7 @@ const endpoints = {
     },
 
     updateTicket: async (id: number, payload: ticketPayload) => {
-        return await api(`/api/tickets/${id}`, {
+        return await api(`/tickets/${id}`, {
             method: 'patch',
             data: payload,
 

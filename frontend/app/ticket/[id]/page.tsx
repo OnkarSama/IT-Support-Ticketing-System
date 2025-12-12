@@ -16,7 +16,7 @@ interface TicketPayload {
 }
 
 interface PageProps {
-    params: Promise<{ id: string }>;
+    params: Promise<{ id: number }>;
 }
 
 export default function EditTicketPage({ params }: PageProps) {
@@ -39,21 +39,26 @@ export default function EditTicketPage({ params }: PageProps) {
 
     // fetch ticket
     const { data: ticketData, isLoading, refetch } = useQuery({
-        queryKey: ["getTicket", ticketId],
+        queryKey: ["getTicketById", ticketId],
         queryFn: () => apiRouter.tickets.getTicketById(ticketId),
     });
 
+    // Safely extract ticket object
+    const ticket = ticketData?.ticket;
+
+    console.log(ticket?.title);
+
     // sync fetched ticket → form
     useEffect(() => {
-        if (ticketData) {
+        if (ticket) {
             setFormState({
-                title: ticketData.title || "",
-                description: ticketData.description || "",
-                status: ticketData.status || "open",
-                assigneeID: ticketData.assigneeID ?? null,
+                title: ticket.title || "",
+                description: ticket.description || "",
+                status: ticket.status || "open",
+                assigneeID: ticket.assignee?.id ?? null,
             });
         }
-    }, [ticketData]);
+    }, [ticket]);
 
     // update mutation
     const updateMutation = useMutation({
@@ -80,7 +85,7 @@ export default function EditTicketPage({ params }: PageProps) {
     };
 
     if (isLoading) return <div className="p-6">Loading Ticket...</div>;
-    if (!ticketData) return <div className="p-6">Ticket Not Found</div>;
+    if (!ticket) return <div className="p-6">Ticket Not Found</div>;
 
     return (
         <div className="min-h-screen px-4 py-10 text-slate-100">
@@ -135,10 +140,10 @@ export default function EditTicketPage({ params }: PageProps) {
                                 className="px-6 text-slate-200 hover:bg-white/10 transition-all duration-200 active:scale-95"
                                 onClick={() =>
                                     setFormState({
-                                        title: ticketData.title || "",
-                                        description: ticketData.description || "",
-                                        status: ticketData.status || "open",
-                                        assigneeID: ticketData.assigneeID ?? null,
+                                        title: ticket.title || "",
+                                        description: ticket.description || "",
+                                        status: ticket.status || "open",
+                                        assigneeID: ticket.assignee?.id ?? null,
                                     })
                                 }
                             >
