@@ -18,7 +18,7 @@ class Api::TicketsController < ApplicationController
             render json: {message: 'Unauthorized'}, status: :unauthorized
         end
     end
-    
+
     def create
         @ticket = Ticket.new(ticket_params);
         @ticket.creator_id = current_user.id
@@ -66,6 +66,6 @@ class Api::TicketsController < ApplicationController
 
     private
     def ticket_params
-        params.require(:ticket).permit(:title, :description)
+        params.require(:ticket).permit(:title, :description, :status, :assignee_id, :category)
     end
 end
