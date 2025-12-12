@@ -13,12 +13,6 @@ import {
 import Link from "next/link";
 import { Ticket, Filter } from "@/types";
 
-export const statusOptions = [
-    { name: "Open", uid: "open" },
-    { name: "In Progress", uid: "in-progress" },
-    { name: "Closed", uid: "closed" },
-];
-
 interface Props {
     tickets: Ticket[];
     filter: Filter | null;
@@ -33,18 +27,37 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         direction: "ascending",
     });
 
-    // SAFELY FILTER TICKETS
+    // 🔥 CATEGORY COLORS MAP
+    const categoryColorMap: Record<string, "primary" | "secondary" | "success" | "warning" | "danger"> = {
+        hardware: "primary",
+        software: "secondary",
+        network: "warning",
+        access: "danger",
+        other: "success",
+    };
+
+    // 🔥 STATUS COLOR MAP
+    const statusColorMap: Record<string, "success" | "warning" | "danger"> = {
+        open: "success",
+        "in progress": "warning",
+        closed: "danger",
+    };
+
+    // 🔥 FILTER FUNCTION
     const filteredTickets = React.useMemo(() => {
         if (!Array.isArray(tickets)) return [];
 
         return tickets.filter((t) => {
             const status = (t.status ?? "").toLowerCase();
+            const category = (t.category ?? "").toLowerCase();
 
+            // status filter
             if (filter === "open") return status === "open";
             if (filter === "in-progress") return status === "in progress";
             if (filter === "closed") return status === "closed";
+            if (filter === "all") return status === "closed" ||  status === "open" ||  status === "in progress";
 
-            return true; // no filter selected
+            return status === "in progress" ||  status === "open";
         });
     }, [tickets, filter]);
 
@@ -52,10 +65,9 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         setPage(1);
     }, [filter]);
 
-    // SAFE SORTING
+    // SORTING
     const sortedTickets = React.useMemo(() => {
-        const list = Array.isArray(filteredTickets) ? filteredTickets : [];
-        const sorted = [...list];
+        const sorted = [...filteredTickets];
         const { column, direction } = sortDescriptor;
 
         sorted.sort((a, b) => {
@@ -79,12 +91,6 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
 
     const pages = Math.ceil(sortedTickets.length / rowsPerPage);
 
-    const statusColorMap: Record<string, "success" | "warning" | "danger"> = {
-        open: "success",
-        "in progress": "warning",
-        closed: "danger",
-    };
-
     const truncateWords = (text: string, limit: number) => {
         const words = text.split(" ");
         if (words.length <= limit) return text;
@@ -98,9 +104,9 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
 
     return (
         <>
-            {/* FILTER CHIPS */}
-            <div className="flex mb-6 flex-wrap">
-                {(["open", "in-progress", "closed"] as Filter[]).map((f) => {
+            {/* STATUS FILTER CHIPS */}
+            <div className="flex mb-4 gap-3 flex-wrap">
+                {(["open", "in-progress", "closed", "all"] as Filter[]).map((f) => {
                     const active = filter === f;
 
                     return (
@@ -111,14 +117,11 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                                     ? "success"
                                     : f === "in-progress"
                                         ? "warning"
-                                        : "danger"
+                                        : f === "closed" ? "danger" : "primary"
                             }
                             variant={active ? "shadow" : "flat"}
-                            className="cursor-pointer transition"
-                            onClick={() => {
-                                if (filter === f) setFilter(null);
-                                else setFilter(f);
-                            }}
+                            className="cursor-pointer"
+                            onClick={() => setFilter(active ? null : f)}
                         >
                             {f === "in-progress"
                                 ? "In Progress"
@@ -150,7 +153,7 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                     td: "text-text",
                 }}
             >
-                <TableHeader className="bg-table_border">
+                <TableHeader>
                     <TableColumn key="id" allowsSorting>
                         Number
                     </TableColumn>
@@ -160,27 +163,28 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                     <TableColumn key="status" allowsSorting>
                         Status
                     </TableColumn>
-                    <TableColumn key="requester">Requester</TableColumn>
-                    <TableColumn key="description">Description</TableColumn>
+                    <TableColumn key="category" allowsSorting>
+                        Category
+                    </TableColumn>
+                    <TableColumn key="description">
+                        Description
+                    </TableColumn>
+                    <TableColumn key="requester">
+                        Requester
+                    </TableColumn>
                 </TableHeader>
 
-                <TableBody emptyContent="No tickets match this filter." items={displayedTickets}>
+                <TableBody emptyContent="No tickets match." items={displayedTickets}>
                     {(ticket) => (
                         <TableRow key={ticket.id}>
                             <TableCell>
-                                <Link
-                                    href={`/ticket/${ticket.id}`}
-                                    className="text-text hover:underline"
-                                >
+                                <Link href={`/ticket/${ticket.id}`} className="hover:underline">
                                     #{ticket.id}
                                 </Link>
                             </TableCell>
 
                             <TableCell>
-                                <Link
-                                    href={`/ticket/${ticket.id}`}
-                                    className="text-text hover:underline"
-                                >
+                                <Link href={`/ticket/${ticket.id}`} className="hover:underline">
                                     {ticket.title}
                                 </Link>
                             </TableCell>
@@ -194,15 +198,30 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                                             ] || "default"
                                     }
                                 >
-                                    {ticket.status ?? "Unknown"}
+                                    {ticket.status || "open"}
                                 </Chip>
                             </TableCell>
 
-                            <TableCell>{ticket.creator.name}</TableCell>
+                            {/* CATEGORY CHIP */}
+                            <TableCell>
+                                <Chip
+                                    size="sm"
+                                    variant="flat"
+                                    color={
+                                        categoryColorMap[
+                                            (ticket.category ?? "").toLowerCase()
+                                            ] || "primary"
+                                    }
+                                >
+                                    {ticket.category || "Uncategorized"}
+                                </Chip>
+                            </TableCell>
 
                             <TableCell>
                                 {truncateWords(ticket.description, 20)}
                             </TableCell>
+
+                            <TableCell>{ticket.creator.name}</TableCell>
                         </TableRow>
                     )}
                 </TableBody>
