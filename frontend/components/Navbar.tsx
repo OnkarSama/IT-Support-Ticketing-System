@@ -71,6 +71,7 @@ export const Navbar = () => {
     const router = useRouter();
     const queryClient = useQueryClient();
 
+
     const handleLogout = async () => {
         await apiRouter.sessions.destroySession();
         queryClient.clear();
