@@ -44,6 +44,14 @@ export default function EditTicketPage({ params }: PageProps) {
         queryFn: () => apiRouter.tickets.getTicketById(ticketId),
     });
 
+    const { data: userData} = useQuery({
+        queryKey: ["showUser"],
+        queryFn: () => apiRouter.sessions.showUser(),
+    });
+
+    const isStaff = userData?.user?.role === "staff";
+
+    console.log(userData);
     const ticket = ticketData?.ticket;
 
     useEffect(() => {
@@ -57,7 +65,7 @@ export default function EditTicketPage({ params }: PageProps) {
         }
     }, [ticket]);
 
-    // UPDATE MUTATION
+
     const updateMutation = useMutation({
         mutationFn: async (payload: typeof formState) => {
             const ticketPayload: TicketPayload = { ticket: { ...payload } };
@@ -94,7 +102,7 @@ export default function EditTicketPage({ params }: PageProps) {
         updateMutation.mutate(formState);
     };
 
-    // 🔥 your core delete logic (no confirm inside this function)
+
     const handleDelete = () => {
         setSubmitting(true);
         deleteMutation.mutate(ticketId);
@@ -176,11 +184,13 @@ export default function EditTicketPage({ params }: PageProps) {
                                 {submitting ? "Updating..." : "Update Ticket"}
                             </Button>
 
-                            {/* 👇 The NEW delete modal button */}
-                            <DeleteTicketModal
-                                ticketId={ticketId}
-                                deleteFn={handleDelete}
-                            />
+
+                            {isStaff && (
+                                <DeleteTicketModal
+                                    ticketId={ticketId}
+                                    deleteFn={handleDelete}
+                                />
+                            )}
                         </div>
                     </Form>
                 </Card>

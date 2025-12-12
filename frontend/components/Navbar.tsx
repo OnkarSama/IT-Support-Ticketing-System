@@ -20,8 +20,9 @@ import React, {useEffect, useRef} from 'react';
 import clsx from "clsx";
 import apiRouter from "@/api/router";
 import { useRouter } from "next/navigation";
-
 import {siteConfig} from "@/config/site";
+import { useQueryClient } from "@tanstack/react-query";
+
 
 interface SearchIconProps extends React.SVGProps<SVGSVGElement> {
     size?: number;
@@ -68,14 +69,12 @@ export const SearchIcon = ({
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const router = useRouter();
+    const queryClient = useQueryClient();
 
     const handleLogout = async () => {
-        try {
-            await apiRouter.sessions.destroySession();
-            router.replace("/"); // redirect to login
-        } catch (err) {
-            console.error("Logout failed", err);
-        }
+        await apiRouter.sessions.destroySession();
+        queryClient.clear();
+        router.push("/");
     };
 
     return (
