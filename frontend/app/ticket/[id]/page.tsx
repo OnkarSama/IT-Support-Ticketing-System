@@ -6,6 +6,8 @@ import { Card, Button, Input, Textarea, Form } from "@heroui/react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import apiRouter from "@/api/router";
 
+import DeleteTicketModal from "@/components/DeleteTicketModal";
+
 interface TicketPayload {
     ticket: {
         title: string;
@@ -20,12 +22,12 @@ interface PageProps {
 }
 
 export default function EditTicketPage({ params }: PageProps) {
-    // unwrap params
     const { id: ticketIdString } = use(params);
     const ticketId = Number(ticketIdString);
 
     const router = useRouter();
     const queryClient = useQueryClient();
+
     const [submitting, setSubmitting] = useState(false);
 
     const [formState, setFormState] = useState({
@@ -35,20 +37,15 @@ export default function EditTicketPage({ params }: PageProps) {
         assigneeID: null as number | null,
     });
 
-    const { title, description, status, assigneeID } = formState;
+    const { title, description, status } = formState;
 
-    // fetch ticket
     const { data: ticketData, isLoading, refetch } = useQuery({
         queryKey: ["getTicketById", ticketId],
         queryFn: () => apiRouter.tickets.getTicketById(ticketId),
     });
 
-    // Safely extract ticket object
     const ticket = ticketData?.ticket;
 
-    console.log(ticket?.title);
-
-    // sync fetched ticket → form
     useEffect(() => {
         if (ticket) {
             setFormState({
@@ -60,7 +57,7 @@ export default function EditTicketPage({ params }: PageProps) {
         }
     }, [ticket]);
 
-    // update mutation
+    // UPDATE MUTATION
     const updateMutation = useMutation({
         mutationFn: async (payload: typeof formState) => {
             const ticketPayload: TicketPayload = { ticket: { ...payload } };
@@ -78,10 +75,29 @@ export default function EditTicketPage({ params }: PageProps) {
         },
     });
 
+    // DELETE MUTATION
+    const deleteMutation = useMutation({
+        mutationFn: async (id: number) => apiRouter.tickets.deleteTicket(id),
+        onSuccess: () => {
+            queryClient.invalidateQueries(["getTickets"]);
+            router.push("/dashboard");
+        },
+        onError: (error) => {
+            console.error("Delete Ticket Error:", error);
+            setSubmitting(false);
+        },
+    });
+
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setSubmitting(true);
         updateMutation.mutate(formState);
+    };
+
+    // 🔥 your core delete logic (no confirm inside this function)
+    const handleDelete = () => {
+        setSubmitting(true);
+        deleteMutation.mutate(ticketId);
     };
 
     if (isLoading) return <div className="p-6">Loading Ticket...</div>;
@@ -103,10 +119,10 @@ export default function EditTicketPage({ params }: PageProps) {
                             isRequired
                             label="Ticket Name"
                             labelPlacement="outside"
-                            name="title"
-                            type="text"
                             value={title}
-                            onChange={(e) => setFormState((p) => ({ ...p, title: e.target.value }))}
+                            onChange={(e) =>
+                                setFormState((p) => ({ ...p, title: e.target.value }))
+                            }
                         />
 
                         <div className="flex flex-col gap-1">
@@ -114,7 +130,9 @@ export default function EditTicketPage({ params }: PageProps) {
                             <select
                                 name="status"
                                 value={status}
-                                onChange={(e) => setFormState((p) => ({ ...p, status: e.target.value }))}
+                                onChange={(e) =>
+                                    setFormState((p) => ({ ...p, status: e.target.value }))
+                                }
                                 className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm"
                             >
                                 <option value="open">Open</option>
@@ -126,19 +144,18 @@ export default function EditTicketPage({ params }: PageProps) {
                         <Textarea
                             isRequired
                             label="Description"
-                            name="description"
                             minRows={4}
                             value={description}
-                            onChange={(e) => setFormState((p) => ({ ...p, description: e.target.value }))}
+                            onChange={(e) =>
+                                setFormState((p) => ({ ...p, description: e.target.value }))
+                            }
                         />
 
                         <div className="mt-6 flex justify-end gap-4">
                             <Button
-                                type="reset"
+                                type="button"
                                 variant="flat"
-                                size="md"
-                                className="px-6 text-slate-200 hover:bg-white/10 transition-all duration-200 active:scale-95"
-                                onClick={() =>
+                                onPressEnd={() =>
                                     setFormState({
                                         title: ticket.title || "",
                                         description: ticket.description || "",
@@ -154,12 +171,16 @@ export default function EditTicketPage({ params }: PageProps) {
                                 type="submit"
                                 variant="solid"
                                 color="primary"
-                                size="md"
                                 isDisabled={submitting}
-                                className="px-6 font-semibold shadow-md shadow-blue-600/40 transition-all duration-200 hover:shadow-blue-400/60 hover:scale-105 active:scale-95"
                             >
                                 {submitting ? "Updating..." : "Update Ticket"}
                             </Button>
+
+                            {/* 👇 The NEW delete modal button */}
+                            <DeleteTicketModal
+                                ticketId={ticketId}
+                                deleteFn={handleDelete}
+                            />
                         </div>
                     </Form>
                 </Card>

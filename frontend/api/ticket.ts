@@ -32,6 +32,12 @@ const endpoints = {
             data: payload,
 
         })
+    },
+
+    deleteTicket: async (id: number) => {
+        return await api(`/tickets/${id}`, {
+            method : 'delete'
+        })
     }
 
 }
