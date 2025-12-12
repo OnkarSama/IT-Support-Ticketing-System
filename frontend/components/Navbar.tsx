@@ -9,66 +9,85 @@ import {
 } from "@heroui/navbar";
 import {Link} from "@heroui/link";
 import {Input} from "@heroui/input";
-import React, { useEffect, useRef } from 'react';
+import {
+    DropdownItem,
+    DropdownTrigger,
+    Dropdown,
+    DropdownMenu,
+    Avatar
+} from "@heroui/react";
+import React, {useEffect, useRef} from 'react';
 import clsx from "clsx";
+import apiRouter from "@/api/router";
+import { useRouter } from "next/navigation";
 
 import {siteConfig} from "@/config/site";
 
 interface SearchIconProps extends React.SVGProps<SVGSVGElement> {
-  size?: number;
-  strokeWidth?: number;
-  width?: number;
-  height?: number;
+    size?: number;
+    strokeWidth?: number;
+    width?: number;
+    height?: number;
 }
 
 export const SearchIcon = ({
-    size = 24, 
-    strokeWidth = 1.5, 
-    width, 
-    height, ...props
-}: SearchIconProps) => {
-  return (
-    <svg
-      aria-hidden="true"
-      fill="none"
-      focusable="false"
-      height={height || size}
-      role="presentation"
-      viewBox="0 0 24 24"
-      width={width || size}
-      {...props}
-    >
-      <path
-        d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={strokeWidth}
-      />
-      <path
-        d="M22 22L20 20"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={strokeWidth}
-      />
-    </svg>
-  );
+                               size = 24,
+                               strokeWidth = 1.5,
+                               width,
+                               height, ...props
+                           }: SearchIconProps) => {
+    return (
+        <svg
+            aria-hidden="true"
+            fill="none"
+            focusable="false"
+            height={height || size}
+            role="presentation"
+            viewBox="0 0 24 24"
+            width={width || size}
+            {...props}
+        >
+            <path
+                d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={strokeWidth}
+            />
+            <path
+                d="M22 22L20 20"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={strokeWidth}
+            />
+        </svg>
+    );
 };
 
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const router = useRouter();
+
+    const handleLogout = async () => {
+        try {
+            await apiRouter.sessions.destroySession();
+            router.replace("/"); // redirect to login
+        } catch (err) {
+            console.error("Logout failed", err);
+        }
+    };
 
     return (
         <HeroUINavbar isMenuOpen={isMenuOpen}
-                onMenuOpenChange={setIsMenuOpen} maxWidth="xl" position="static" shouldHideOnScroll>
+                      onMenuOpenChange={setIsMenuOpen} maxWidth="xl" position="static" shouldHideOnScroll>
             <NavbarContent className="flex-1 justify-start items-center gap-4">
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                     className="lg:hidden"
                 />
                 <NavbarBrand as="li" className="gap-3 max-w-fit">
-                    <Link className="flex justify-start items-center gap-1" href="/">
+                    <Link className="flex justify-start items-center gap-1" href="/dashboard">
                         <p className="text-white font-bold text-inherit">Ticket Management</p>
                     </Link>
                 </NavbarBrand>
@@ -87,13 +106,14 @@ export const Navbar = () => {
                         </NavbarItem>
                     ))}
                 </ul>
+
             </NavbarContent>
 
             <NavbarContent
                 className="hidden sm:flex basis-1/5 sm:basis-full"
                 justify="end">
                 <NavbarItem className="hidden sm:flex gap-2">
-                    <Input 
+                    <Input
                         classNames={{
                             base: "h-10 w-[200px]",
                             mainWrapper: "h-full",
@@ -102,10 +122,29 @@ export const Navbar = () => {
                         }}
                         placeholder="Search..."
                         size="sm"
-                        startContent={<SearchIcon size={18} />}
+                        startContent={<SearchIcon size={18}/>}
                         type="search"
                     />
                 </NavbarItem>
+
+                <Dropdown placement="bottom-end">
+                    <DropdownTrigger>
+                        <Avatar
+                            isBordered
+                            as="button"
+                            className="transition-transform"
+                            color="secondary"
+                            name="Jason Hughes"
+                            size="sm"
+                            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                        />
+                    </DropdownTrigger>
+                    <DropdownMenu aria-label="Profile Actions" variant="flat">
+                        <DropdownItem key="logout" color="danger" onPress={handleLogout}>
+                            Log Out
+                        </DropdownItem>
+                    </DropdownMenu>
+                </Dropdown>
             </NavbarContent>
 
 

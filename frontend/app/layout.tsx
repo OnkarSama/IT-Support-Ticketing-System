@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 import { Providers } from "./providers";
 
-import { Navbar } from "@/components/Navbar";
+import HideableNavbar from "@/components/HideableNavbar";
 // import { Footer } from "@/components/Footer"; // if you want to replace app-footer
 
 export const metadata: Metadata = {
@@ -36,8 +36,7 @@ export default function RootLayout({
         <Providers>
             <div className="relative flex flex-col h-screen">
 
-                <Navbar/>
-
+                <HideableNavbar/>
                 <main className="pt-6 px-8 pb-10 flex-1 p-6">{children}</main>
 
                 <footer className="px-8 py-3 border-t border-border text-sm text-text text-center">
