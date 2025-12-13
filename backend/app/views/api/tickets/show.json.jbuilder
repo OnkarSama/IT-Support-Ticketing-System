@@ -1,5 +1,5 @@
 json.ticket do
-    json.extract! @ticket, :id, :title, :description, :status, :category
+    json.extract! @ticket, :id, :title, :description, :status, :category, :priority, :created_at, :updated_at
     
     json.creator @ticket.creator
     if @ticket.assignees
