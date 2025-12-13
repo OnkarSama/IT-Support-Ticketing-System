@@ -75,15 +75,6 @@ export default function Component() {
                         }
                     />
 
-                    <div className="flex w-full items-center justify-between px-1 py-2">
-                        <Checkbox name="remember" size="sm">
-                            Remember me
-                        </Checkbox>
-                        <Link className="text-default-500" href="#" size="sm">
-                            Forgot password?
-                        </Link>
-                    </div>
-
                     <Button
                         className="w-full"
                         color="primary"
@@ -103,18 +94,6 @@ export default function Component() {
                     <p className="text-green-500 text-small">Login successful!</p>
                 )}
 
-                <div className="flex items-center gap-4 py-2">
-                    <Divider className="flex-1" />
-                    <p className="text-tiny text-default-500 shrink-0">OR</p>
-                    <Divider className="flex-1" />
-                </div>
-
-                <p className="text-small text-center">
-                    Need to create an account?&nbsp;
-                    <Link href="#" size="sm">
-                        Sign Up
-                    </Link>
-                </p>
             </div>
         </div>
     );

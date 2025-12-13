@@ -1,7 +1,7 @@
 json.array! @tickets.compact do |ticket|
   next unless ticket
 
-  json.extract! ticket, :id, :title, :description, :status, :created_at, :updated_at
+  json.extract! ticket, :id, :title, :description, :status, :created_at, :updated_at, :category
 
   if ticket.creator
     json.creator do
