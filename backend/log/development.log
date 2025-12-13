@@ -8528,3 +8528,122 @@ Completed 200 OK in 43ms (Views: 6.8ms | ActiveRecord: 5.2ms (5 queries, 0 cache
   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 67 LIMIT 1 /*application='Backend'*/[0m
   [1m[36mTicket Load (1.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 67 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+Started GET "/api/tickets" for ::1 at 2025-12-13 17:34:19 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  Rendered api/tickets/index.json.jbuilder (Duration: 15.0ms | GC: 6.2ms)
+Completed 200 OK in 24ms (Views: 16.1ms | ActiveRecord: 3.0ms (5 queries, 0 cached) | GC: 6.2ms)
+
+
+  [1m[36mTicket Load (1.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mTicket Load (1.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 ORDER BY "users"."id" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 ORDER BY "users"."id" ASC LIMIT 1 /*application='Backend'*/[0m
+Started GET "/api/tickets" for ::1 at 2025-12-13 17:36:49 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  Rendered api/tickets/index.json.jbuilder (Duration: 7.3ms | GC: 1.3ms)
+Completed 200 OK in 15ms (Views: 7.9ms | ActiveRecord: 2.9ms (5 queries, 0 cached) | GC: 1.9ms)
+
+
+Started GET "/api/tickets" for ::1 at 2025-12-13 17:37:19 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:18
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:18
+  Rendered api/tickets/index.json.jbuilder (Duration: 12.3ms | GC: 0.5ms)
+Completed 200 OK in 21ms (Views: 10.3ms | ActiveRecord: 5.4ms (8 queries, 0 cached) | GC: 1.4ms)
+
+
+Started GET "/api/tickets/19" for ::1 at 2025-12-13 17:38:49 -0500
+Processing by Api::TicketsController#show as JSON
+  Parameters: {"id" => "19"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = 19 LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#show'
+  Rendering api/tickets/show.json.jbuilder
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/show.json.jbuilder:4
+  Rendered api/tickets/show.json.jbuilder (Duration: 4.8ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 2.5ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method 'ticket' for an instance of #<Class:0x000000012519d720>)
+Caused by: NameError (undefined local variable or method 'ticket' for an instance of #<Class:0x000000012519d720>)
+
+Information for: ActionView::Template::Error (undefined local variable or method 'ticket' for an instance of #<Class:0x000000012519d720>):
+    4:     json.creator @ticket.creator
+    5:     if @ticket.assignees
+    6:         json.assignees do
+    7:             json.array! ticket.assignees do |assignee|
+    8:                 json.id assignee.id
+    9:                 json.name assignee.name
+   10:                 json.email assignee.email 
+  
+app/views/api/tickets/show.json.jbuilder:7
+app/views/api/tickets/show.json.jbuilder:6
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:16:in 'Api::TicketsController#show'
+
+Information for cause: NameError (undefined local variable or method 'ticket' for an instance of #<Class:0x000000012519d720>):
+  
+app/views/api/tickets/show.json.jbuilder:7
+app/views/api/tickets/show.json.jbuilder:6
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:16:in 'Api::TicketsController#show'
+Started GET "/api/tickets/19" for ::1 at 2025-12-13 17:39:06 -0500
+Processing by Api::TicketsController#show as JSON
+  Parameters: {"id" => "19"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = 19 LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#show'
+  Rendering api/tickets/show.json.jbuilder
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/show.json.jbuilder:4
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /*action='show',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/show.json.jbuilder:7
+  Rendered api/tickets/show.json.jbuilder (Duration: 11.6ms | GC: 5.3ms)
+Completed 200 OK in 25ms (Views: 11.9ms | ActiveRecord: 3.0ms (4 queries, 0 cached) | GC: 9.4ms)
+
+
