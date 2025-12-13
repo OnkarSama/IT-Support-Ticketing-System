@@ -28437,3 +28437,874 @@ Processing by Api::TicketsController#index as JSON
 Completed 200 OK in 54ms (Views: 41.8ms | ActiveRecord: 10.3ms (8 queries, 0 cached) | GC: 11.6ms)
 
 
+Started GET "/api/tickets" for ::1 at 2025-12-13 18:07:11 -0500
+Started GET "/api/session" for ::1 at 2025-12-13 18:07:11 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/tickets"):
+  
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'oDWKXnzI7DpUInNjtFwPUg' LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 200 OK in 56ms (Views: 0.3ms | ActiveRecord: 6.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/tickets" for ::1 at 2025-12-13 18:07:12 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'oDWKXnzI7DpUInNjtFwPUg' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Filter chain halted as :require_logged_in rendered or redirected
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/session" for ::1 at 2025-12-13 18:07:15 -0500
+Started GET "/api/tickets" for ::1 at 2025-12-13 18:07:15 -0500
+Processing by Api::SessionsController#show as JSON
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'oDWKXnzI7DpUInNjtFwPUg' LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 1.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'oDWKXnzI7DpUInNjtFwPUg' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Filter chain halted as :require_logged_in rendered or redirected
+Completed 200 OK in 117ms (Views: 0.1ms | ActiveRecord: 13.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/session" for ::1 at 2025-12-13 18:07:16 -0500
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'oDWKXnzI7DpUInNjtFwPUg' LIMIT 1 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Filter chain halted as :require_logged_in rendered or redirected
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2025-12-13 18:07:32 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]", "session" => {"email" => "[FILTERED]", "password" => "[FILTERED]"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'oDWKXnzI7DpUInNjtFwPUg' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:50:in 'User#generate_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' AND "users"."id" != 6 LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Update (3.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = 'gvRIRnvCXrdr2-c9o_SBXw', "updated_at" = '2025-12-13 23:07:33.113101' WHERE "users"."id" = 6 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 303ms (Views: 3.6ms | ActiveRecord: 23.1ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/session" for ::1 at 2025-12-13 18:07:33 -0500
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.1ms | GC: 0.0ms)
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/tickets" for ::1 at 2025-12-13 18:07:33 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  Rendered api/tickets/index.json.jbuilder (Duration: 16.2ms | GC: 5.5ms)
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 9.8ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder)
+Caused by: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder):
+1:    json.array! @tickets.compact do |ticket|
+2:      next unless ticket
+3:    
+4:      json.extract! ticket, :id, :title, :description, :category, :priority :status, :created_at, :updated_at
+5:    
+6:      if ticket.creator
+7:        json.creator do
+8:          json.id    ticket.creator.id
+9:          json.name  ticket.creator.name
+10:          json.email ticket.creator.email
+11:        end
+12:      else
+13:        json.creator nil
+14:      end
+15:    
+16:      if ticket.assignees
+17:        json.assignees do
+18:          json.array! ticket.assignees do |assignee|
+19:            json.id    assignee.id
+20:            json.name  assignee.name
+21:            json.email assignee.email
+22:          end
+23:        end
+24:      else
+25:        json.assignee nil
+26:      end
+27:    end
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+):
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+Started GET "/api/tickets" for ::1 at 2025-12-13 18:07:34 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  Rendered api/tickets/index.json.jbuilder (Duration: 0.6ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 2.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder)
+Caused by: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder):
+1:    json.array! @tickets.compact do |ticket|
+2:      next unless ticket
+3:    
+4:      json.extract! ticket, :id, :title, :description, :category, :priority :status, :created_at, :updated_at
+5:    
+6:      if ticket.creator
+7:        json.creator do
+8:          json.id    ticket.creator.id
+9:          json.name  ticket.creator.name
+10:          json.email ticket.creator.email
+11:        end
+12:      else
+13:        json.creator nil
+14:      end
+15:    
+16:      if ticket.assignees
+17:        json.assignees do
+18:          json.array! ticket.assignees do |assignee|
+19:            json.id    assignee.id
+20:            json.name  assignee.name
+21:            json.email assignee.email
+22:          end
+23:        end
+24:      else
+25:        json.assignee nil
+26:      end
+27:    end
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+):
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+Started GET "/api/session" for ::1 at 2025-12-13 18:07:36 -0500
+Started GET "/api/tickets" for ::1 at 2025-12-13 18:07:36 -0500
+Processing by Api::SessionsController#show as JSON
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  Rendered api/users/show.json.jbuilder (Duration: 0.6ms | GC: 0.0ms)
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 200 OK in 6ms (Views: 1.9ms | ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  Rendering api/tickets/index.json.jbuilder
+  Rendered api/tickets/index.json.jbuilder (Duration: 1.6ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder)
+Caused by: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder):
+1:    json.array! @tickets.compact do |ticket|
+2:      next unless ticket
+3:    
+4:      json.extract! ticket, :id, :title, :description, :category, :priority :status, :created_at, :updated_at
+5:    
+6:      if ticket.creator
+7:        json.creator do
+8:          json.id    ticket.creator.id
+9:          json.name  ticket.creator.name
+10:          json.email ticket.creator.email
+11:        end
+12:      else
+13:        json.creator nil
+14:      end
+15:    
+16:      if ticket.assignees
+17:        json.assignees do
+18:          json.array! ticket.assignees do |assignee|
+19:            json.id    assignee.id
+20:            json.name  assignee.name
+21:            json.email assignee.email
+22:          end
+23:        end
+24:      else
+25:        json.assignee nil
+26:      end
+27:    end
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+):
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+Started GET "/api/tickets" for ::1 at 2025-12-13 18:07:37 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  Rendered api/tickets/index.json.jbuilder (Duration: 0.8ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 4.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder)
+Caused by: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder):
+1:    json.array! @tickets.compact do |ticket|
+2:      next unless ticket
+3:    
+4:      json.extract! ticket, :id, :title, :description, :category, :priority :status, :created_at, :updated_at
+5:    
+6:      if ticket.creator
+7:        json.creator do
+8:          json.id    ticket.creator.id
+9:          json.name  ticket.creator.name
+10:          json.email ticket.creator.email
+11:        end
+12:      else
+13:        json.creator nil
+14:      end
+15:    
+16:      if ticket.assignees
+17:        json.assignees do
+18:          json.array! ticket.assignees do |assignee|
+19:            json.id    assignee.id
+20:            json.name  assignee.name
+21:            json.email assignee.email
+22:          end
+23:        end
+24:      else
+25:        json.assignee nil
+26:      end
+27:    end
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+):
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+Started GET "/api/tickets" for ::1 at 2025-12-13 18:07:39 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  Rendered api/tickets/index.json.jbuilder (Duration: 0.8ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder)
+Caused by: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder):
+1:    json.array! @tickets.compact do |ticket|
+2:      next unless ticket
+3:    
+4:      json.extract! ticket, :id, :title, :description, :category, :priority :status, :created_at, :updated_at
+5:    
+6:      if ticket.creator
+7:        json.creator do
+8:          json.id    ticket.creator.id
+9:          json.name  ticket.creator.name
+10:          json.email ticket.creator.email
+11:        end
+12:      else
+13:        json.creator nil
+14:      end
+15:    
+16:      if ticket.assignees
+17:        json.assignees do
+18:          json.array! ticket.assignees do |assignee|
+19:            json.id    assignee.id
+20:            json.name  assignee.name
+21:            json.email assignee.email
+22:          end
+23:        end
+24:      else
+25:        json.assignee nil
+26:      end
+27:    end
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+):
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+Started GET "/api/tickets" for ::1 at 2025-12-13 18:07:40 -0500
+Started GET "/api/session" for ::1 at 2025-12-13 18:07:40 -0500
+Processing by Api::TicketsController#index as JSON
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  Rendering api/tickets/index.json.jbuilder
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.1ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.6ms)
+
+
+  Rendered api/tickets/index.json.jbuilder (Duration: 2.1ms | GC: 0.6ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.6ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder)
+Caused by: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder):
+1:    json.array! @tickets.compact do |ticket|
+2:      next unless ticket
+3:    
+4:      json.extract! ticket, :id, :title, :description, :category, :priority :status, :created_at, :updated_at
+5:    
+6:      if ticket.creator
+7:        json.creator do
+8:          json.id    ticket.creator.id
+9:          json.name  ticket.creator.name
+10:          json.email ticket.creator.email
+11:        end
+12:      else
+13:        json.creator nil
+14:      end
+15:    
+16:      if ticket.assignees
+17:        json.assignees do
+18:          json.array! ticket.assignees do |assignee|
+19:            json.id    assignee.id
+20:            json.name  assignee.name
+21:            json.email assignee.email
+22:          end
+23:        end
+24:      else
+25:        json.assignee nil
+26:      end
+27:    end
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+):
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+Started GET "/api/tickets" for ::1 at 2025-12-13 18:07:43 -0500
+Started GET "/api/session" for ::1 at 2025-12-13 18:07:43 -0500
+Processing by Api::TicketsController#index as JSON
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  Rendered api/tickets/index.json.jbuilder (Duration: 1.4ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder)
+Caused by: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder):
+1:    json.array! @tickets.compact do |ticket|
+2:      next unless ticket
+3:    
+4:      json.extract! ticket, :id, :title, :description, :category, :priority :status, :created_at, :updated_at
+5:    
+6:      if ticket.creator
+7:        json.creator do
+8:          json.id    ticket.creator.id
+9:          json.name  ticket.creator.name
+10:          json.email ticket.creator.email
+11:        end
+12:      else
+13:        json.creator nil
+14:      end
+15:    
+16:      if ticket.assignees
+17:        json.assignees do
+18:          json.array! ticket.assignees do |assignee|
+19:            json.id    assignee.id
+20:            json.name  assignee.name
+21:            json.email assignee.email
+22:          end
+23:        end
+24:      else
+25:        json.assignee nil
+26:      end
+27:    end
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+):
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+  [1m[36mUser Load (13.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 55ms (Views: 1.0ms | ActiveRecord: 13.7ms (1 query, 0 cached) | GC: 8.6ms)
+
+
+Started GET "/api/tickets" for ::1 at 2025-12-13 18:07:44 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  Rendered api/tickets/index.json.jbuilder (Duration: 0.5ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder)
+Caused by: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder):
+1:    json.array! @tickets.compact do |ticket|
+2:      next unless ticket
+3:    
+4:      json.extract! ticket, :id, :title, :description, :category, :priority :status, :created_at, :updated_at
+5:    
+6:      if ticket.creator
+7:        json.creator do
+8:          json.id    ticket.creator.id
+9:          json.name  ticket.creator.name
+10:          json.email ticket.creator.email
+11:        end
+12:      else
+13:        json.creator nil
+14:      end
+15:    
+16:      if ticket.assignees
+17:        json.assignees do
+18:          json.array! ticket.assignees do |assignee|
+19:            json.id    assignee.id
+20:            json.name  assignee.name
+21:            json.email assignee.email
+22:          end
+23:        end
+24:      else
+25:        json.assignee nil
+26:      end
+27:    end
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+):
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+Started GET "/api/tickets" for ::1 at 2025-12-13 18:07:46 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  Rendered api/tickets/index.json.jbuilder (Duration: 1.3ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder)
+Caused by: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder):
+1:    json.array! @tickets.compact do |ticket|
+2:      next unless ticket
+3:    
+4:      json.extract! ticket, :id, :title, :description, :category, :priority :status, :created_at, :updated_at
+5:    
+6:      if ticket.creator
+7:        json.creator do
+8:          json.id    ticket.creator.id
+9:          json.name  ticket.creator.name
+10:          json.email ticket.creator.email
+11:        end
+12:      else
+13:        json.creator nil
+14:      end
+15:    
+16:      if ticket.assignees
+17:        json.assignees do
+18:          json.array! ticket.assignees do |assignee|
+19:            json.id    assignee.id
+20:            json.name  assignee.name
+21:            json.email assignee.email
+22:          end
+23:        end
+24:      else
+25:        json.assignee nil
+26:      end
+27:    end
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+):
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+Started GET "/api/tickets" for ::1 at 2025-12-13 18:07:51 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'gvRIRnvCXrdr2-c9o_SBXw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  Rendered api/tickets/index.json.jbuilder (Duration: 2.6ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder)
+Caused by: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/index.json.jbuilder):
+1:    json.array! @tickets.compact do |ticket|
+2:      next unless ticket
+3:    
+4:      json.extract! ticket, :id, :title, :description, :category, :priority :status, :created_at, :updated_at
+5:    
+6:      if ticket.creator
+7:        json.creator do
+8:          json.id    ticket.creator.id
+9:          json.name  ticket.creator.name
+10:          json.email ticket.creator.email
+11:        end
+12:      else
+13:        json.creator nil
+14:      end
+15:    
+16:      if ticket.assignees
+17:        json.assignees do
+18:          json.array! ticket.assignees do |assignee|
+19:            json.id    assignee.id
+20:            json.name  assignee.name
+21:            json.email assignee.email
+22:          end
+23:        end
+24:      else
+25:        json.assignee nil
+26:      end
+27:    end
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/Users/onkar/Documents/IT-Support-Ticketing-System/backend/app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+  [2m2 | [m  next unless ticket
+  [2m3 | [m
+[1;31m> [m[2m4 | [m... :status, :created_at, :updated_at
+  [2m  | [m    [1;31m^[m unexpected ':', ignoring it
+  [2m  | [m    [1;31m^[m unexpected ':', expecting end-of-input
+  [2m  | [m     [1;31m^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m unexpected write target
+  [2m  | [m             [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m  | [m                          [1;31m^~~~~~~~~~~[m unexpected write target
+  [2m5 | [m
+[1;31m> [m[2m6 | [m  if ticket.creator
+  [2m  | [m  [1;31m^~[m unexpected 'if', expecting end-of-input
+  [2m7 | [m    json.creator do
+  [2m8 | [m      json.id    ticket.creator.id
+):
+  
+app/views/api/tickets/index.json.jbuilder:4: syntax errors found
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
