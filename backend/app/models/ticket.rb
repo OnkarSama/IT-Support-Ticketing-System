@@ -6,14 +6,16 @@ class Ticket < ApplicationRecord
     class_name: "User",
     foreign_key: :creator_id
 
+    has_many :ticket_assignees, dependent: :destroy
+
     has_many :assignees, 
     through: :ticket_assignees, 
-    source: :User
+    source: :user
 
     private
-    def assigned_to_staff
-        if assigned_to && assigned_to.role != "staff"
-            erros.add(:assigned_to, "must be staff")
-        end
-    end
+    # def assigned_to_staff
+    #     if assigned_to && assigned_to.role != "staff"
+    #         erros.add(:assigned_to, "must be staff")
+    #     end
+    # end
 end

@@ -8268,3 +8268,263 @@ Migrating to RemoveAssignee (20251213220626)
   [1m[36mTicketAssignee Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 65 AND "ticket_assignees"."ticket_id" = 19 LIMIT 1 /*application='Backend'*/[0m
   [1m[36mTicketAssignee Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (19, 65, '2025-12-13 22:09:25.387005', '2025-12-13 22:09:25.387005') RETURNING "id" /*application='Backend'*/[0m
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTicket Load (1.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" ASC LIMIT 1 /*application='Backend'*/[0m
+Started GET "/api/tickets/17" for ::1 at 2025-12-13 17:16:58 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::TicketsController#show as JSON
+  Parameters: {"id" => "17"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Filter chain halted as :require_logged_in rendered or redirected
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:17:19 -0500
+Processing by Api::SessionsController#show as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:17:28 -0500
+Processing by Api::SessionsController#show as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:17:29 -0500
+Processing by Api::SessionsController#show as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:17:29 -0500
+Processing by Api::SessionsController#show as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:18:14 -0500
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Filter chain halted as :require_logged_in rendered or redirected
+Completed 200 OK in 10ms (Views: 1.1ms | ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:18:16 -0500
+Processing by Api::SessionsController#show as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:19:03 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ (rdbg)//Users/josephbergmann/Documents/SE project/IT-Support-Ticketing-System/backend/app/controllers/api/sessions_controller.rb:1:in 'Api::SessionsController#create'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'PKE1Igw0rZfY3yeelhlK2g' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'PKE1Igw0rZfY3yeelhlK2g' AND "users"."id" != 62 LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-12-13 22:20:10.646320', "session_token" = 'PKE1Igw0rZfY3yeelhlK2g' WHERE "users"."id" = 62 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 67272ms (Views: 20.5ms | ActiveRecord: 18.5ms (7 queries, 0 cached) | GC: 70.4ms)
+
+
+Started POST "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:20:21 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'PKE1Igw0rZfY3yeelhlK2g' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Filter chain halted as :require_logged_out rendered or redirected
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 2.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:20:24 -0500
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'PKE1Igw0rZfY3yeelhlK2g' LIMIT 1 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'ccLCQEszdhZGdvgGFgq0Pw' LIMIT 1 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'ccLCQEszdhZGdvgGFgq0Pw' AND "users"."id" != 62 LIMIT 1 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Update (3.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-12-13 22:20:24.439465', "session_token" = 'ccLCQEszdhZGdvgGFgq0Pw' WHERE "users"."id" = 62 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+Completed 200 OK in 30ms (Views: 0.3ms | ActiveRecord: 9.3ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:20:28 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' AND "users"."id" != 62 LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-12-13 22:20:28.259528', "session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' WHERE "users"."id" = 62 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | GC: 0.0ms)
+Completed 200 OK in 215ms (Views: 2.4ms | ActiveRecord: 3.5ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/tickets" for ::1 at 2025-12-13 17:20:44 -0500
+Processing by Api::TicketsController#create as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 400 Bad Request in 12ms (ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: ticket):
+  
+app/controllers/api/tickets_controller.rb:69:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:23:in 'Api::TicketsController#create'
+Started GET "/api/tickets" for ::1 at 2025-12-13 17:21:01 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (2.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  Rendered api/tickets/index.json.jbuilder (Duration: 31.7ms | GC: 7.4ms)
+Completed 500 Internal Server Error in 77ms (ActiveRecord: 4.5ms (3 queries, 0 cached) | GC: 10.3ms)
+
+
+  
+ActionView::Template::Error (Could not find the association :ticket_assignees in model Ticket)
+Caused by: ActiveRecord::HasManyThroughAssociationNotFoundError (Could not find the association :ticket_assignees in model Ticket)
+
+Information for: ActionView::Template::Error (Could not find the association :ticket_assignees in model Ticket):
+    13:     json.creator nil
+    14:   end
+    15: 
+    16:   if ticket.assignees
+    17:     json.assignees do |assignee|
+    18:       json.id    assignee.id
+    19:       json.name  assignee.name
+  
+app/views/api/tickets/index.json.jbuilder:16
+app/views/api/tickets/index.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+
+Information for cause: ActiveRecord::HasManyThroughAssociationNotFoundError (Could not find the association :ticket_assignees in model Ticket):
+  
+app/views/api/tickets/index.json.jbuilder:16
+app/views/api/tickets/index.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+  [1m[36mTicket Load (0.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (1.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (1.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+Started GET "/api/tickets" for ::1 at 2025-12-13 17:22:56 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  Rendered api/tickets/index.json.jbuilder (Duration: 7.7ms | GC: 3.5ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 3.2ms (3 queries, 0 cached) | GC: 5.0ms)
+
+
+  
+ActionView::Template::Error (Could not find the association :ticket_assignee in model Ticket)
+Caused by: ActiveRecord::HasManyThroughAssociationNotFoundError (Could not find the association :ticket_assignee in model Ticket)
+
+Information for: ActionView::Template::Error (Could not find the association :ticket_assignee in model Ticket):
+    13:     json.creator nil
+    14:   end
+    15: 
+    16:   if ticket.assignees
+    17:     json.assignees do |assignee|
+    18:       json.id    assignee.id
+    19:       json.name  assignee.name
+  
+app/views/api/tickets/index.json.jbuilder:16
+app/views/api/tickets/index.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+
+Information for cause: ActiveRecord::HasManyThroughAssociationNotFoundError (Could not find the association :ticket_assignee in model Ticket):
+  
+app/views/api/tickets/index.json.jbuilder:16
+app/views/api/tickets/index.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."User_id" WHERE "ticket_assignees"."ticket_id" = 19 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."User_id" WHERE "ticket_assignees"."ticket_id" = 19 /* loading for inspect */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mTicket Load (1.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."User_id" WHERE "ticket_assignees"."ticket_id" = 19 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."User_id" WHERE "ticket_assignees"."ticket_id" = 19 /* loading for inspect */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (4.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+Started GET "/api/tickets" for ::1 at 2025-12-13 17:29:24 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  Rendered api/tickets/index.json.jbuilder (Duration: 5.7ms | GC: 0.0ms)
+Completed 200 OK in 43ms (Views: 6.8ms | ActiveRecord: 5.2ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 69 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 62 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mTicket Load (1.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 67 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (1.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 67 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
