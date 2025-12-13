@@ -1,13 +1,14 @@
 import api from './index'
 
-type ticketPayload = {
+export type TicketPayload = {
     ticket: {
-        title: string,
-        description: string,
-        status: string,
-        assigneeID: number | null,
+        title: string;
+        category: string;
+        description: string;
+        status: string;
+        assigneeID: number | null;
     }
-};
+}
 
 const endpoints = {
 
@@ -19,14 +20,14 @@ const endpoints = {
         return await api(`/tickets/${id}`)
     },
 
-    createTicket: async (payload: ticketPayload) => {
+    createTicket: async (payload: TicketPayload) => {
         return await api('/tickets', {
             method: 'post',
             data: payload,
         });
     },
 
-    updateTicket: async (id: number, payload: ticketPayload) => {
+    updateTicket: async (id: number, payload: TicketPayload) => {
         return await api(`/tickets/${id}`, {
             method: 'patch',
             data: payload,

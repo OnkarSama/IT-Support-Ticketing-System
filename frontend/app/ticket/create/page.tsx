@@ -2,7 +2,15 @@
 
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Card, Button, Input, Textarea, Form } from "@heroui/react";
+import {
+    Card,
+    Button,
+    Input,
+    Textarea,
+    Form,
+    Select,
+    SelectItem,
+} from "@heroui/react";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import apiRouter from "@/api/router";
@@ -10,14 +18,21 @@ import apiRouter from "@/api/router";
 export default function NewTicketPage() {
     const router = useRouter();
     const queryClient = useQueryClient();
+
     const [submitting, setSubmitting] = useState(false);
     const [action, setAction] = useState<string | null>(null);
+
+    // local state for selects (needed for FormData compatibility)
+    const [status, setStatus] = useState("Open");
+    const [priority, setPriority] = useState("Medium");
+    const [category, setCategory] = useState("");
 
     const createMutation = useMutation({
         mutationFn: async (formData: any) => {
             return await apiRouter.tickets.createTicket({
                 ticket: {
                     title: formData.title,
+                    category: formData.category,
                     description: formData.description,
                     status: formData.status,
                     assigneeID: null,
@@ -26,7 +41,9 @@ export default function NewTicketPage() {
         },
         onSuccess: () => {
             setSubmitting(false);
-            queryClient.invalidateQueries(["getTickets"]).then(r => router.push("/dashboard")); // refresh ticket list
+            queryClient
+                .invalidateQueries(["getTickets"])
+                .then(() => router.push("/dashboard"));
         },
         onError: (error) => {
             console.error("Create Ticket Error:", error);
@@ -39,8 +56,8 @@ export default function NewTicketPage() {
         setSubmitting(true);
 
         const formData = Object.fromEntries(new FormData(e.currentTarget));
-
         setAction(`submit ${JSON.stringify(formData)}`);
+
         createMutation.mutate(formData);
     };
 
@@ -58,61 +75,76 @@ export default function NewTicketPage() {
                     <Form
                         className="space-y-6"
                         onSubmit={handleSubmit}
-                        onReset={() => setAction("reset")}
+                        onReset={() => {
+                            setAction("reset");
+                            setStatus("Open");
+                            setPriority("Medium");
+                            setCategory("");
+                        }}
                     >
                         <Input
                             isRequired
                             errorMessage="Please enter a valid ticket name"
                             label="Ticket Name"
-                            labelPlacement="outside"
+                            labelPlacement="inside"
                             name="title"
                             placeholder="e.g. Cannot log in to portal"
                             type="text"
                         />
 
-                        <div className="grid gap-4 md:grid-cols-3">
-                            <div className="flex flex-col gap-1">
-                                <label className="text-sm font-medium text-slate-200">Status</label>
-                                <select
-                                    name="status"
-                                    defaultValue="open"
-                                    className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm"
-                                >
-                                    <option value="open">Open</option>
-                                    <option value="in progress">In Progress</option>
-                                    <option value="closed">Closed</option>
-                                </select>
-                            </div>
+                        <div className="flex flex-col gap-4 md:flex-row md:w-full">
+                            <Select
+                                label="Status"
+                                labelPlacement="inside"
+                                selectedKeys={[status]}
+                                className="w-full md:flex-1"
+                                onSelectionChange={(keys) =>
+                                    setStatus(Array.from(keys)[0] as string)
+                                }
+                            >
+                                <SelectItem key="Open">Open</SelectItem>
+                                <SelectItem key="In Progress">In Progress</SelectItem>
+                                <SelectItem key="Closed">Closed</SelectItem>
+                            </Select>
 
-                            <div className="flex flex-col gap-1">
-                                <label className="text-sm font-medium text-slate-200">Priority</label>
-                                <select
-                                    name="priority"
-                                    defaultValue="Medium"
-                                    className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm"
-                                >
-                                    <option value="Low">Low</option>
-                                    <option value="Medium">Medium</option>
-                                    <option value="High">High</option>
-                                </select>
-                            </div>
+                            <Select
+                                label="Priority"
+                                labelPlacement="inside"
+                                selectedKeys={[priority]}
+                                className="w-full md:flex-1"
+                                onSelectionChange={(keys) =>
+                                    setPriority(Array.from(keys)[0] as string)
+                                }
+                            >
+                                <SelectItem key="Low">Low</SelectItem>
+                                <SelectItem key="Medium">Medium</SelectItem>
+                                <SelectItem key="High">High</SelectItem>
+                            </Select>
 
-                            <div className="flex flex-col gap-1">
-                                <label className="text-sm font-medium text-slate-200">Category</label>
-                                <select
-                                    name="category"
-                                    defaultValue=""
-                                    className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
-                                >
-                                    <option value="" disabled>Select a category</option>
-                                    <option value="Access">Login</option>
-                                    <option value="Network">Network</option>
-                                    <option value="Hardware">Hardware</option>
-                                    <option value="Software">Software</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
+                            <Select
+                                label="Category"
+                                labelPlacement="inside"
+                                placeholder="Select a category"
+                                selectedKeys={category ? [category] : []}
+                                className="w-full md:flex-1"
+                                onSelectionChange={(keys) =>
+                                    setCategory(Array.from(keys)[0] as string)
+                                }
+                            >
+                                <SelectItem key="Access">Access</SelectItem>
+                                <SelectItem key="Network">Network</SelectItem>
+                                <SelectItem key="Hardware">Hardware</SelectItem>
+                                <SelectItem key="Software">Software</SelectItem>
+                                <SelectItem key="Other">Other</SelectItem>
+                            </Select>
                         </div>
+
+
+
+                        {/* Hidden inputs so FormData still works */}
+                        <input type="hidden" name="status" value={status} />
+                        <input type="hidden" name="priority" value={priority} />
+                        <input type="hidden" name="category" value={category} />
 
                         <Textarea
                             isRequired

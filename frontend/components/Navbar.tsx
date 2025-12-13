@@ -21,7 +21,7 @@ import clsx from "clsx";
 import apiRouter from "@/api/router";
 import { useRouter } from "next/navigation";
 import {siteConfig} from "@/config/site";
-import { useQueryClient } from "@tanstack/react-query";
+import {useQuery, useQueryClient} from "@tanstack/react-query";
 
 
 interface SearchIconProps extends React.SVGProps<SVGSVGElement> {
@@ -70,6 +70,11 @@ export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const router = useRouter();
     const queryClient = useQueryClient();
+
+    const { data: userData} = useQuery({
+        queryKey: ["showUser"],
+        queryFn: () => apiRouter.sessions.showUser(),
+    });
 
 
     const handleLogout = async () => {
@@ -134,9 +139,8 @@ export const Navbar = () => {
                             as="button"
                             className="transition-transform"
                             color="secondary"
-                            name="Jason Hughes"
+                            name= {userData?.user?.name}
                             size="sm"
-                            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
                         />
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Profile Actions" variant="flat">

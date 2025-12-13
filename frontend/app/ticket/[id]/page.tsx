@@ -2,26 +2,32 @@
 
 import { use, useEffect, useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { Card, Button, Input, Textarea, Form } from "@heroui/react";
+import {
+    Card,
+    Button,
+    Input,
+    Textarea,
+    Form,
+    Select,
+    SelectItem,
+} from "@heroui/react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { useSearchParams } from "next/navigation";
+
 import apiRouter from "@/api/router";
+import type { TicketPayload } from "@/api/ticket";
 
 import DeleteTicketModal from "@/components/DeleteTicketModal";
-
-interface TicketPayload {
-    ticket: {
-        title: string;
-        description: string;
-        status: string;
-        assigneeID: number | null;
-    };
-}
 
 interface PageProps {
     params: Promise<{ id: number }>;
 }
 
 export default function EditTicketPage({ params }: PageProps) {
+
+    const searchParams = useSearchParams();
+
     const { id: ticketIdString } = use(params);
     const ticketId = Number(ticketIdString);
 
@@ -30,41 +36,40 @@ export default function EditTicketPage({ params }: PageProps) {
 
     const [submitting, setSubmitting] = useState(false);
 
-    const [formState, setFormState] = useState({
+    const [formState, setFormState] = useState<TicketPayload["ticket"]>({
         title: "",
+        category: "",
         description: "",
-        status: "open",
-        assigneeID: null as number | null,
+        status: "Open",
+        assigneeID: null,
     });
 
-    const { title, description, status } = formState;
+    const { title, description, status, category } = formState;
 
     const { data: ticketData, isLoading, refetch } = useQuery({
         queryKey: ["getTicketById", ticketId],
         queryFn: () => apiRouter.tickets.getTicketById(ticketId),
     });
 
-    const { data: userData} = useQuery({
+    const { data: userData } = useQuery({
         queryKey: ["showUser"],
         queryFn: () => apiRouter.sessions.showUser(),
     });
 
     const isStaff = userData?.user?.role === "staff";
-
-    console.log(userData);
     const ticket = ticketData?.ticket;
 
     useEffect(() => {
         if (ticket) {
             setFormState({
                 title: ticket.title || "",
+                category: ticket.category || "",
                 description: ticket.description || "",
-                status: ticket.status || "open",
+                status: ticket.status || "Open",
                 assigneeID: ticket.assignee?.id ?? null,
             });
         }
     }, [ticket]);
-
 
     const updateMutation = useMutation({
         mutationFn: async (payload: typeof formState) => {
@@ -75,7 +80,7 @@ export default function EditTicketPage({ params }: PageProps) {
             queryClient.invalidateQueries(["getTickets"]);
             refetch();
             setSubmitting(false);
-            router.push("/dashboard");
+            router.push(`/dashboard?${searchParams.toString()}`);
         },
         onError: (error) => {
             console.error("Update Ticket Error:", error);
@@ -83,12 +88,11 @@ export default function EditTicketPage({ params }: PageProps) {
         },
     });
 
-    // DELETE MUTATION
     const deleteMutation = useMutation({
         mutationFn: async (id: number) => apiRouter.tickets.deleteTicket(id),
         onSuccess: () => {
             queryClient.invalidateQueries(["getTickets"]);
-            router.push("/dashboard");
+            router.push(`/dashboard?${searchParams.toString()}`);
         },
         onError: (error) => {
             console.error("Delete Ticket Error:", error);
@@ -101,7 +105,6 @@ export default function EditTicketPage({ params }: PageProps) {
         setSubmitting(true);
         updateMutation.mutate(formState);
     };
-
 
     const handleDelete = () => {
         setSubmitting(true);
@@ -126,28 +129,45 @@ export default function EditTicketPage({ params }: PageProps) {
                         <Input
                             isRequired
                             label="Ticket Name"
-                            labelPlacement="outside"
+                            labelPlacement="inside"
                             value={title}
                             onChange={(e) =>
                                 setFormState((p) => ({ ...p, title: e.target.value }))
                             }
                         />
 
-                        <div className="flex flex-col gap-1">
-                            <label className="text-sm font-medium text-slate-200">Status</label>
-                            <select
-                                name="status"
-                                value={status}
-                                onChange={(e) =>
-                                    setFormState((p) => ({ ...p, status: e.target.value }))
-                                }
-                                className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm"
-                            >
-                                <option value="open">Open</option>
-                                <option value="in progress">In Progress</option>
-                                <option value="closed">Closed</option>
-                            </select>
-                        </div>
+                        <Select
+                            label="Status"
+                            labelPlacement="inside"
+                            defaultSelectedKeys={[status]}
+                            className="max-w-xs"
+                            onSelectionChange={(keys) => {
+                                const value = Array.from(keys)[0] as string;
+                                setFormState((p) => ({ ...p, status: value }));
+                            }}
+                        >
+                            <SelectItem key="Open">Open</SelectItem>
+                            <SelectItem key="In Progress">In Progress</SelectItem>
+                            <SelectItem key="Closed">Closed</SelectItem>
+                        </Select>
+
+                        <Select
+                            label="Category"
+                            labelPlacement="inside"
+                            defaultSelectedKeys={category}
+                            placeholder="Select a category"
+                            className="max-w-xs"
+                            onSelectionChange={(keys) => {
+                                const value = Array.from(keys)[0] as string;
+                                setFormState((p) => ({ ...p, category: value }));
+                            }}
+                        >
+                            <SelectItem key="Access">Access</SelectItem>
+                            <SelectItem key="Network">Network</SelectItem>
+                            <SelectItem key="Hardware">Hardware</SelectItem>
+                            <SelectItem key="Software">Software</SelectItem>
+                            <SelectItem key="Other">Other</SelectItem>
+                        </Select>
 
                         <Textarea
                             isRequired
@@ -166,8 +186,9 @@ export default function EditTicketPage({ params }: PageProps) {
                                 onPressEnd={() =>
                                     setFormState({
                                         title: ticket.title || "",
+                                        category: ticket.category || "",
                                         description: ticket.description || "",
-                                        status: ticket.status || "open",
+                                        status: ticket.status || "Open",
                                         assigneeID: ticket.assignee?.id ?? null,
                                     })
                                 }
@@ -183,7 +204,6 @@ export default function EditTicketPage({ params }: PageProps) {
                             >
                                 {submitting ? "Updating..." : "Update Ticket"}
                             </Button>
-
 
                             {isStaff && (
                                 <DeleteTicketModal
