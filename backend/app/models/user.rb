@@ -29,10 +29,12 @@ class User < ApplicationRecord
     foreign_key: :creator_id,
     dependent: :destroy
 
+    has_many :ticket_assignees,
+    dependent: :destroy 
+    
     has_many :tickets_assigned,
-    class_name: "Ticket",
-    foreign_key: :assignee_id,
-    dependent: :nullify
+    through: :ticket_assignees,
+    source: :ticket
 
     private
     def role_must_be_valid

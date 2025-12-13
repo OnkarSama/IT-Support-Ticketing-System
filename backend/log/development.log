@@ -7768,6 +7768,743 @@ Completed 200 OK in 27ms (Views: 0.1ms | ActiveRecord: 13.2ms (4 queries, 0 cach
 
 
 
+<<<<<<< HEAD
+Started GET "/api/users/35" for ::1 at 2025-12-12 18:11:32 -0500
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id" => "35"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 35 LIMIT 1 /*action='show',application='Backend',controller='users'*/[0m
+  ↳ app/controllers/api/users_controller.rb:8:in 'Api::UsersController#show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.7ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 2.4ms | ActiveRecord: 1.8ms (1 query, 0 cached) | GC: 0.8ms)
+
+
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to CreateTicketAssignees (20251213212947)
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to CreateTicketAssignees (20251213212947)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[35m (13.9ms)[0m  [1m[35mCREATE TABLE "ticket_assignees" ("id" bigserial primary key, "ticket_id" bigint NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_d0d241b290"
+FOREIGN KEY ("ticket_id")
+  REFERENCES "tickets" ("id")
+, CONSTRAINT "fk_rails_1388445c8e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+) /*application='Backend'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_ticket_assignees_on_ticket_id" ON "ticket_assignees" ("ticket_id") /*application='Backend'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_ticket_assignees_on_user_id" ON "ticket_assignees" ("user_id") /*application='Backend'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_ticket_assignees_on_ticket_id_and_user_id" ON "ticket_assignees" ("ticket_id", "user_id") /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251213212947') RETURNING "version" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to AddPriorityToTickets (20251213213954)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "tickets" ADD "priority" character varying NOT NULL /*application='Backend'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_tickets_on_priority" ON "tickets" ("priority") /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251213213954') RETURNING "version" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to AddConstraintToTicketPriority (20251213214159)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "tickets" ADD CONSTRAINT tickets_priority_check CHECK (priority IN ('low', 'medium', 'high')) /*application='Backend'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "tickets" ALTER COLUMN "priority" SET DEFAULT 'medium' /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251213214159') RETURNING "version" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mTicket Delete All (2.8ms)[0m  [1m[31mDELETE FROM "tickets" /*application='Backend'*/[0m
+  [1m[36mUser Delete All (3.1ms)[0m  [1m[31mDELETE FROM "users" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'KJTCuXReV2KkGbRQZvgiWg' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'KJTCuXReV2KkGbRQZvgiWg' LIMIT 1[0m
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('test@gmail.com', 'Joe B', '$2a$12$hi43r/Ocs4kgC9SRMo4weesPYKxOmLKLLHSuj9/UEaUoYq0twX0CW', 'staff', '2025-12-13 21:49:56.598267', '2025-12-13 21:49:56.598267', 'KJTCuXReV2KkGbRQZvgiWg') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'D4SanNB8iI6FLvlUsSyn0g' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'D4SanNB8iI6FLvlUsSyn0g' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('alice@example.com', 'Alice Admin', '$2a$12$naLLlXvCf3cvLSz.CvOemeMBocZBtd5ibLnQ37gZYG8/sUsnaqxHG', 'staff', '2025-12-13 21:49:56.775025', '2025-12-13 21:49:56.775025', 'D4SanNB8iI6FLvlUsSyn0g') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'R5k8ZyacMSCy6fGkQrhFPA' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:48:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'R5k8ZyacMSCy6fGkQrhFPA' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('bob@example.com', 'Bob User', '$2a$12$yj2whJFdT2HEW80BubySmuhAoypXa1dFbHdZlLmttCU3XjBeElExq', 'faculty', '2025-12-13 21:49:56.950967', '2025-12-13 21:49:56.950967', 'R5k8ZyacMSCy6fGkQrhFPA') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to TicketAssignees (20251213205502)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251213205502') RETURNING "version" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mTicket Delete All (1.2ms)[0m  [1m[31mDELETE FROM "tickets" /*application='Backend'*/[0m
+  [1m[36mUser Delete All (2.4ms)[0m  [1m[31mDELETE FROM "users" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'zv51nCvdSh_gKc6s0d3vqA' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'zv51nCvdSh_gKc6s0d3vqA' LIMIT 1[0m
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('test@gmail.com', 'Joe B', '$2a$12$fN4kVHowv6Yx/JQoYreaheBhmGwfs9OtyM/WRbgz2pziiRGokk97e', 'staff', '2025-12-13 22:01:00.341628', '2025-12-13 22:01:00.341628', 'zv51nCvdSh_gKc6s0d3vqA') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'nhnWDDD2Z4OVFIWqsYfEYQ' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'nhnWDDD2Z4OVFIWqsYfEYQ' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('alice@example.com', 'Alice Admin', '$2a$12$Iby5P4kaapspX4.XY9VdWuZ9VpIvFHkra9FxYalAxRoc..YbEoURK', 'staff', '2025-12-13 22:01:00.518965', '2025-12-13 22:01:00.518965', 'nhnWDDD2Z4OVFIWqsYfEYQ') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'qtQxRm4tcnGsaZAYfZ-NMA' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'qtQxRm4tcnGsaZAYfZ-NMA' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('bob@example.com', 'Bob User', '$2a$12$8fPRFDi8VKwruzWLWnQ.3OC4tNRj3dLCzDzU/gyGUq3In4XmCO40S', 'faculty', '2025-12-13 22:01:00.696448', '2025-12-13 22:01:00.696448', 'qtQxRm4tcnGsaZAYfZ-NMA') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Load (0.2ms)[0m  [1m[34mSELECT "ticket_assignees".* FROM "ticket_assignees" /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*application='Backend'*/[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 43 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 43 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 44 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 44 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 45 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 45 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'lEX5Ecxym-v0A0s1sNvZ8A' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice.it@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'lEX5Ecxym-v0A0s1sNvZ8A' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Load (0.9ms)[0m  [1m[34mSELECT "ticket_assignees".* FROM "ticket_assignees" /*application='Backend'*/[0m
+  [1m[36mTicket Load (1.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*application='Backend'*/[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'Cax1I91_BGRVZEpDgcROUA' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'Cax1I91_BGRVZEpDgcROUA' LIMIT 1[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('test@gmail.com', 'Joe B', '$2a$12$s2VJKj9XzojfVjjkKJTSx.3V3T8D4eYNALdh9MyWFpPSGjy.fDTeq', 'staff', '2025-12-13 22:03:31.542333', '2025-12-13 22:03:31.542333', 'Cax1I91_BGRVZEpDgcROUA') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'yhwFkGxP1Xpyv83hzIXQzg' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'yhwFkGxP1Xpyv83hzIXQzg' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('alice@example.com', 'Alice Admin', '$2a$12$YT3CO7Jv91eBV2LXE6vKeuccAa6fMzMt0ECeavqR4GMXpcMr1AcUm', 'staff', '2025-12-13 22:03:31.719440', '2025-12-13 22:03:31.719440', 'yhwFkGxP1Xpyv83hzIXQzg') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'QNNk5pQbZitqwTxA9nPaIA' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'QNNk5pQbZitqwTxA9nPaIA' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('bob@example.com', 'Bob User', '$2a$12$0Tii130nDkOXYXI09kQ/YegddGaGJJV2SXqfz/KWYOWliUmagbU/u', 'faculty', '2025-12-13 22:03:31.894638', '2025-12-13 22:03:31.894638', 'QNNk5pQbZitqwTxA9nPaIA') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '4ChONrCLU_PNHR-TssUeXw' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice.johnson@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '4ChONrCLU_PNHR-TssUeXw' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('alice.johnson@example.com', 'Alice Johnson', '$2a$12$LC7ain8ewO1oISgRR7KYlOBeQ.MF13iQ19TWHxqym3Ho7x9HZqwaS', 'faculty', '2025-12-13 22:03:32.071373', '2025-12-13 22:03:32.071373', '4ChONrCLU_PNHR-TssUeXw') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'eyCtZdg-y5JLp1Vf8UHZRg' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob.smith@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'eyCtZdg-y5JLp1Vf8UHZRg' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('bob.smith@example.com', 'Bob Smith', '$2a$12$rGDghQKPgOtZLg.cHNcVqOs52B.JM7/bI.QiJr.LOHiiuQMnvwZ6y', 'staff', '2025-12-13 22:03:32.246655', '2025-12-13 22:03:32.246655', 'eyCtZdg-y5JLp1Vf8UHZRg') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'ZzDxwals5exBDDhCXTyB8Q' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'carol.nguyen@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'ZzDxwals5exBDDhCXTyB8Q' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('carol.nguyen@example.com', 'Carol Nguyen', '$2a$12$u0gAhPUeukjZ9gcZqZ9xCetkQYE9y1yL9Gv1emf5OVEvLA6icDIGC', 'staff', '2025-12-13 22:03:32.422060', '2025-12-13 22:03:32.422060', 'ZzDxwals5exBDDhCXTyB8Q') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'nXjWvDPgyNc-Degn1DrxBw' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'david.lee@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'nXjWvDPgyNc-Degn1DrxBw' LIMIT 1[0m
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('david.lee@example.com', 'David Lee', '$2a$12$ul3vMOcc71yzOM0DWO16ou5Ke8/kCQL/Qxi4/NL.frtkEeai4Nj1a', 'student', '2025-12-13 22:03:32.597357', '2025-12-13 22:03:32.597357', 'nXjWvDPgyNc-Degn1DrxBw') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'jp7cL_SnUvmgrhJ_U6azdA' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'emma.davis@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'jp7cL_SnUvmgrhJ_U6azdA' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('emma.davis@example.com', 'Emma Davis', '$2a$12$HUX0DEWjulVIcFAvdJg3xeHz2b0CRmeFRMw0Msys8OP8YbtqMnx5.', 'student', '2025-12-13 22:03:32.773219', '2025-12-13 22:03:32.773219', 'jp7cL_SnUvmgrhJ_U6azdA') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to RemoveAssignee (20251213220626)
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to RemoveAssignee (20251213220626)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "tickets" DROP COLUMN "assignee_id" /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251213220626') RETURNING "version" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO public /*application='Backend'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mSET search_path TO "$user", public /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Load (0.3ms)[0m  [1m[34mSELECT "ticket_assignees".* FROM "ticket_assignees" /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*application='Backend'*/[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 46 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 46 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 47 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 47 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 48 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 48 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 49 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 49 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 50 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 50 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 51 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 51 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 52 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 52 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 53 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 53 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'Y2oEeiDCaHdbqYdVOGFm-A' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'Y2oEeiDCaHdbqYdVOGFm-A' LIMIT 1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('test@gmail.com', 'Joe B', '$2a$12$0.4PagCGT/nomGW9C0bT1u8ZDpn.hIveeY7tnylsPBG/4jTjvkFz2', 'staff', '2025-12-13 22:08:05.074816', '2025-12-13 22:08:05.074816', 'Y2oEeiDCaHdbqYdVOGFm-A') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '_c6SsIB8L6kqNazY_Jtz8g' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '_c6SsIB8L6kqNazY_Jtz8g' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('alice@example.com', 'Alice Admin', '$2a$12$/1yS0tJjSQkaqsZJTg5/PeeCPPZi6ZxfXtBrHgS.3A6dDdBhTlbI2', 'staff', '2025-12-13 22:08:05.250290', '2025-12-13 22:08:05.250290', '_c6SsIB8L6kqNazY_Jtz8g') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'Xr0ivuCYraKxTno633vjvw' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'Xr0ivuCYraKxTno633vjvw' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('bob@example.com', 'Bob User', '$2a$12$MK5hdS.lxUvmnuSPD85kF./LXlC09YfnI4HM1u5fUn1/6.w0iZhc.', 'faculty', '2025-12-13 22:08:05.426009', '2025-12-13 22:08:05.426009', 'Xr0ivuCYraKxTno633vjvw') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'SPTvRltOXDkgtEUWZQGBMA' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice.johnson@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'SPTvRltOXDkgtEUWZQGBMA' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('alice.johnson@example.com', 'Alice Johnson', '$2a$12$WrLT4Oq6Kh982cGEQrHAtOwpBlcA6yQ61vsz314MRl.8kwJzLF2pG', 'faculty', '2025-12-13 22:08:05.602602', '2025-12-13 22:08:05.602602', 'SPTvRltOXDkgtEUWZQGBMA') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'Y4snc8iwFhGIcHkp4PcpCQ' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob.smith@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'Y4snc8iwFhGIcHkp4PcpCQ' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('bob.smith@example.com', 'Bob Smith', '$2a$12$yR6ZGiFElZsqAF7LVCW0uOxpwo/l.yBSyRYKj5G2rupvgL1FhJxgC', 'staff', '2025-12-13 22:08:05.777958', '2025-12-13 22:08:05.777958', 'Y4snc8iwFhGIcHkp4PcpCQ') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'uiWRB3kC0nLGShnMTx1gTQ' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'carol.nguyen@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'uiWRB3kC0nLGShnMTx1gTQ' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('carol.nguyen@example.com', 'Carol Nguyen', '$2a$12$Ad7H/Jso3Unb8wSO7OGnCOJc7TCyoOEmT6xbboBwr5THjjl4lCWAa', 'staff', '2025-12-13 22:08:05.953079', '2025-12-13 22:08:05.953079', 'uiWRB3kC0nLGShnMTx1gTQ') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'rqPv0PegHb3qtFIiEK4fgw' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'david.lee@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'rqPv0PegHb3qtFIiEK4fgw' LIMIT 1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('david.lee@example.com', 'David Lee', '$2a$12$40yO5j4X9hgEgMbzcOYK0u2yKG90HuC/p2HdDZFTXVEtrhtwYj9gq', 'student', '2025-12-13 22:08:06.128363', '2025-12-13 22:08:06.128363', 'rqPv0PegHb3qtFIiEK4fgw') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'tdMxTj3AiY81uC1rEhitbw' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'emma.davis@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'tdMxTj3AiY81uC1rEhitbw' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('emma.davis@example.com', 'Emma Davis', '$2a$12$E8o4zMj9./YXZEsgrQvQ/uyeZCM9RA77cejx6CzKeEcu16xapB0WS', 'student', '2025-12-13 22:08:06.306619', '2025-12-13 22:08:06.306619', 'tdMxTj3AiY81uC1rEhitbw') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Create (3.6ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('Cannot access email account', 'Outlook fails to authenticate after password reset.', 'open', 'email', '2025-12-13 22:08:06.310179', '2025-12-13 22:08:06.310179', 60, 'high') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Create (0.9ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('VPN connection drops intermittently', 'VPN disconnects every 10–15 minutes while working remotely.', 'open', 'network', '2025-12-13 22:08:06.314794', '2025-12-13 22:08:06.314794', 61, 'medium') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Create (0.7ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('Laptop running extremely slow', 'System freezes when opening multiple applications.', 'in_progress', 'hardware', '2025-12-13 22:08:06.317314', '2025-12-13 22:08:06.317314', 60, 'medium') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Load (0.9ms)[0m  [1m[34mSELECT "ticket_assignees".* FROM "ticket_assignees" /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.9ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Destroy (0.9ms)[0m  [1m[31mDELETE FROM "tickets" WHERE "tickets"."id" = 14 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Destroy (0.5ms)[0m  [1m[31mDELETE FROM "tickets" WHERE "tickets"."id" = 15 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Destroy (0.4ms)[0m  [1m[31mDELETE FROM "tickets" WHERE "tickets"."id" = 16 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 54 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 54 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 55 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 55 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 56 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 56 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 57 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 57 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 58 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 58 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 59 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 59 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 60 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 60 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."creator_id" = 61 /*application='Backend'*/[0m
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = 61 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'h5a0lmy8KYscXRkOMmr_Cg' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'h5a0lmy8KYscXRkOMmr_Cg' LIMIT 1[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('test@gmail.com', 'Joe B', '$2a$12$BRAw5YEZpqfJ6jnpRUJIY.RiZLIigEcpKwoZAgf3NvBMWJXb5w6Km', 'staff', '2025-12-13 22:09:24.130656', '2025-12-13 22:09:24.130656', 'h5a0lmy8KYscXRkOMmr_Cg') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '1DAe28Bw74RxF9isf8axXQ' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '1DAe28Bw74RxF9isf8axXQ' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('alice@example.com', 'Alice Admin', '$2a$12$GfTCCxbhZl4JS0ANVx9fxOVPZAKKtMYVPUZUYQXyK5v7PXIjpIvxS', 'staff', '2025-12-13 22:09:24.306074', '2025-12-13 22:09:24.306074', '1DAe28Bw74RxF9isf8axXQ') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'HF5wE-cINgmJqXKZKxUpdA' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'HF5wE-cINgmJqXKZKxUpdA' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('bob@example.com', 'Bob User', '$2a$12$09b2P/6MGdk5pEpZx24/2ON79CLp/PJsOYWnwSpNP1vkX8SPnCkyC', 'faculty', '2025-12-13 22:09:24.482280', '2025-12-13 22:09:24.482280', 'HF5wE-cINgmJqXKZKxUpdA') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '3iUoMfmT3SjKgrAD3p1YYw' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'alice.johnson@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '3iUoMfmT3SjKgrAD3p1YYw' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('alice.johnson@example.com', 'Alice Johnson', '$2a$12$CW6pH3BuutI6dHVJHIo5EuKvDsaLEj1krCBK8iCz6/QXhUhrtjFVO', 'faculty', '2025-12-13 22:09:24.659041', '2025-12-13 22:09:24.659041', '3iUoMfmT3SjKgrAD3p1YYw') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'AEZ0UktJ4QixTFfyT2SUcg' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob.smith@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'AEZ0UktJ4QixTFfyT2SUcg' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('bob.smith@example.com', 'Bob Smith', '$2a$12$5y3ppmiw0lQVRfAZ1Jc68uuGsSyFAxsFSFhEGr02EMbGQ1JxSMEwS', 'staff', '2025-12-13 22:09:24.834252', '2025-12-13 22:09:24.834252', 'AEZ0UktJ4QixTFfyT2SUcg') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'atDXmvHSM56Mxxjy1W5jDw' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'carol.nguyen@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'atDXmvHSM56Mxxjy1W5jDw' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('carol.nguyen@example.com', 'Carol Nguyen', '$2a$12$eFIofrMJGk.mIyzLAVKMleO05cPRi3As21lNEEVqAUh80lENaj7Ji', 'staff', '2025-12-13 22:09:25.010485', '2025-12-13 22:09:25.010485', 'atDXmvHSM56Mxxjy1W5jDw') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '3kAIPmKdO9fuqp4N_gC5Rw' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'david.lee@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '3kAIPmKdO9fuqp4N_gC5Rw' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('david.lee@example.com', 'David Lee', '$2a$12$8iUkn8gNN/TXiNtnt6uRte6fGnbHbqca5fvfrVBOlvYVX4NNoPdGC', 'student', '2025-12-13 22:09:25.185842', '2025-12-13 22:09:25.185842', '3kAIPmKdO9fuqp4N_gC5Rw') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '3J_3NDRWap78-mn4TIhpDw' LIMIT 1 /*application='Backend'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'emma.davis@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '3J_3NDRWap78-mn4TIhpDw' LIMIT 1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "role", "created_at", "updated_at", "session_token") VALUES ('emma.davis@example.com', 'Emma Davis', '$2a$12$934VfTRIM6mXQzYzxbEIg.12zjkSiZW61NFcvhpC4itVbItf1wa1e', 'student', '2025-12-13 22:09:25.360617', '2025-12-13 22:09:25.360617', '3J_3NDRWap78-mn4TIhpDw') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Create (1.3ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('Cannot access email account', 'Outlook fails to authenticate after password reset.', 'open', 'email', '2025-12-13 22:09:25.363575', '2025-12-13 22:09:25.363575', 68, 'high') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Create (0.7ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('VPN connection drops intermittently', 'VPN disconnects every 10–15 minutes while working remotely.', 'open', 'network', '2025-12-13 22:09:25.365770', '2025-12-13 22:09:25.365770', 69, 'medium') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicket Create (0.5ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('Laptop running extremely slow', 'System freezes when opening multiple applications.', 'in_progress', 'hardware', '2025-12-13 22:09:25.367281', '2025-12-13 22:09:25.367281', 68, 'medium') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 66 AND "ticket_assignees"."ticket_id" = 17 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Create (2.4ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (17, 66, '2025-12-13 22:09:25.372373', '2025-12-13 22:09:25.372373') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 67 AND "ticket_assignees"."ticket_id" = 17 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (17, 67, '2025-12-13 22:09:25.376549', '2025-12-13 22:09:25.376549') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 67 AND "ticket_assignees"."ticket_id" = 18 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (18, 67, '2025-12-13 22:09:25.378328', '2025-12-13 22:09:25.378328') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 65 AND "ticket_assignees"."ticket_id" = 18 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Create (0.3ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (18, 65, '2025-12-13 22:09:25.380253', '2025-12-13 22:09:25.380253') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 66 AND "ticket_assignees"."ticket_id" = 19 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Create (0.8ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (19, 66, '2025-12-13 22:09:25.382392', '2025-12-13 22:09:25.382392') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 67 AND "ticket_assignees"."ticket_id" = 19 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Create (0.4ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (19, 67, '2025-12-13 22:09:25.384907', '2025-12-13 22:09:25.384907') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 65 AND "ticket_assignees"."ticket_id" = 19 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicketAssignee Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (19, 65, '2025-12-13 22:09:25.387005', '2025-12-13 22:09:25.387005') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTicket Load (1.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" ASC LIMIT 1 /*application='Backend'*/[0m
+Started GET "/api/tickets/17" for ::1 at 2025-12-13 17:16:58 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::TicketsController#show as JSON
+  Parameters: {"id" => "17"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Filter chain halted as :require_logged_in rendered or redirected
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:17:19 -0500
+Processing by Api::SessionsController#show as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:17:28 -0500
+Processing by Api::SessionsController#show as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:17:29 -0500
+Processing by Api::SessionsController#show as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:17:29 -0500
+Processing by Api::SessionsController#show as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:18:14 -0500
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Filter chain halted as :require_logged_in rendered or redirected
+Completed 200 OK in 10ms (Views: 1.1ms | ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:18:16 -0500
+Processing by Api::SessionsController#show as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:19:03 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ (rdbg)//Users/josephbergmann/Documents/SE project/IT-Support-Ticketing-System/backend/app/controllers/api/sessions_controller.rb:1:in 'Api::SessionsController#create'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'PKE1Igw0rZfY3yeelhlK2g' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'PKE1Igw0rZfY3yeelhlK2g' AND "users"."id" != 62 LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-12-13 22:20:10.646320', "session_token" = 'PKE1Igw0rZfY3yeelhlK2g' WHERE "users"."id" = 62 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 67272ms (Views: 20.5ms | ActiveRecord: 18.5ms (7 queries, 0 cached) | GC: 70.4ms)
+
+
+Started POST "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:20:21 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'PKE1Igw0rZfY3yeelhlK2g' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Filter chain halted as :require_logged_out rendered or redirected
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 2.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:20:24 -0500
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'PKE1Igw0rZfY3yeelhlK2g' LIMIT 1 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'ccLCQEszdhZGdvgGFgq0Pw' LIMIT 1 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'ccLCQEszdhZGdvgGFgq0Pw' AND "users"."id" != 62 LIMIT 1 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Update (3.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-12-13 22:20:24.439465', "session_token" = 'ccLCQEszdhZGdvgGFgq0Pw' WHERE "users"."id" = 62 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+Completed 200 OK in 30ms (Views: 0.3ms | ActiveRecord: 9.3ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/session?email=[FILTERED]&password=[FILTERED]" for ::1 at 2025-12-13 17:20:28 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:47:in 'User#generate_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' AND "users"."id" != 62 LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-12-13 22:20:28.259528', "session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' WHERE "users"."id" = 62 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | GC: 0.0ms)
+Completed 200 OK in 215ms (Views: 2.4ms | ActiveRecord: 3.5ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/tickets" for ::1 at 2025-12-13 17:20:44 -0500
+Processing by Api::TicketsController#create as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+Completed 400 Bad Request in 12ms (ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: ticket):
+  
+app/controllers/api/tickets_controller.rb:69:in 'Api::TicketsController#ticket_params'
+app/controllers/api/tickets_controller.rb:23:in 'Api::TicketsController#create'
+Started GET "/api/tickets" for ::1 at 2025-12-13 17:21:01 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (2.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  Rendered api/tickets/index.json.jbuilder (Duration: 31.7ms | GC: 7.4ms)
+Completed 500 Internal Server Error in 77ms (ActiveRecord: 4.5ms (3 queries, 0 cached) | GC: 10.3ms)
+
+
+  
+ActionView::Template::Error (Could not find the association :ticket_assignees in model Ticket)
+Caused by: ActiveRecord::HasManyThroughAssociationNotFoundError (Could not find the association :ticket_assignees in model Ticket)
+
+Information for: ActionView::Template::Error (Could not find the association :ticket_assignees in model Ticket):
+    13:     json.creator nil
+    14:   end
+    15: 
+    16:   if ticket.assignees
+    17:     json.assignees do |assignee|
+    18:       json.id    assignee.id
+    19:       json.name  assignee.name
+  
+app/views/api/tickets/index.json.jbuilder:16
+app/views/api/tickets/index.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+
+Information for cause: ActiveRecord::HasManyThroughAssociationNotFoundError (Could not find the association :ticket_assignees in model Ticket):
+  
+app/views/api/tickets/index.json.jbuilder:16
+app/views/api/tickets/index.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+  [1m[36mTicket Load (0.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (1.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (1.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+Started GET "/api/tickets" for ::1 at 2025-12-13 17:22:56 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  Rendered api/tickets/index.json.jbuilder (Duration: 7.7ms | GC: 3.5ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 3.2ms (3 queries, 0 cached) | GC: 5.0ms)
+
+
+  
+ActionView::Template::Error (Could not find the association :ticket_assignee in model Ticket)
+Caused by: ActiveRecord::HasManyThroughAssociationNotFoundError (Could not find the association :ticket_assignee in model Ticket)
+
+Information for: ActionView::Template::Error (Could not find the association :ticket_assignee in model Ticket):
+    13:     json.creator nil
+    14:   end
+    15: 
+    16:   if ticket.assignees
+    17:     json.assignees do |assignee|
+    18:       json.id    assignee.id
+    19:       json.name  assignee.name
+  
+app/views/api/tickets/index.json.jbuilder:16
+app/views/api/tickets/index.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+
+Information for cause: ActiveRecord::HasManyThroughAssociationNotFoundError (Could not find the association :ticket_assignee in model Ticket):
+  
+app/views/api/tickets/index.json.jbuilder:16
+app/views/api/tickets/index.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:11:in 'Api::TicketsController#index'
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."User_id" WHERE "ticket_assignees"."ticket_id" = 19 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."User_id" WHERE "ticket_assignees"."ticket_id" = 19 /* loading for inspect */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mTicket Load (1.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."User_id" WHERE "ticket_assignees"."ticket_id" = 19 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."User_id" WHERE "ticket_assignees"."ticket_id" = 19 /* loading for inspect */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (4.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+Started GET "/api/tickets" for ::1 at 2025-12-13 17:29:24 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+=======
 Started GET "/api/session" for ::1 at 2025-12-12 20:27:17 -0500
 Started GET "/api/tickets" for ::1 at 2025-12-12 20:27:17 -0500
   [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
@@ -9125,10 +9862,62 @@ Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.7ms (3 queries, 0 cached
 Started GET "/api/tickets" for ::1 at 2025-12-12 20:45:55 -0500
 Processing by Api::TicketsController#index as JSON
   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'MQp68kadJr68Nq03KCYIgQ' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+>>>>>>> 863763d170b27927691068e4db06474bc3d04454
   ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
   Rendering api/tickets/index.json.jbuilder
   [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
   ↳ app/views/api/tickets/index.json.jbuilder:1
+<<<<<<< HEAD
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  Rendered api/tickets/index.json.jbuilder (Duration: 5.7ms | GC: 0.0ms)
+Completed 200 OK in 43ms (Views: 6.8ms | ActiveRecord: 5.2ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 69 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 62 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mTicket Load (1.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 67 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (1.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 67 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+Started GET "/api/tickets" for ::1 at 2025-12-13 17:34:19 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  Rendered api/tickets/index.json.jbuilder (Duration: 15.0ms | GC: 6.2ms)
+Completed 200 OK in 24ms (Views: 16.1ms | ActiveRecord: 3.0ms (5 queries, 0 cached) | GC: 6.2ms)
+
+
+  [1m[36mTicket Load (1.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mTicket Load (1.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 ORDER BY "users"."id" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mTicket Load (0.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 ORDER BY "users"."id" ASC LIMIT 1 /*application='Backend'*/[0m
+Started GET "/api/tickets" for ::1 at 2025-12-13 17:36:49 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+=======
   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
   ↳ app/views/api/tickets/index.json.jbuilder:6
   [1m[36mUser Load (36.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
@@ -9422,10 +10211,88 @@ Completed 200 OK in 28ms (Views: 0.8ms | ActiveRecord: 7.3ms (1 query, 0 cached)
 Started GET "/api/tickets" for ::1 at 2025-12-12 20:47:06 -0500
 Processing by Api::TicketsController#index as JSON
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'JH6rs1Q5XVp6L-MUtzVD6w' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+>>>>>>> 863763d170b27927691068e4db06474bc3d04454
   ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
   Rendering api/tickets/index.json.jbuilder
   [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
   ↳ app/views/api/tickets/index.json.jbuilder:1
+<<<<<<< HEAD
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  Rendered api/tickets/index.json.jbuilder (Duration: 7.3ms | GC: 1.3ms)
+Completed 200 OK in 15ms (Views: 7.9ms | ActiveRecord: 2.9ms (5 queries, 0 cached) | GC: 1.9ms)
+
+
+Started GET "/api/tickets" for ::1 at 2025-12-13 17:37:19 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:18
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:18
+  Rendered api/tickets/index.json.jbuilder (Duration: 12.3ms | GC: 0.5ms)
+Completed 200 OK in 21ms (Views: 10.3ms | ActiveRecord: 5.4ms (8 queries, 0 cached) | GC: 1.4ms)
+
+
+Started GET "/api/tickets/19" for ::1 at 2025-12-13 17:38:49 -0500
+Processing by Api::TicketsController#show as JSON
+  Parameters: {"id" => "19"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = 19 LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#show'
+  Rendering api/tickets/show.json.jbuilder
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/show.json.jbuilder:4
+  Rendered api/tickets/show.json.jbuilder (Duration: 4.8ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 2.5ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method 'ticket' for an instance of #<Class:0x000000012519d720>)
+Caused by: NameError (undefined local variable or method 'ticket' for an instance of #<Class:0x000000012519d720>)
+
+Information for: ActionView::Template::Error (undefined local variable or method 'ticket' for an instance of #<Class:0x000000012519d720>):
+    4:     json.creator @ticket.creator
+    5:     if @ticket.assignees
+    6:         json.assignees do
+    7:             json.array! ticket.assignees do |assignee|
+    8:                 json.id assignee.id
+    9:                 json.name assignee.name
+   10:                 json.email assignee.email 
+  
+app/views/api/tickets/show.json.jbuilder:7
+app/views/api/tickets/show.json.jbuilder:6
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:16:in 'Api::TicketsController#show'
+
+Information for cause: NameError (undefined local variable or method 'ticket' for an instance of #<Class:0x000000012519d720>):
+  
+app/views/api/tickets/show.json.jbuilder:7
+app/views/api/tickets/show.json.jbuilder:6
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:16:in 'Api::TicketsController#show'
+Started GET "/api/tickets/19" for ::1 at 2025-12-13 17:39:06 -0500
+Processing by Api::TicketsController#show as JSON
+  Parameters: {"id" => "19"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
+=======
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
   ↳ app/views/api/tickets/index.json.jbuilder:6
   [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
@@ -22056,10 +22923,19 @@ Started GET "/api/tickets/19" for ::1 at 2025-12-12 21:41:46 -0500
 Processing by Api::TicketsController#show as JSON
   Parameters: {"id" => "19"}
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'JH6rs1Q5XVp6L-MUtzVD6w' LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
+>>>>>>> 863763d170b27927691068e4db06474bc3d04454
   ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
   [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = 19 LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
   ↳ app/controllers/api/tickets_controller.rb:14:in 'Api::TicketsController#show'
   Rendering api/tickets/show.json.jbuilder
+<<<<<<< HEAD
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/show.json.jbuilder:4
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /*action='show',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/show.json.jbuilder:7
+  Rendered api/tickets/show.json.jbuilder (Duration: 11.6ms | GC: 5.3ms)
+Completed 200 OK in 25ms (Views: 11.9ms | ActiveRecord: 3.0ms (4 queries, 0 cached) | GC: 9.4ms)
+=======
   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Backend',controller='tickets'*/[0m
   ↳ app/views/api/tickets/show.json.jbuilder:4
   Rendered api/tickets/show.json.jbuilder (Duration: 1.1ms | GC: 0.0ms)
@@ -27101,5 +27977,6 @@ Processing by Api::SessionsController#destroy as JSON
   [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*action='destroy',application='Backend',controller='sessions'*/[0m
   ↳ app/models/user.rb:23:in 'User#reset_session_token!'
 Completed 200 OK in 33ms (Views: 0.1ms | ActiveRecord: 7.4ms (4 queries, 0 cached) | GC: 0.2ms)
+>>>>>>> 863763d170b27927691068e4db06474bc3d04454
 
 

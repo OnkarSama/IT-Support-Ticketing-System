@@ -13,11 +13,13 @@ json.array! @tickets.compact do |ticket|
     json.creator nil
   end
 
-  if ticket.assignee
-    json.assignee do
-      json.id    ticket.assignee.id
-      json.name  ticket.assignee.name
-      json.email ticket.assignee.email
+  if ticket.assignees
+    json.assignees do
+      json.array! ticket.assignees do |assignee|
+        json.id    assignee.id
+        json.name  assignee.name
+        json.email assignee.email
+      end
     end
   else
     json.assignee nil
