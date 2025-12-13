@@ -1,9 +1,10 @@
-export type TicketStatus = "open" | "in progress" | "closed" ;
+export type TicketStatus = "Open" | "In Progress" | "Closed" ;
 
 export type Filter =  "open" | "in-progress" | "closed" | "all";
 
 export interface Ticket {
     id: number;
+    category: string;
     title: string;
     description: string;
     status: TicketStatus;

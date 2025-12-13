@@ -22,7 +22,7 @@ const endpoints = {
     createTicket: async (payload: ticketPayload) => {
         return await api('/tickets', {
             method: 'post',
-            data: payload,   // ← FIXED
+            data: payload,
         });
     },
 
@@ -31,6 +31,12 @@ const endpoints = {
             method: 'patch',
             data: payload,
 
+        })
+    },
+
+    deleteTicket: async (id: number) => {
+        return await api(`/tickets/${id}`, {
+            method : 'delete'
         })
     }
 

@@ -26,8 +26,7 @@ export default function NewTicketPage() {
         },
         onSuccess: () => {
             setSubmitting(false);
-            queryClient.invalidateQueries(["getTickets"]); // refresh ticket list
-            router.push("/dashboard");
+            queryClient.invalidateQueries(["getTickets"]).then(r => router.push("/dashboard")); // refresh ticket list
         },
         onError: (error) => {
             console.error("Create Ticket Error:", error);
