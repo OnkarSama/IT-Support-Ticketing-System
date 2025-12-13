@@ -1,13 +1,13 @@
 class Ticket < ApplicationRecord
     validates :title, presence: true, length: {maximum: 255}
     validates :description, presence: true, length: {maximum: 1000}
-
+    validates :priority, presence: true, inclusion: {in: ["low", "medium", "high"]}
     belongs_to :creator,
     class_name: "User"
 
-    belongs_to :assignee,
-    class_name: "User",
-    optional: true
+    has_many :assignees, 
+    through: :ticket_assignees, 
+    source: :User
 
     private
     def assigned_to_staff
