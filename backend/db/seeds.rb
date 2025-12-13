@@ -1,6 +1,7 @@
-Ticket.delete_all
-User.delete_all
 
+TicketAssignee.destroy_all
+Ticket.destroy_all
+User.destroy_all
 
 test_user = User.create!(
     name: "Joe B",
@@ -24,47 +25,17 @@ bob = User.create!(
 
 )
 
-# Clear existing data (FK-safe order)
-TicketAssignee.destroy_all
-Ticket.destroy_all
-User.destroy_all
-
 puts "Seeding users..."
 
 users = User.create!([
-  {
-    name: "Alice Johnson",
-    email: "alice.it@example.com",
-    password: "password",
-    role: "admin"
-  },
-  {
-    name: "Bob Smith",
-    email: "bob.support@example.com",
-    password: "password",
-    role: "technician"
-  },
-  {
-    name: "Carol Nguyen",
-    email: "carol.support@example.com",
-    password: "password",
-    role: "technician"
-  },
-  {
-    name: "David Lee",
-    email: "david.employee@example.com",
-    password: "password",
-    role: "employee"
-  },
-  {
-    name: "Emma Davis",
-    email: "emma.employee@example.com",
-    password: "password",
-    role: "employee"
-  }
+  { name: "Alice Johnson", email: "alice.johnson@example.com", password: "password", role: "faculty" },
+  { name: "Bob Smith", email: "bob.smith@example.com", password: "password", role: "staff" },
+  { name: "Carol Nguyen", email: "carol.nguyen@example.com", password: "password", role: "staff" },
+  { name: "David Lee", email: "david.lee@example.com", password: "password", role: "student" },
+  { name: "Emma Davis", email: "emma.davis@example.com", password: "password", role: "student" }
 ])
 
-admin, tech1, tech2, employee1, employee2 = users
+faculty, staff1, staff2, student1, student2 = users
 
 puts "Seeding tickets..."
 
@@ -75,8 +46,7 @@ tickets = Ticket.create!([
     category: "email",
     status: "open",
     priority: "high",
-    creator: employee1,
-    assignee: tech1
+    creator: student1
   },
   {
     title: "VPN connection drops intermittently",
@@ -84,8 +54,7 @@ tickets = Ticket.create!([
     category: "network",
     status: "open",
     priority: "medium",
-    creator: employee2,
-    assignee: tech2
+    creator: student2
   },
   {
     title: "Laptop running extremely slow",
@@ -93,44 +62,23 @@ tickets = Ticket.create!([
     category: "hardware",
     status: "in_progress",
     priority: "medium",
-    creator: employee1,
-    assignee: tech1
-  },
-  {
-    title: "Software installation request",
-    description: "Need Adobe Acrobat installed for document review.",
-    category: "software",
-    status: "closed",
-    priority: "low",
-    creator: employee2,
-    assignee: tech2
-  },
-  {
-    title: "Security alert: suspicious login",
-    description: "Received alert for login attempt from unknown location.",
-    category: "security",
-    status: "open",
-    priority: "high",
-    creator: employee1,
-    assignee: tech1
+    creator: student1
   }
 ])
 
 puts "Seeding ticket assignees..."
 
+# Add multiple assignees per ticket
 TicketAssignee.create!([
-  # Primary assignments
-  { ticket: tickets[0], user: tech1 },
-  { ticket: tickets[1], user: tech2 },
-  { ticket: tickets[2], user: tech1 },
-  { ticket: tickets[3], user: tech2 },
-  { ticket: tickets[4], user: tech1 },
+  { ticket: tickets[0], user: staff1 },
+  { ticket: tickets[0], user: staff2 },
 
-  # Secondary / collaborative assignments
-  { ticket: tickets[4], user: tech2 },
-  { ticket: tickets[2], user: tech2 }
+  { ticket: tickets[1], user: staff2 },
+  { ticket: tickets[1], user: faculty },
+
+  { ticket: tickets[2], user: staff1 },
+  { ticket: tickets[2], user: staff2 },
+  { ticket: tickets[2], user: faculty }
 ])
 
-puts "✅ IT ticketing seed complete!"
-
-# ticket2 = Ticket.create!
+puts "Seed complete!"

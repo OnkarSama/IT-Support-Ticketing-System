@@ -30,9 +30,8 @@ class User < ApplicationRecord
     dependent: :destroy
 
     has_many :tickets_assigned,
-    class_name: "Ticket",
-    foreign_key: :assignee_id,
-    dependent: :nullify
+    through: :ticket_assignees,
+    source: :Ticket
 
     private
     def role_must_be_valid
