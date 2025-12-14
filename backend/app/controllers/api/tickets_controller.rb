@@ -40,8 +40,12 @@ class Api::TicketsController < ApplicationController
             return render json: {message: 'Unauthorized'}, status: :unauthorized
         end
 
+        if ticket_params.assignee_ids
+            @ticket.assignees = User.where(id: assignee_ids).where(role: "staff")
+        end
+
         if @ticket.update(ticket_params)
-        render :show
+            render :show
         else
             render json: {errors: @ticket.errors.full_messages}, status: :unprocessable_entity
         end
@@ -66,6 +70,6 @@ class Api::TicketsController < ApplicationController
 
     private
     def ticket_params
-        params.require(:ticket).permit(:title, :description, :status, :assignee_id, :priority, :category)
+        params.require(:ticket).permit(:title, :description, :status, :assignee_ids, :priority, :category)
     end
 end
