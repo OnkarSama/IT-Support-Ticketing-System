@@ -24,9 +24,9 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
     const router = useRouter();
     const searchParams = useSearchParams();
 
-    // ---- INITIAL STATE FROM URL ----
+
     const initialPage = Number(searchParams.get("page")) || 1;
-    const initialRows = Number(searchParams.get("rows")) || 30;
+    const initialRows = Number(searchParams.get("rows")) || 10;
 
     const [page, setPage] = React.useState(initialPage);
     const [rowsPerPage, setRowsPerPage] = React.useState(initialRows);
@@ -36,7 +36,6 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         direction: "ascending",
     });
 
-    // ---- COLOR MAPS ----
     const categoryColorMap: Record<
         string,
         "primary" | "secondary" | "success" | "warning" | "danger"
@@ -45,16 +44,20 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         software: "secondary",
         network: "warning",
         access: "danger",
-        login: "success",
+        email: "success",
     };
 
     const statusColorMap: Record<string, "success" | "warning" | "danger"> = {
         Open: "success",
         "In Progress": "warning",
         Closed: "danger",
+
+        high: "danger",
+        low: "success",
+        medium: "warning",
     };
 
-    // ---- FILTER ----
+
     const filteredTickets = React.useMemo(() => {
         if (!Array.isArray(tickets)) return [];
 
@@ -70,12 +73,12 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         });
     }, [tickets, filter]);
 
-    // reset page ONLY when filter changes
+
     React.useEffect(() => {
         setPage(1);
     }, [filter]);
 
-    // ---- SORT ----
+
     const sortedTickets = React.useMemo(() => {
         const sorted = [...filteredTickets];
         const { column, direction } = sortDescriptor;
@@ -94,7 +97,7 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         return sorted;
     }, [filteredTickets, sortDescriptor]);
 
-    // ---- PAGINATION ----
+
     const displayedTickets = React.useMemo(() => {
         const start = (page - 1) * rowsPerPage;
         return sortedTickets.slice(start, start + rowsPerPage);
@@ -102,7 +105,7 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
 
     const pages = Math.max(1, Math.ceil(sortedTickets.length / rowsPerPage));
 
-    // clamp page if rowsPerPage changes or tickets shrink
+
     React.useEffect(() => {
         if (page > pages) {
             setPage(pages);
@@ -113,10 +116,9 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
     React.useEffect(() => {
         const params = new URLSearchParams(searchParams.toString());
         params.set("page", String(page));
-        params.set("rows", String(rowsPerPage));
 
         router.replace(`?${params.toString()}`, { scroll: false });
-    }, [page, rowsPerPage]);
+    }, [page]);
 
     const onRowsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setRowsPerPage(Number(e.target.value));
@@ -185,6 +187,7 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                     <TableColumn key="id" allowsSorting>Number</TableColumn>
                     <TableColumn key="title" allowsSorting>Title</TableColumn>
                     <TableColumn key="status" allowsSorting>Status</TableColumn>
+                    <TableColumn key="priority" allowsSorting>Priority</TableColumn>
                     <TableColumn key="category" allowsSorting>Category</TableColumn>
                     <TableColumn key="description">Description</TableColumn>
                     <TableColumn key="assignees">Assignees</TableColumn>
@@ -213,6 +216,15 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                             </TableCell>
 
                             <TableCell>
+                                <Chip size="sm" color={statusColorMap[ticket.priority ?? "Medium"]}>
+                                    {(ticket.priority || "Medium")
+                                        .charAt(0)
+                                        .toUpperCase() + (ticket.priority || "Medium").slice(1)}
+                                </Chip>
+                            </TableCell>
+
+
+                            <TableCell>
                                 <Chip
                                     size="sm"
                                     variant="flat"
@@ -231,7 +243,9 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                             </TableCell>
 
                             <TableCell>
-                                {ticket?.assignee?.name || "No Assignees"}
+                                {ticket?.assignees?.length
+                                    ? ticket.assignees.map(a => a.name).join(", ")
+                                    : "No Assignees"}
                             </TableCell>
 
                             <TableCell>
@@ -255,19 +269,6 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                     onChange={setPage}
                 />
 
-                <label className="flex items-center gap-2 text-default-400 text-small">
-                    Rows per page:
-                    <select
-                        className="bg-transparent outline-none text-default-400 text-small"
-                        value={rowsPerPage}
-                        onChange={onRowsPerPageChange}
-                    >
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="15">15</option>
-                        <option value="30">30</option>
-                    </select>
-                </label>
             </div>
         </>
     );

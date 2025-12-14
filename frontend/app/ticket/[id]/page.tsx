@@ -1,7 +1,7 @@
 "use client";
 
-import { use, useEffect, useState, FormEvent } from "react";
-import { useRouter } from "next/navigation";
+import {use, useEffect, useState, FormEvent} from "react";
+import {useRouter} from "next/navigation";
 import {
     Card,
     Button,
@@ -9,29 +9,32 @@ import {
     Textarea,
     Form,
     Select,
-    SelectItem,
+    SelectItem, type SelectedItems, Chip, Avatar,
 } from "@heroui/react";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import {useQuery, useMutation, useQueryClient} from "@tanstack/react-query";
 
-import { useSearchParams } from "next/navigation";
+import {useSearchParams} from "next/navigation";
 
 import apiRouter from "@/api/router";
-import type { TicketPayload } from "@/api/ticket";
+import type {TicketPayload} from "@/api/ticket";
+import type {User} from "@/api/user";
 
 import DeleteTicketModal from "@/components/DeleteTicketModal";
+
+
+type Assignee = Pick<User, "id" | "name" | "email">;
 
 interface PageProps {
     params: Promise<{ id: number }>;
 }
 
-export default function EditTicketPage({ params }: PageProps) {
+export default function EditTicketPage({params}: PageProps) {
 
-    const searchParams = useSearchParams();
-
-    const { id: ticketIdString } = use(params);
+    const {id: ticketIdString} = use(params);
     const ticketId = Number(ticketIdString);
 
     const router = useRouter();
+    const searchParams = useSearchParams();
     const queryClient = useQueryClient();
 
     const [submitting, setSubmitting] = useState(false);
@@ -41,39 +44,57 @@ export default function EditTicketPage({ params }: PageProps) {
         category: "",
         description: "",
         status: "Open",
-        assigneeID: null,
+        priority: "Medium",
+        assignee_ids: [],
     });
 
-    const { title, description, status, category } = formState;
 
-    const { data: ticketData, isLoading, refetch } = useQuery({
+    const {title, description, priority, status, category, assignee_ids} = formState;
+
+
+    const {data: ticketData, isLoading, refetch} = useQuery({
         queryKey: ["getTicketById", ticketId],
         queryFn: () => apiRouter.tickets.getTicketById(ticketId),
     });
 
-    const { data: userData } = useQuery({
+    const {data: currentUserData} = useQuery({
         queryKey: ["showUser"],
         queryFn: () => apiRouter.sessions.showUser(),
     });
 
-    const isStaff = userData?.user?.role === "staff";
+    const isStaff = currentUserData?.user?.role === "staff";
     const ticket = ticketData?.ticket;
 
+    const {data: users = []} = useQuery<Assignee[]>({
+        queryKey: ["users"],
+        queryFn: async () => {
+            const result = await apiRouter.users.showUsers();
+            return result.map(({id, name, email}: User) => ({
+                id,
+                name,
+                email,
+            }));
+        },
+    });
+
+    console.log(users);
     useEffect(() => {
-        if (ticket) {
-            setFormState({
-                title: ticket.title || "",
-                category: ticket.category || "",
-                description: ticket.description || "",
-                status: ticket.status || "Open",
-                assigneeID: ticket.assignee?.id ?? null,
-            });
-        }
+        if (!ticket) return;
+
+        setFormState({
+            title: ticket.title || "",
+            category: ticket.category || "",
+            description: ticket.description || "",
+            status: ticket.status || "Open",
+            priority: priority.toLowerCase() || "Medium",
+            assignee_ids: ticket.assignees?.map(a => a.id) ?? [],
+        });
     }, [ticket]);
+
 
     const updateMutation = useMutation({
         mutationFn: async (payload: typeof formState) => {
-            const ticketPayload: TicketPayload = { ticket: { ...payload } };
+            const ticketPayload: TicketPayload = {ticket: {...payload}};
             return apiRouter.tickets.updateTicket(ticketId, ticketPayload);
         },
         onSuccess: () => {
@@ -91,7 +112,7 @@ export default function EditTicketPage({ params }: PageProps) {
     const deleteMutation = useMutation({
         mutationFn: async (id: number) => apiRouter.tickets.deleteTicket(id),
         onSuccess: () => {
-            queryClient.invalidateQueries(["getTickets"]);
+            queryClient.invalidateQueries({queryKey: ["getTickets"]});
             router.push(`/dashboard?${searchParams.toString()}`);
         },
         onError: (error) => {
@@ -102,6 +123,7 @@ export default function EditTicketPage({ params }: PageProps) {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        console.log("FORM STATE BEING SENT:", formState);
         setSubmitting(true);
         updateMutation.mutate(formState);
     };
@@ -132,42 +154,105 @@ export default function EditTicketPage({ params }: PageProps) {
                             labelPlacement="inside"
                             value={title}
                             onChange={(e) =>
-                                setFormState((p) => ({ ...p, title: e.target.value }))
+                                setFormState((p) => ({...p, title: e.target.value}))
                             }
                         />
 
-                        <Select
-                            label="Status"
-                            labelPlacement="inside"
-                            defaultSelectedKeys={[status]}
-                            className="max-w-xs"
-                            onSelectionChange={(keys) => {
-                                const value = Array.from(keys)[0] as string;
-                                setFormState((p) => ({ ...p, status: value }));
-                            }}
-                        >
-                            <SelectItem key="Open">Open</SelectItem>
-                            <SelectItem key="In Progress">In Progress</SelectItem>
-                            <SelectItem key="Closed">Closed</SelectItem>
-                        </Select>
+                        <div className="grid grid-cols-2 gap-4 w-full">
 
-                        <Select
-                            label="Category"
-                            labelPlacement="inside"
-                            defaultSelectedKeys={category}
-                            placeholder="Select a category"
-                            className="max-w-xs"
-                            onSelectionChange={(keys) => {
-                                const value = Array.from(keys)[0] as string;
-                                setFormState((p) => ({ ...p, category: value }));
-                            }}
-                        >
-                            <SelectItem key="Access">Access</SelectItem>
-                            <SelectItem key="Network">Network</SelectItem>
-                            <SelectItem key="Hardware">Hardware</SelectItem>
-                            <SelectItem key="Software">Software</SelectItem>
-                            <SelectItem key="Other">Other</SelectItem>
-                        </Select>
+                            <Select
+                                label="Status"
+                                labelPlacement="inside"
+                                defaultSelectedKeys={[status]}
+                                className="w-full"
+                                onSelectionChange={(keys) => {
+                                    const value = Array.from(keys)[0] as string;
+                                    setFormState((p) => ({...p, status: value}));
+                                }}
+                            >
+                                <SelectItem key="Open">Open</SelectItem>
+                                <SelectItem key="In Progress">In Progress</SelectItem>
+                                <SelectItem key="Closed">Closed</SelectItem>
+                            </Select>
+
+
+                            <Select
+                                label="Category"
+                                labelPlacement="inside"
+                                selectedKeys={category ? [category] : []}
+                                placeholder="Select a category"
+                                className="w-full"
+                                onSelectionChange={(keys) => {
+                                    const value = Array.from(keys)[0] as string;
+                                    setFormState((p) => ({...p, category: value}));
+                                }}
+                            >
+                                <SelectItem key="Access">Access</SelectItem>
+                                <SelectItem key="Network">Network</SelectItem>
+                                <SelectItem key="Hardware">Hardware</SelectItem>
+                                <SelectItem key="Software">Software</SelectItem>
+                                <SelectItem key="Other">Other</SelectItem>
+                            </Select>
+                        </div>
+
+                        {isStaff && (
+                            <>
+                                <div className="grid grid-cols-2 gap-4 w-full">
+                                    <Select
+                                        items={users}
+                                        label="Assign To"
+                                        labelPlacement="inside"
+                                        selectionMode="multiple"
+                                        isMultiline
+                                        selectedKeys={new Set(assignee_ids.map(String))}
+                                        className="w-full"
+                                        placeholder="Select assignees"
+                                        onSelectionChange={(keys) => {
+                                            const ids = Array.from(keys).map(Number);
+                                            setFormState((p) => ({...p, assignee_ids: ids}));
+                                        }}
+                                        renderValue={(items: SelectedItems<Assignee>) => (
+                                            <div className="flex flex-wrap gap-2">
+                                                {items.map((item) => (
+                                                    <Chip key={item.key}>{item.data?.name}</Chip>
+                                                ))}
+                                            </div>
+                                        )}
+                                    >
+                                        {(user) => (
+                                            <SelectItem key={String(user.id)} textValue={user.name}>
+                                                <div className="flex gap-2 items-center">
+                                                    <Avatar size="sm" name={user.name}/>
+                                                    <div className="flex flex-col">
+                                                        <span className="text-small">{user.name}</span>
+                                                        <span className="text-tiny text-default-400">
+                {user.email}
+              </span>
+                                                    </div>
+                                                </div>
+                                            </SelectItem>
+                                        )}
+                                    </Select>
+
+                                    <Select
+                                        label="Priority"
+                                        labelPlacement="inside"
+                                        selectedKeys={priority ? [priority] : []}
+                                        placeholder="Select a Priority"
+                                        className="w-full"
+                                        onSelectionChange={(keys) => {
+                                            const value = Array.from(keys)[0] as string;
+                                            setFormState((p) => ({...p, priority: value}));
+                                        }}
+                                    >
+                                        <SelectItem key="Low">Low</SelectItem>
+                                        <SelectItem key="Medium">Medium</SelectItem>
+                                        <SelectItem key="High">High</SelectItem>
+                                    </Select>
+                                </div>
+                            </>
+                        )}
+
 
                         <Textarea
                             isRequired
@@ -175,7 +260,7 @@ export default function EditTicketPage({ params }: PageProps) {
                             minRows={4}
                             value={description}
                             onChange={(e) =>
-                                setFormState((p) => ({ ...p, description: e.target.value }))
+                                setFormState((p) => ({...p, description: e.target.value}))
                             }
                         />
 
@@ -188,10 +273,12 @@ export default function EditTicketPage({ params }: PageProps) {
                                         title: ticket.title || "",
                                         category: ticket.category || "",
                                         description: ticket.description || "",
+                                        priority: ticket.priority || "Medium",
                                         status: ticket.status || "Open",
-                                        assigneeID: ticket.assignee?.id ?? null,
+                                        assignee_ids: ticket.assignees?.map(a => a.id) ?? [],
                                     })
                                 }
+
                             >
                                 Reset
                             </Button>

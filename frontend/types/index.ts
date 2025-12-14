@@ -1,6 +1,12 @@
-export type TicketStatus = "Open" | "In Progress" | "Closed" ;
+export type TicketStatus = "Open" | "In Progress" | "Closed";
 
-export type Filter =  "open" | "in-progress" | "closed" | "all";
+export type Filter = "open" | "in-progress" | "closed" | "all";
+
+export interface Assignee {
+    id: number;
+    name: string;
+    email: string;
+}
 
 export interface Ticket {
     id: number;
@@ -8,16 +14,13 @@ export interface Ticket {
     title: string;
     description: string;
     status: TicketStatus;
+    priority: string;
     creator: {
         id: number;
         name: string;
         email: string;
     };
-    assignee?: {
-        id: number;
-        name: string;
-        email: string;
-    } | null;
+    assignees?: Assignee[] | null;
     created_at: string;
     updated_at: string;
 }

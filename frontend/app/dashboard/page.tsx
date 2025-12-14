@@ -13,7 +13,7 @@ export default function HomePage() {
     const router = useRouter();
     const [filter, setFilter] = useState<Filter | null>(null);
 
-    const { data, refetch } = useQuery<Ticket[]>({ queryKey: ['getUsers'], queryFn: apiRouter.tickets.getTickets})
+    const { data, refetch } = useQuery<Ticket[]>({ queryKey: ['getTickets'], queryFn: apiRouter.tickets.getTickets})
 
     console.log(data);
     const handleNewTicketWindow = () => {
