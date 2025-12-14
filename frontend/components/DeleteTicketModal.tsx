@@ -14,14 +14,12 @@ type Props = {
     ticketId: number;
     deleteFn: () => void | Promise<void>;
     onDeleted?: () => void;
-    className?: string;
 };
 
 export default function DeleteTicketModal({
                                               ticketId,
                                               deleteFn,
-                                              onDeleted,
-                                              className,
+                                              onDeleted
                                           }: Props) {
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -40,7 +38,7 @@ export default function DeleteTicketModal({
     };
 
     return (
-        <div className={className}>
+        <>
             {/* DELETE BUTTON */}
             <Button color="danger" onPress={() => setOpen(true)}>
                 Delete
@@ -76,6 +74,6 @@ export default function DeleteTicketModal({
                     </ModalFooter>
                 </ModalContent>
             </Modal>
-        </div>
+        </>
     );
 }

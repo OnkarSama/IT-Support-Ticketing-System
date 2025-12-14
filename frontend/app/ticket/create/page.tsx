@@ -114,10 +114,10 @@ export default function NewTicketPage() {
 
                         <div
                             className={`grid w-full gap-4 ${
-                                isStaff ? "grid-cols-3" : "grid-cols-1"
+                                isStaff ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3" : "grid-cols-1"
                             }`}
                         >
-                        {isStaff && (
+                            {isStaff && (
                                 <Select
                                     label="Status"
                                     labelPlacement="inside"
@@ -140,15 +140,11 @@ export default function NewTicketPage() {
                                     selectedKeys={[priority]}
                                     className="w-full"
                                     onSelectionChange={(keys) =>
-                                        setPriority(
-                                            Array.from(keys)[0] as string
-                                        )
+                                        setPriority(Array.from(keys)[0] as string)
                                     }
                                 >
                                     <SelectItem key="Low">Low</SelectItem>
-                                    <SelectItem key="Medium">
-                                        Medium
-                                    </SelectItem>
+                                    <SelectItem key="Medium">Medium</SelectItem>
                                     <SelectItem key="High">High</SelectItem>
                                 </Select>
                             )}
@@ -159,9 +155,7 @@ export default function NewTicketPage() {
                                 selectedKeys={category ? [category] : []}
                                 className="w-full"
                                 onSelectionChange={(keys) =>
-                                    setCategory(
-                                        Array.from(keys)[0] as string
-                                    )
+                                    setCategory(Array.from(keys)[0] as string)
                                 }
                             >
                                 <SelectItem key="Access">Access</SelectItem>
@@ -183,45 +177,32 @@ export default function NewTicketPage() {
                                 className="w-full"
                                 placeholder="Select assignees"
                                 onSelectionChange={(keys) =>
-                                    setSelectedAssignees(
-                                        new Set(keys as Set<string>)
-                                    )
+                                    setSelectedAssignees(new Set(keys as Set<string>))
                                 }
-                                renderValue={(
-                                    items: SelectedItems<Assignee>
-                                ) => (
+                                renderValue={(items: SelectedItems<Assignee>) => (
                                     <div className="flex flex-wrap gap-2">
                                         {items.map((item) => (
-                                            <Chip key={item.key}>
-                                                {item.data?.name}
-                                            </Chip>
+                                            <Chip key={item.key}>{item.data?.name}</Chip>
                                         ))}
                                     </div>
                                 )}
                             >
                                 {(user) => (
-                                    <SelectItem
-                                        key={String(user.id)}
-                                        textValue={user.name}
-                                    >
+                                    <SelectItem key={String(user.id)} textValue={user.name}>
                                         <div className="flex gap-2 items-center">
-                                            <Avatar
-                                                size="sm"
-                                                name={user.name}
-                                            />
+                                            <Avatar size="sm" name={user.name} />
                                             <div className="flex flex-col">
-                                                <span className="text-small">
-                                                    {user.name}
-                                                </span>
+                                                <span className="text-small">{user.name}</span>
                                                 <span className="text-tiny text-default-400">
-                                                    {user.email}
-                                                </span>
+                            {user.email}
+                        </span>
                                             </div>
                                         </div>
                                     </SelectItem>
                                 )}
                             </Select>
                         )}
+
 
                         <Textarea
                             isRequired
@@ -231,17 +212,15 @@ export default function NewTicketPage() {
                             minRows={4}
                         />
 
-                        <div className="flex justify-end gap-4">
-                            <Button
-                                type="submit"
-                                color="primary"
-                                isDisabled={submitting}
-                            >
-                                {submitting
-                                    ? "Creating..."
-                                    : "Create Ticket"}
-                            </Button>
-                        </div>
+                        <Button
+                            type="submit"
+                            color="primary"
+                            className="w-full"
+                            isDisabled={submitting}
+                        >
+                            {submitting ? "Creating..." : "Create Ticket"}
+                        </Button>
+
                     </Form>
                 </Card>
             </div>
