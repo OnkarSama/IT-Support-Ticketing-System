@@ -64,7 +64,7 @@ export default function NewTicketPage() {
                 ticket: {
                     title: formData.title,
                     description: formData.description,
-                    status: status.toLowerCase().replace(" ", "_"),
+                    status: status,
                     priority: priority.toLowerCase(),
                     category,
                     assigneeIDs,
@@ -122,9 +122,7 @@ export default function NewTicketPage() {
                                 }
                             >
                                 <SelectItem key="Open">Open</SelectItem>
-                                <SelectItem key="In Progress">
-                                    In Progress
-                                </SelectItem>
+                                <SelectItem key="In Progress">In Progress</SelectItem>
                                 <SelectItem key="Closed">Closed</SelectItem>
                             </Select>
 
