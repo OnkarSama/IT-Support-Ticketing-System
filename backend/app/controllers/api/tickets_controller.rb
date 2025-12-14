@@ -10,6 +10,7 @@ class Api::TicketsController < ApplicationController
         end
         render :index
     end
+
     def show
         @ticket = Ticket.find_by(id: params[:id])
         if current_user.role == "staff" || @ticket.creator_id == current_user.id

@@ -2,7 +2,7 @@ json.ticket do
     json.extract! @ticket, :id, :title, :description, :status, :category, :priority, :created_at, :updated_at
     
     json.creator @ticket.creator
-    if @ticket.assignees
+    if @ticket.assignees.any?
         json.assignees do
             json.array! @ticket.assignees do |assignee|
                 json.id assignee.id
