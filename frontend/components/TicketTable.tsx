@@ -36,7 +36,6 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         direction: "ascending",
     });
 
-    // ---- COLOR MAPS ----
     const categoryColorMap: Record<
         string,
         "primary" | "secondary" | "success" | "warning" | "danger"
@@ -45,13 +44,17 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         software: "secondary",
         network: "warning",
         access: "danger",
-        login: "success",
+        email: "success",
     };
 
     const statusColorMap: Record<string, "success" | "warning" | "danger"> = {
         Open: "success",
         "In Progress": "warning",
         Closed: "danger",
+
+        high: "danger",
+        low: "success",
+        medium: "warning",
     };
 
     // ---- FILTER ----
@@ -185,6 +188,7 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                     <TableColumn key="id" allowsSorting>Number</TableColumn>
                     <TableColumn key="title" allowsSorting>Title</TableColumn>
                     <TableColumn key="status" allowsSorting>Status</TableColumn>
+                    <TableColumn key="priority" allowsSorting>Priority</TableColumn>
                     <TableColumn key="category" allowsSorting>Category</TableColumn>
                     <TableColumn key="description">Description</TableColumn>
                     <TableColumn key="assignees">Assignees</TableColumn>
@@ -213,6 +217,15 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                             </TableCell>
 
                             <TableCell>
+                                <Chip size="sm" color={statusColorMap[ticket.priority ?? "Medium"]}>
+                                    {(ticket.priority || "Medium")
+                                        .charAt(0)
+                                        .toUpperCase() + (ticket.priority || "Medium").slice(1)}
+                                </Chip>
+                            </TableCell>
+
+
+                            <TableCell>
                                 <Chip
                                     size="sm"
                                     variant="flat"
@@ -231,7 +244,9 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                             </TableCell>
 
                             <TableCell>
-                                {ticket?.assignee?.name || "No Assignees"}
+                                {ticket?.assignees?.length
+                                    ? ticket.assignees.map(a => a.name).join(", ")
+                                    : "No Assignees"}
                             </TableCell>
 
                             <TableCell>

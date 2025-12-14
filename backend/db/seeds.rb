@@ -11,7 +11,7 @@ test_user = User.create!(
 )
 
 alice = User.create!(
-  name: "Alice Admin",
+  name: "Alice Johnson",
   email: "alice@example.com",
   password: "password123",
   role: "staff"
@@ -43,24 +43,24 @@ tickets = Ticket.create!([
   {
     title: "Cannot access email account",
     description: "Outlook fails to authenticate after password reset.",
-    category: "email",
-    status: "open",
+    category: "Email",
+    status: "Open",
     priority: "high",
     creator: student1
   },
   {
     title: "VPN connection drops intermittently",
     description: "VPN disconnects every 10–15 minutes while working remotely.",
-    category: "network",
-    status: "open",
+    category: "Network",
+    status: "Open",
     priority: "medium",
     creator: student2
   },
   {
     title: "Laptop running extremely slow",
     description: "System freezes when opening multiple applications.",
-    category: "hardware",
-    status: "in_progress",
+    category: "Hardware",
+    status: "In Progress",
     priority: "medium",
     creator: student1
   }

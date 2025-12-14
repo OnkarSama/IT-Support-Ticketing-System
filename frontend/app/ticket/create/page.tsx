@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { useRouter } from "next/navigation";
+import {useRouter, useSearchParams} from "next/navigation";
 import {
     Card,
     Button,
@@ -23,6 +23,8 @@ type Assignee = Pick<User, "id" | "name" | "email">;
 export default function NewTicketPage() {
     const router = useRouter();
     const queryClient = useQueryClient();
+
+    const searchParams = useSearchParams();
 
     const [submitting, setSubmitting] = useState(false);
 
@@ -56,24 +58,22 @@ export default function NewTicketPage() {
 
     const createMutation = useMutation({
         mutationFn: async (formData: Record<string, any>) => {
-            const assigneeID =
-                selectedAssignees.size > 0
-                    ? Number(Array.from(selectedAssignees)[0])
-                    : null;
+            const assigneeIDs = Array.from(selectedAssignees).map(Number);
 
             return apiRouter.tickets.createTicket({
                 ticket: {
                     title: formData.title,
                     description: formData.description,
-                    status,
+                    status: status.toLowerCase().replace(" ", "_"),
+                    priority: priority.toLowerCase(),
                     category,
-                    assigneeID,
+                    assigneeIDs,
                 },
             });
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["getTickets"] });
-            router.push("/dashboard");
+            router.push(`/dashboard?${searchParams.toString()}`);
         },
         onError: (err) => {
             console.error("Create Ticket Error:", err);
@@ -112,53 +112,61 @@ export default function NewTicketPage() {
                         />
 
                         <div className="grid grid-cols-3 gap-4 w-full">
-
-                        <Select
-                            label="Status"
-                            labelPlacement="inside"
-                            selectedKeys={[status]}
-                            className="w-full"
-                            onSelectionChange={(keys) =>
-                                setStatus(Array.from(keys)[0] as string)
-                            }
-                        >
-                            <SelectItem key="Open">Open</SelectItem>
-                            <SelectItem key="In Progress">In Progress</SelectItem>
-                            <SelectItem key="Closed">Closed</SelectItem>
-                        </Select>
+                            <Select
+                                label="Status"
+                                labelPlacement="inside"
+                                selectedKeys={[status]}
+                                className="w-full"
+                                onSelectionChange={(keys) =>
+                                    setStatus(Array.from(keys)[0] as string)
+                                }
+                            >
+                                <SelectItem key="Open">Open</SelectItem>
+                                <SelectItem key="In Progress">
+                                    In Progress
+                                </SelectItem>
+                                <SelectItem key="Closed">Closed</SelectItem>
+                            </Select>
 
                             {isStaff && (
-                        <Select
-                            label="Priority"
-                            labelPlacement="inside"
-                            selectedKeys={[priority]}
-                            className="w-full"
-                            onSelectionChange={(keys) =>
-                                setPriority(Array.from(keys)[0] as string)
-                            }
-                        >
-                            <SelectItem key="Low">Low</SelectItem>
-                            <SelectItem key="Medium">Medium</SelectItem>
-                            <SelectItem key="High">High</SelectItem>
-                        </Select>)}
+                                <Select
+                                    label="Priority"
+                                    labelPlacement="inside"
+                                    selectedKeys={[priority]}
+                                    className="w-full"
+                                    onSelectionChange={(keys) =>
+                                        setPriority(
+                                            Array.from(keys)[0] as string
+                                        )
+                                    }
+                                >
+                                    <SelectItem key="Low">Low</SelectItem>
+                                    <SelectItem key="Medium">
+                                        Medium
+                                    </SelectItem>
+                                    <SelectItem key="High">High</SelectItem>
+                                </Select>
+                            )}
 
-                        <Select
-                            label="Category"
-                            labelPlacement="inside"
-                            selectedKeys={category ? [category] : []}
-                            className="w-full"
-                            onSelectionChange={(keys) =>
-                                setCategory(Array.from(keys)[0] as string)
-                            }
-                        >
-                            <SelectItem key="Access">Access</SelectItem>
-                            <SelectItem key="Network">Network</SelectItem>
-                            <SelectItem key="Hardware">Hardware</SelectItem>
-                            <SelectItem key="Software">Software</SelectItem>
-                            <SelectItem key="Other">Other</SelectItem>
-                        </Select>
-
+                            <Select
+                                label="Category"
+                                labelPlacement="inside"
+                                selectedKeys={category ? [category] : []}
+                                className="w-full"
+                                onSelectionChange={(keys) =>
+                                    setCategory(
+                                        Array.from(keys)[0] as string
+                                    )
+                                }
+                            >
+                                <SelectItem key="Access">Access</SelectItem>
+                                <SelectItem key="Network">Network</SelectItem>
+                                <SelectItem key="Hardware">Hardware</SelectItem>
+                                <SelectItem key="Software">Software</SelectItem>
+                                <SelectItem key="Other">Other</SelectItem>
+                            </Select>
                         </div>
+
                         {isStaff && (
                             <Select
                                 items={users}
@@ -170,9 +178,13 @@ export default function NewTicketPage() {
                                 className="w-full"
                                 placeholder="Select assignees"
                                 onSelectionChange={(keys) =>
-                                    setSelectedAssignees(new Set(keys as Set<string>))
+                                    setSelectedAssignees(
+                                        new Set(keys as Set<string>)
+                                    )
                                 }
-                                renderValue={(items: SelectedItems<Assignee>) => (
+                                renderValue={(
+                                    items: SelectedItems<Assignee>
+                                ) => (
                                     <div className="flex flex-wrap gap-2">
                                         {items.map((item) => (
                                             <Chip key={item.key}>
@@ -188,12 +200,17 @@ export default function NewTicketPage() {
                                         textValue={user.name}
                                     >
                                         <div className="flex gap-2 items-center">
-                                            <Avatar size="sm" name={user.name} />
+                                            <Avatar
+                                                size="sm"
+                                                name={user.name}
+                                            />
                                             <div className="flex flex-col">
-                                                <span className="text-small">{user.name}</span>
+                                                <span className="text-small">
+                                                    {user.name}
+                                                </span>
                                                 <span className="text-tiny text-default-400">
-                          {user.email}
-                        </span>
+                                                    {user.email}
+                                                </span>
                                             </div>
                                         </div>
                                     </SelectItem>
@@ -215,7 +232,9 @@ export default function NewTicketPage() {
                                 color="primary"
                                 isDisabled={submitting}
                             >
-                                {submitting ? "Creating..." : "Create Ticket"}
+                                {submitting
+                                    ? "Creating..."
+                                    : "Create Ticket"}
                             </Button>
                         </div>
                     </Form>

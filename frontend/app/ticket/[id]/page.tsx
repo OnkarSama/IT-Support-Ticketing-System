@@ -44,10 +44,12 @@ export default function EditTicketPage({params}: PageProps) {
         category: "",
         description: "",
         status: "Open",
-        assigneeID: null,
+        priority: "Medium",
+        assigneeIDs: [],
     });
 
-    const {title, description, status, category, assigneeID} = formState;
+
+    const {title, description, priority, status, category, assigneeIDs} = formState;
 
 
     const {data: ticketData, isLoading, refetch} = useQuery({
@@ -55,12 +57,12 @@ export default function EditTicketPage({params}: PageProps) {
         queryFn: () => apiRouter.tickets.getTicketById(ticketId),
     });
 
-    const {data: userData} = useQuery({
+    const {data: currentUserData} = useQuery({
         queryKey: ["showUser"],
         queryFn: () => apiRouter.sessions.showUser(),
     });
 
-    const isStaff = userData?.user?.role === "staff";
+    const isStaff = currentUserData?.user?.role === "staff";
     const ticket = ticketData?.ticket;
 
     const {data: users = []} = useQuery<Assignee[]>({
@@ -75,7 +77,7 @@ export default function EditTicketPage({params}: PageProps) {
         },
     });
 
-
+    console.log(users);
     useEffect(() => {
         if (!ticket) return;
 
@@ -84,14 +86,15 @@ export default function EditTicketPage({params}: PageProps) {
             category: ticket.category || "",
             description: ticket.description || "",
             status: ticket.status || "Open",
-            assigneeID: ticket.assignee?.id ?? "",
+            priority: priority.toLowerCase() || "Medium",
+            assigneeIDs: ticket.assignees?.map(a => a.id) ?? [],
         });
-
     }, [ticket]);
+
 
     const updateMutation = useMutation({
         mutationFn: async (payload: typeof formState) => {
-            const ticketPayload: TicketPayload = { ticket: { ...payload } };
+            const ticketPayload: TicketPayload = {ticket: {...payload}};
             return apiRouter.tickets.updateTicket(ticketId, ticketPayload);
         },
         onSuccess: () => {
@@ -120,6 +123,7 @@ export default function EditTicketPage({params}: PageProps) {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        console.log("FORM STATE BEING SENT:", formState);
         setSubmitting(true);
         updateMutation.mutate(formState);
     };
@@ -154,112 +158,100 @@ export default function EditTicketPage({params}: PageProps) {
                             }
                         />
 
-                        <div className="grid grid-cols-3 gap-4 w-full">
+                        <div className="grid grid-cols-2 gap-4 w-full">
 
-                        <Select
-                            label="Status"
-                            labelPlacement="inside"
-                            defaultSelectedKeys={[status]}
-                            className="w-full"
-                            onSelectionChange={(keys) => {
-                                const value = Array.from(keys)[0] as string;
-                                setFormState((p) => ({...p, status: value}));
-                            }}
-                        >
-                            <SelectItem key="Open">Open</SelectItem>
-                            <SelectItem key="In Progress">In Progress</SelectItem>
-                            <SelectItem key="Closed">Closed</SelectItem>
-                        </Select>
-
-                        <Select
-                            label="Category"
-                            labelPlacement="inside"
-                            selectedKeys={category ? [category] : []}
-                            placeholder="Select a category"
-                            className="w-full"
-                            onSelectionChange={(keys) => {
-                                const value = Array.from(keys)[0] as string;
-                                setFormState((p) => ({...p, category: value}));
-                            }}
-                        >
-                            <SelectItem key="Access">Access</SelectItem>
-                            <SelectItem key="Network">Network</SelectItem>
-                            <SelectItem key="Hardware">Hardware</SelectItem>
-                            <SelectItem key="Software">Software</SelectItem>
-                            <SelectItem key="Other">Other</SelectItem>
-                        </Select>
-                        </div>
-                        {isStaff && (
                             <Select
-                                items={users}
-                                label="Assign To"
+                                label="Status"
                                 labelPlacement="inside"
-                                selectionMode="single" // primary: single assignee
-                                selectedKeys={assigneeID ? [String(assigneeID)] : []}
+                                defaultSelectedKeys={[status]}
                                 className="w-full"
-                                placeholder="Select assignee"
                                 onSelectionChange={(keys) => {
-                                    const value = Number(Array.from(keys)[0]);
-                                    setFormState((p) => ({...p, assigneeID: value}));
+                                    const value = Array.from(keys)[0] as string;
+                                    setFormState((p) => ({...p, status: value}));
                                 }}
-                                renderValue={(items: SelectedItems<Assignee>) => (
-                                    <div className="flex flex-wrap gap-2">
-                                        {items.map((item) => (
-                                            <Chip key={item.key}>{item.data?.name}</Chip>
-                                        ))}
-                                    </div>
-                                )}
                             >
-                                {(user) => (
-                                    <SelectItem key={String(user.id)} textValue={user.name}>
-                                        <div className="flex gap-2 items-center">
-                                            <Avatar size="sm" name={user.name}/>
-                                            <div className="flex flex-col">
-                                                <span className="text-small">{user.name}</span>
-                                                <span className="text-tiny text-default-400">{user.email}</span>
-                                            </div>
-                                        </div>
-                                    </SelectItem>
-                                )}
+                                <SelectItem key="Open">Open</SelectItem>
+                                <SelectItem key="In Progress">In Progress</SelectItem>
+                                <SelectItem key="Closed">Closed</SelectItem>
                             </Select>
+
+
+                            <Select
+                                label="Category"
+                                labelPlacement="inside"
+                                selectedKeys={category ? [category] : []}
+                                placeholder="Select a category"
+                                className="w-full"
+                                onSelectionChange={(keys) => {
+                                    const value = Array.from(keys)[0] as string;
+                                    setFormState((p) => ({...p, category: value}));
+                                }}
+                            >
+                                <SelectItem key="Access">Access</SelectItem>
+                                <SelectItem key="Network">Network</SelectItem>
+                                <SelectItem key="Hardware">Hardware</SelectItem>
+                                <SelectItem key="Software">Software</SelectItem>
+                                <SelectItem key="Other">Other</SelectItem>
+                            </Select>
+                        </div>
+
+                        {isStaff && (
+                            <>
+                                <div className="grid grid-cols-2 gap-4 w-full">
+                                    <Select
+                                        items={users}
+                                        label="Assign To"
+                                        labelPlacement="inside"
+                                        selectionMode="multiple"
+                                        isMultiline
+                                        selectedKeys={new Set(assigneeIDs.map(String))}
+                                        className="w-full"
+                                        placeholder="Select assignees"
+                                        onSelectionChange={(keys) => {
+                                            const ids = Array.from(keys).map(Number);
+                                            setFormState((p) => ({...p, assigneeIDs: ids}));
+                                        }}
+                                        renderValue={(items: SelectedItems<Assignee>) => (
+                                            <div className="flex flex-wrap gap-2">
+                                                {items.map((item) => (
+                                                    <Chip key={item.key}>{item.data?.name}</Chip>
+                                                ))}
+                                            </div>
+                                        )}
+                                    >
+                                        {(user) => (
+                                            <SelectItem key={String(user.id)} textValue={user.name}>
+                                                <div className="flex gap-2 items-center">
+                                                    <Avatar size="sm" name={user.name}/>
+                                                    <div className="flex flex-col">
+                                                        <span className="text-small">{user.name}</span>
+                                                        <span className="text-tiny text-default-400">
+                {user.email}
+              </span>
+                                                    </div>
+                                                </div>
+                                            </SelectItem>
+                                        )}
+                                    </Select>
+
+                                    <Select
+                                        label="Priority"
+                                        labelPlacement="inside"
+                                        selectedKeys={priority ? [priority] : []}
+                                        placeholder="Select a Priority"
+                                        className="w-full"
+                                        onSelectionChange={(keys) => {
+                                            const value = Array.from(keys)[0] as string;
+                                            setFormState((p) => ({...p, priority: value}));
+                                        }}
+                                    >
+                                        <SelectItem key="Low">Low</SelectItem>
+                                        <SelectItem key="Medium">Medium</SelectItem>
+                                        <SelectItem key="High">High</SelectItem>
+                                    </Select>
+                                </div>
+                            </>
                         )}
-
-                        {/*
-  // Future multiple selection version
-  <Select
-    items={users}
-    label="Assign To"
-    labelPlacement="inside"
-    selectionMode="multiple"
-    isMultiline
-    selectedKeys={selectedAssignees}
-    className="w-full"
-    placeholder="Select assignees"
-    onSelectionChange={(keys) =>
-      setSelectedAssignees(new Set(keys as Set<string>))
-    }
-    renderValue={(items: SelectedItems<Assignee>) => (
-      <div className="flex flex-wrap gap-2">
-        {items.map((item) => (
-          <Chip key={item.key}>{item.data?.name}</Chip>
-        ))}
-      </div>
-    )}
-  >
-    {(user) => (
-      <SelectItem key={String(user.id)} textValue={user.name}>
-        <div className="flex gap-2 items-center">
-          <Avatar size="sm" name={user.name} />
-          <div className="flex flex-col">
-            <span className="text-small">{user.name}</span>
-            <span className="text-tiny text-default-400">{user.email}</span>
-          </div>
-        </div>
-      </SelectItem>
-    )}
-  </Select>
-  */}
-
 
 
                         <Textarea
@@ -281,10 +273,12 @@ export default function EditTicketPage({params}: PageProps) {
                                         title: ticket.title || "",
                                         category: ticket.category || "",
                                         description: ticket.description || "",
+                                        priority: ticket.priority || "Medium",
                                         status: ticket.status || "Open",
-                                        assigneeID: ticket.assignee?.id ?? null,
+                                        assigneeIDs: ticket.assignees?.map(a => a.id) ?? [],
                                     })
                                 }
+
                             >
                                 Reset
                             </Button>
