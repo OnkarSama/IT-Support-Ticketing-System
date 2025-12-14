@@ -11,8 +11,8 @@ import {
     SortDescriptor,
 } from "@heroui/react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Ticket, Filter } from "@/types";
+import {useRouter, useSearchParams} from "next/navigation";
+import {Ticket, Filter} from "@/types";
 
 interface Props {
     tickets: Ticket[];
@@ -20,10 +20,9 @@ interface Props {
     setFilter: (f: Filter | null) => void;
 }
 
-export default function TicketTable({ tickets, filter, setFilter }: Props) {
+export default function TicketTable({tickets, filter, setFilter}: Props) {
     const router = useRouter();
     const searchParams = useSearchParams();
-
 
     const initialPage = Number(searchParams.get("page")) || 1;
     const initialRows = Number(searchParams.get("rows")) || 10;
@@ -51,12 +50,10 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         Open: "success",
         "In Progress": "warning",
         Closed: "danger",
-
         high: "danger",
-        low: "success",
         medium: "warning",
+        low: "success",
     };
-
 
     const filteredTickets = React.useMemo(() => {
         if (!Array.isArray(tickets)) return [];
@@ -73,17 +70,50 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         });
     }, [tickets, filter]);
 
-
     React.useEffect(() => {
         setPage(1);
     }, [filter]);
 
-
     const sortedTickets = React.useMemo(() => {
         const sorted = [...filteredTickets];
-        const { column, direction } = sortDescriptor;
+        const {column, direction} = sortDescriptor;
+
+        const priorityRank: Record<string, number> = {
+            high: 3,
+            medium: 2,
+            low: 1,
+        };
+
+        const statusRank: Record<string, number> = {
+            open: 1,
+            "in progress": 2,
+            closed: 3,
+        };
 
         sorted.sort((a, b) => {
+            // ✅ Priority sorting
+            if (column === "priority") {
+                const aVal =
+                    priorityRank[(a.priority ?? "medium").toLowerCase()] ?? 2;
+                const bVal =
+                    priorityRank[(b.priority ?? "medium").toLowerCase()] ?? 2;
+
+                const cmp = aVal - bVal;
+                return direction === "descending" ? -cmp : cmp;
+            }
+
+            // ✅ Status sorting
+            if (column === "status") {
+                const aVal =
+                    statusRank[(a.status ?? "open").toLowerCase()] ?? 1;
+                const bVal =
+                    statusRank[(b.status ?? "open").toLowerCase()] ?? 1;
+
+                const cmp = aVal - bVal;
+                return direction === "descending" ? -cmp : cmp;
+            }
+
+            // 🔁 Default sorting
             let first: any = a[column as keyof Ticket];
             let second: any = b[column as keyof Ticket];
 
@@ -97,7 +127,6 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         return sorted;
     }, [filteredTickets, sortDescriptor]);
 
-
     const displayedTickets = React.useMemo(() => {
         const start = (page - 1) * rowsPerPage;
         return sortedTickets.slice(start, start + rowsPerPage);
@@ -105,36 +134,22 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
 
     const pages = Math.max(1, Math.ceil(sortedTickets.length / rowsPerPage));
 
-
     React.useEffect(() => {
-        if (page > pages) {
-            setPage(pages);
-        }
+        if (page > pages) setPage(pages);
     }, [pages]);
 
-    // ---- SYNC PAGE + ROWS TO URL ----
     React.useEffect(() => {
         const params = new URLSearchParams(searchParams.toString());
         params.set("page", String(page));
-
-        router.replace(`?${params.toString()}`, { scroll: false });
+        router.replace(`?${params.toString()}`, {scroll: false});
     }, [page]);
-
-    const onRowsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setRowsPerPage(Number(e.target.value));
-    };
-
-    const truncateWords = (text: string, limit: number) => {
-        const words = text.split(" ");
-        if (words.length <= limit) return text;
-        return words.slice(0, limit).join(" ") + "...";
-    };
 
     return (
         <>
             {/* FILTER CHIPS */}
-            <div className="flex mb-4 gap-3 flex-wrap">
-                {(["open", "in-progress", "closed", "all"] as Filter[]).map((f) => {
+            <div className="grid grid-cols-2 gap-2 mb-4 sm:flex sm:flex-wrap sm:gap-3">
+
+            {(["open", "in-progress", "closed", "all"] as Filter[]).map((f) => {
                     const active = filter === f;
 
                     return (
@@ -150,7 +165,7 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                                             : "primary"
                             }
                             variant={active ? "shadow" : "flat"}
-                            className="cursor-pointer"
+                            className="cursor-pointer whitespace-nowrap w-full justify-center"
                             onClick={() => setFilter(active ? null : f)}
                         >
                             {f === "in-progress"
@@ -162,102 +177,164 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
             </div>
 
             {/* TABLE */}
-            <Table
-                removeWrapper
-                isHeaderSticky
-                sortDescriptor={sortDescriptor}
-                onSortChange={setSortDescriptor}
-                className="
-          bg-table_bg
-          rounded-xl
-          border border-table_border
-          min-w-full w-full
-          py-6 px-8
-          shadow-[0_18px_40px_rgba(0,0,0,0.35)]
-        "
-                classNames={{
-                    wrapper: "bg-table_bg",
-                    thead: "bg-table_bg",
-                    th: "bg-table_bg text-subheading font-semibold",
-                    tr: "hover:bg-[#1a1a1a50]",
-                    td: "text-text",
-                }}
-            >
-                <TableHeader>
-                    <TableColumn key="id" allowsSorting>Number</TableColumn>
-                    <TableColumn key="title" allowsSorting>Title</TableColumn>
-                    <TableColumn key="status" allowsSorting>Status</TableColumn>
-                    <TableColumn key="priority" allowsSorting>Priority</TableColumn>
-                    <TableColumn key="category" allowsSorting>Category</TableColumn>
-                    <TableColumn key="description">Description</TableColumn>
-                    <TableColumn key="assignees">Assignees</TableColumn>
-                    <TableColumn key="requester">Requester</TableColumn>
-                </TableHeader>
+            <div className="relative -mx-4 sm:mx-0 overflow-x-auto">
+                <Table
+                    removeWrapper
+                    isHeaderSticky
+                    sortDescriptor={sortDescriptor}
+                    onSortChange={setSortDescriptor}
+                    className="
+                        bg-table_bg
+                        rounded-xl
+                        border border-table_border
+                        w-full
+                        py-4 px-3 sm:py-6 sm:px-8
+                        shadow-[0_18px_40px_rgba(0,0,0,0.35)]
+                    "
+                    classNames={{
+                        th: "text-subheading font-semibold text-center px-2 sm:px-4",
+                        td: "text-text text-sm sm:text-base px-2 sm:px-4",
+                        tr: "hover:bg-[#1a1a1a50]",
+                    }}
+                >
+                    <TableHeader>
+                        <TableColumn key="id" allowsSorting>
+                            Ticket
+                        </TableColumn>
 
-                <TableBody emptyContent="No tickets match." items={displayedTickets}>
-                    {(ticket) => (
-                        <TableRow key={ticket.id}>
-                            <TableCell>
-                                <Link href={`/ticket/${ticket.id}`} className="hover:underline">
-                                    #{ticket.id}
-                                </Link>
-                            </TableCell>
+                        <TableColumn
+                            key="title"
+                            allowsSorting
+                            className="hidden sm:table-cell"
+                        >
+                            Title
+                        </TableColumn>
 
-                            <TableCell>
-                                <Link href={`/ticket/${ticket.id}`} className="hover:underline">
+                        <TableColumn key="status" allowsSorting>
+                            Status
+                        </TableColumn>
+
+                        <TableColumn
+                            key="priority"
+                            allowsSorting
+                            className="hidden sm:table-cell"
+                        >
+                            Priority
+                        </TableColumn>
+
+                        <TableColumn
+                            key="category"
+                            allowsSorting
+                            className="hidden md:table-cell"
+                        >
+                            Category
+                        </TableColumn>
+
+                        <TableColumn
+                            key="description"
+                            className="hidden lg:table-cell"
+                        >
+                            Description
+                        </TableColumn>
+
+                        <TableColumn
+                            key="assignees"
+                            className="hidden lg:table-cell"
+                        >
+                            Assignees
+                        </TableColumn>
+
+                        <TableColumn
+                            key="requester"
+                            className="hidden lg:table-cell"
+                        >
+                            Requester
+                        </TableColumn>
+                    </TableHeader>
+
+                    <TableBody emptyContent="No tickets match." items={displayedTickets}>
+                        {(ticket) => (
+                            <TableRow key={ticket.id}>
+                                <TableCell>
+                                    <Link
+                                        href={`/ticket/${ticket.id}`}
+                                        className="hover:underline"
+                                    >
+                                        #{ticket.id}
+                                    </Link>
+                                </TableCell>
+
+
+                                <TableCell className="hidden sm:table-cell">
                                     {ticket.title}
-                                </Link>
-                            </TableCell>
+                                </TableCell>
 
-                            <TableCell>
-                                <Chip size="sm" color={statusColorMap[ticket.status ?? "Open"]}>
-                                    {ticket.status || "Open"}
-                                </Chip>
-                            </TableCell>
+                                <TableCell>
+                                    <div className="flex justify-center">
+                                        <Chip
+                                            size="sm"
+                                            color={statusColorMap[ticket.status ?? "Open"]}
+                                        >
+                                            {ticket.status || "Open"}
+                                        </Chip>
+                                    </div>
+                                </TableCell>
 
-                            <TableCell>
-                                <Chip size="sm" color={statusColorMap[ticket.priority ?? "Medium"]}>
-                                    {(ticket.priority || "Medium")
-                                        .charAt(0)
-                                        .toUpperCase() + (ticket.priority || "Medium").slice(1)}
-                                </Chip>
-                            </TableCell>
+                                <TableCell className="hidden sm:table-cell">
+                                    <div className="flex justify-center">
+                                        <Chip
+                                            size="sm"
+                                            color={
+                                                statusColorMap[
+                                                ticket.priority ?? "Medium"
+                                                    ]
+                                            }
+                                        >
+                                            {(ticket.priority ?? "Medium")
+                                                    .charAt(0)
+                                                    .toUpperCase() +
+                                                (ticket.priority ?? "Medium").slice(1)}
+                                        </Chip>
+                                    </div>
+                                </TableCell>
+
+                                <TableCell className="hidden md:table-cell">
+                                    <Chip
+                                        size="sm"
+                                        variant="flat"
+                                        color={
+                                            categoryColorMap[
+                                                (ticket.category ?? "").toLowerCase()
+                                                ] || "default"
+                                        }
+                                    >
+                                        {ticket.category || "uncategorized"}
+                                    </Chip>
+                                </TableCell>
+                                <TableCell className="hidden lg:table-cell">
+                                    <span className="line-clamp-2">
+                                        {ticket.description}
+                                    </span>
+                                </TableCell>
 
 
-                            <TableCell>
-                                <Chip
-                                    size="sm"
-                                    variant="flat"
-                                    color={
-                                        categoryColorMap[
-                                            (ticket.category ?? "").toLowerCase()
-                                            ] || "default"
-                                    }
-                                >
-                                    {ticket.category || "uncategorized"}
-                                </Chip>
-                            </TableCell>
+                                <TableCell className="hidden lg:table-cell">
+                                    {ticket.assignees?.length
+                                        ? ticket.assignees.map((a) => a.name).join(", ")
+                                        : "No Assignees"}
+                                </TableCell>
 
-                            <TableCell>
-                                {truncateWords(ticket.description, 20)}
-                            </TableCell>
-
-                            <TableCell>
-                                {ticket?.assignees?.length
-                                    ? ticket.assignees.map(a => a.name).join(", ")
-                                    : "No Assignees"}
-                            </TableCell>
-
-                            <TableCell>
-                                {ticket.creator.name}
-                            </TableCell>
-                        </TableRow>
-                    )}
-                </TableBody>
-            </Table>
+                                <TableCell className="hidden lg:table-cell">
+                                    {ticket.creator.name}
+                                </TableCell>
+                            </TableRow>
+                        )}
+                    </TableBody>
+                </Table>
+            </div>
 
             {/* PAGINATION */}
-            <div className="text-text flex justify-between items-center mt-4">
+            <div className="flex flex-col gap-3 mt-4 sm:flex-row sm:justify-between sm:items-center text-text">
                 <Pagination
                     showControls
                     loop
@@ -268,7 +345,6 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                     variant="flat"
                     onChange={setPage}
                 />
-
             </div>
         </>
     );

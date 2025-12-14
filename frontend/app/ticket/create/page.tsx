@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import {FormEvent, useState} from "react";
 import {useRouter, useSearchParams} from "next/navigation";
 import {
     Card,
@@ -14,9 +14,9 @@ import {
     Chip,
     Avatar,
 } from "@heroui/react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import apiRouter from "@/api/router";
-import type { User } from "@/api/user";
+import type {User} from "@/api/user";
 
 type Assignee = Pick<User, "id" | "name" | "email">;
 
@@ -36,7 +36,7 @@ export default function NewTicketPage() {
         new Set()
     );
 
-    const { data: userData } = useQuery({
+    const {data: userData} = useQuery({
         queryKey: ["showUser"],
         queryFn: () => apiRouter.sessions.showUser(),
     });
@@ -44,11 +44,11 @@ export default function NewTicketPage() {
     const isStaff = userData?.user?.role === "staff";
 
     // Fetch users for assignee dropdown
-    const { data: users = [] } = useQuery<Assignee[]>({
+    const {data: users = []} = useQuery<Assignee[]>({
         queryKey: ["users"],
         queryFn: async () => {
             const result = await apiRouter.users.showUsers();
-            return result.map(({ id, name, email }: User) => ({
+            return result.map(({id, name, email}: User) => ({
                 id,
                 name,
                 email,
@@ -71,7 +71,7 @@ export default function NewTicketPage() {
             });
         },
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ["getTickets"] });
+            queryClient.invalidateQueries({queryKey: ["getTickets"]});
 
             router.push(`/dashboard?${searchParams.toString()}`);
         },
@@ -111,20 +111,27 @@ export default function NewTicketPage() {
                             placeholder="e.g. Cannot log in to portal"
                         />
 
-                        <div className="grid grid-cols-3 gap-4 w-full">
-                            <Select
-                                label="Status"
-                                labelPlacement="inside"
-                                selectedKeys={[status]}
-                                className="w-full"
-                                onSelectionChange={(keys) =>
-                                    setStatus(Array.from(keys)[0] as string)
-                                }
-                            >
-                                <SelectItem key="Open">Open</SelectItem>
-                                <SelectItem key="In Progress">In Progress</SelectItem>
-                                <SelectItem key="Closed">Closed</SelectItem>
-                            </Select>
+
+                        <div
+                            className={`grid w-full gap-4 ${
+                                isStaff ? "grid-cols-3" : "grid-cols-1"
+                            }`}
+                        >
+                        {isStaff && (
+                                <Select
+                                    label="Status"
+                                    labelPlacement="inside"
+                                    selectedKeys={[status]}
+                                    className="w-full"
+                                    onSelectionChange={(keys) =>
+                                        setStatus(Array.from(keys)[0] as string)
+                                    }
+                                >
+                                    <SelectItem key="Open">Open</SelectItem>
+                                    <SelectItem key="In Progress">In Progress</SelectItem>
+                                    <SelectItem key="Closed">Closed</SelectItem>
+                                </Select>
+                            )}
 
                             {isStaff && (
                                 <Select

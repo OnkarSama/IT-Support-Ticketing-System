@@ -30,7 +30,7 @@ export default function Component() {
 
         const formData = new FormData(event.currentTarget);
         const payload = {
-            email: formData.get("email"),
+            email: formData.get("email")?.toString().toLowerCase(),
             password: formData.get("password"),
         };
 

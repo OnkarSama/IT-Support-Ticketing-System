@@ -24,8 +24,6 @@ class Api::TicketsController < ApplicationController
         
         @ticket = Ticket.new(ticket_params);
         @ticket.creator_id = current_user.id
-
-        debugger
         
         if @ticket.save
             render :show

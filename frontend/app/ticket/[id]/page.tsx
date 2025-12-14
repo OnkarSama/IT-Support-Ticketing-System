@@ -151,52 +151,53 @@ export default function EditTicketPage({params}: PageProps) {
                         <Input
                             isRequired
                             label="Ticket Name"
+                            isReadOnly={!isStaff}
                             labelPlacement="inside"
                             value={title}
                             onChange={(e) =>
                                 setFormState((p) => ({...p, title: e.target.value}))
                             }
                         />
-
-                        <div className="grid grid-cols-2 gap-4 w-full">
-
-                            <Select
-                                label="Status"
-                                labelPlacement="inside"
-                                defaultSelectedKeys={[status]}
-                                className="w-full"
-                                onSelectionChange={(keys) => {
-                                    const value = Array.from(keys)[0] as string;
-                                    setFormState((p) => ({...p, status: value}));
-                                }}
-                            >
-                                <SelectItem key="Open">Open</SelectItem>
-                                <SelectItem key="In Progress">In Progress</SelectItem>
-                                <SelectItem key="Closed">Closed</SelectItem>
-                            </Select>
-
-
-                            <Select
-                                label="Category"
-                                labelPlacement="inside"
-                                selectedKeys={category ? [category] : []}
-                                placeholder="Select a category"
-                                className="w-full"
-                                onSelectionChange={(keys) => {
-                                    const value = Array.from(keys)[0] as string;
-                                    setFormState((p) => ({...p, category: value}));
-                                }}
-                            >
-                                <SelectItem key="Access">Access</SelectItem>
-                                <SelectItem key="Network">Network</SelectItem>
-                                <SelectItem key="Hardware">Hardware</SelectItem>
-                                <SelectItem key="Software">Software</SelectItem>
-                                <SelectItem key="Other">Other</SelectItem>
-                            </Select>
-                        </div>
-
                         {isStaff && (
                             <>
+                                <div className="grid grid-cols-2 gap-4 w-full">
+
+                                    <Select
+                                        label="Status"
+                                        labelPlacement="inside"
+                                        defaultSelectedKeys={[status]}
+                                        className="w-full"
+                                        onSelectionChange={(keys) => {
+                                            const value = Array.from(keys)[0] as string;
+                                            setFormState((p) => ({...p, status: value}));
+                                        }}
+                                    >
+                                        <SelectItem key="Open">Open</SelectItem>
+                                        <SelectItem key="In Progress">In Progress</SelectItem>
+                                        <SelectItem key="Closed">Closed</SelectItem>
+                                    </Select>
+
+
+                                    <Select
+                                        label="Category"
+                                        labelPlacement="inside"
+                                        selectedKeys={category ? [category] : []}
+                                        placeholder="Select a category"
+                                        className="w-full"
+                                        onSelectionChange={(keys) => {
+                                            const value = Array.from(keys)[0] as string;
+                                            setFormState((p) => ({...p, category: value}));
+                                        }}
+                                    >
+                                        <SelectItem key="Access">Access</SelectItem>
+                                        <SelectItem key="Network">Network</SelectItem>
+                                        <SelectItem key="Hardware">Hardware</SelectItem>
+                                        <SelectItem key="Software">Software</SelectItem>
+                                        <SelectItem key="Other">Other</SelectItem>
+                                    </Select>
+                                </div>
+
+
                                 <div className="grid grid-cols-2 gap-4 w-full">
                                     <Select
                                         items={users}
