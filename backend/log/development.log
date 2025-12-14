@@ -27980,3 +27980,537 @@ Completed 200 OK in 33ms (Views: 0.1ms | ActiveRecord: 7.4ms (4 queries, 0 cache
 >>>>>>> 863763d170b27927691068e4db06474bc3d04454
 
 
+Started POST "/api/tickets/?ticket[name]=%22bob%22&ticket[description]=%22bob%22&ticket[priority]=%22high%22&ticket[category]=%22compy%20broke%22&ticket[assignees][]=63" for ::1 at 2025-12-13 23:18:21 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {"name" => "\"bob\"", "description" => "\"bob\"", "priority" => "\"high\"", "category" => "\"compy broke\"", "assignees" => ["63"]}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+[31mUnpermitted parameters: :name, :assignees. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x000000011f761cc0>, params: {"ticket" => {"name" => "\"bob\"", "description" => "\"bob\"", "priority" => "\"high\"", "category" => "\"compy broke\"", "assignees" => ["63"]}, "format" => :json, "controller" => "api/tickets", "action" => "create"} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+Completed 422 Unprocessable Content in 17ms (Views: 0.1ms | ActiveRecord: 2.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/tickets/?ticket[title]=%22bob%22&ticket[description]=%22bob%22&ticket[priority]=%22high%22&ticket[category]=%22compy%20broke%22&ticket[assignees][]=63" for ::1 at 2025-12-13 23:18:30 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {"title" => "\"bob\"", "description" => "\"bob\"", "priority" => "\"high\"", "category" => "\"compy broke\"", "assignees" => ["63"]}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+[31mUnpermitted parameter: :assignees. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x000000011ef50478>, params: {"ticket" => {"title" => "\"bob\"", "description" => "\"bob\"", "priority" => "\"high\"", "category" => "\"compy broke\"", "assignees" => ["63"]}, "format" => :json, "controller" => "api/tickets", "action" => "create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+Completed 422 Unprocessable Content in 12ms (Views: 0.4ms | ActiveRecord: 3.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/tickets/?ticket[title]=%22bob%22&ticket[description]=%22bob%22&ticket[priority]=high&ticket[category]=%22compy%20broke%22&ticket[assignees][]=63" for ::1 at 2025-12-13 23:18:34 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {"title" => "\"bob\"", "description" => "\"bob\"", "priority" => "high", "category" => "\"compy broke\"", "assignees" => ["63"]}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+[31mUnpermitted parameter: :assignees. Context: { controller: Api::TicketsController, action: create, request: #<ActionDispatch::Request:0x00000001268dae60>, params: {"ticket" => {"title" => "\"bob\"", "description" => "\"bob\"", "priority" => "high", "category" => "\"compy broke\"", "assignees" => ["63"]}, "format" => :json, "controller" => "api/tickets", "action" => "create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicket Create (6.5ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('"bob"', '"bob"', NULL, '"compy broke"', '2025-12-14 04:18:34.802458', '2025-12-14 04:18:34.802458', 62, 'high') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  Rendering api/tickets/show.json.jbuilder
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 20 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/show.json.jbuilder:5
+  Rendered api/tickets/show.json.jbuilder (Duration: 10.5ms | GC: 0.0ms)
+Completed 200 OK in 66ms (Views: 36.9ms | ActiveRecord: 14.3ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/tickets/?ticket[title]=%22bob%22&ticket[description]=%22bob%22&ticket[priority]=high&ticket[category]=%22compy%20broke%22&ticket[assignee_ids][]=63" for ::1 at 2025-12-13 23:20:58 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {"title" => "\"bob\"", "description" => "\"bob\"", "priority" => "high", "category" => "\"compy broke\"", "assignee_ids" => ["63"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 63 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:24:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" IS NULL LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '1DAe28Bw74RxF9isf8axXQ' AND "users"."id" != 63 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicket Create (0.8ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('"bob"', '"bob"', NULL, '"compy broke"', '2025-12-14 04:20:59.102864', '2025-12-14 04:20:59.102864', 62, 'high') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" = 21 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Create (1.8ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (21, 63, '2025-12-14 04:20:59.105068', '2025-12-14 04:20:59.105068') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  Rendering api/tickets/show.json.jbuilder
+  Rendered api/tickets/show.json.jbuilder (Duration: 1.7ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 11.2ms (8 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method 'id' for nil)
+Caused by: NoMethodError (undefined method 'id' for nil)
+
+Information for: ActionView::Template::Error (undefined method 'id' for nil):
+    2:     json.extract! @ticket, :id, :title, :description, :status, :category, :priority, :created_at, :updated_at
+    3:     
+    4:     json.creator do
+    5:         json.id json.creator.id
+    6:         json.name json.creator.name
+    7:         json.email json.creator.email
+    8:     end
+  
+app/views/api/tickets/show.json.jbuilder:5
+app/views/api/tickets/show.json.jbuilder:4
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+
+Information for cause: NoMethodError (undefined method 'id' for nil):
+  
+app/views/api/tickets/show.json.jbuilder:5
+app/views/api/tickets/show.json.jbuilder:4
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+Started POST "/api/tickets/?ticket[title]=%22bob%22&ticket[description]=%22bob%22&ticket[priority]=high&ticket[category]=%22compy%20broke%22&ticket[assignee_ids][]=63" for ::1 at 2025-12-13 23:21:19 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {"title" => "\"bob\"", "description" => "\"bob\"", "priority" => "high", "category" => "\"compy broke\"", "assignee_ids" => ["63"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 63 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:24:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" IS NULL LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '1DAe28Bw74RxF9isf8axXQ' AND "users"."id" != 63 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicket Create (0.8ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('"bob"', '"bob"', NULL, '"compy broke"', '2025-12-14 04:21:19.844947', '2025-12-14 04:21:19.844947', 62, 'high') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" = 22 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (22, 63, '2025-12-14 04:21:19.847402', '2025-12-14 04:21:19.847402') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  Rendering api/tickets/show.json.jbuilder
+  Rendered api/tickets/show.json.jbuilder (Duration: 4.4ms | GC: 1.8ms)
+Completed 200 OK in 35ms (Views: 7.4ms | ActiveRecord: 8.9ms (8 queries, 0 cached) | GC: 4.9ms)
+
+
+Started POST "/api/tickets/?ticket[title]=%22bob%22&ticket[description]=%22bob%22&ticket[priority]=high&ticket[category]=%22compy%20broke%22&ticket[assignee_ids][]=63" for ::1 at 2025-12-13 23:22:24 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {"title" => "\"bob\"", "description" => "\"bob\"", "priority" => "high", "category" => "\"compy broke\"", "assignee_ids" => ["63"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 63 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:24:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" IS NULL LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '1DAe28Bw74RxF9isf8axXQ' AND "users"."id" != 63 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicket Create (1.0ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('"bob"', '"bob"', NULL, '"compy broke"', '2025-12-14 04:22:24.355677', '2025-12-14 04:22:24.355677', 62, 'high') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" = 23 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Create (0.3ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (23, 63, '2025-12-14 04:22:24.359488', '2025-12-14 04:22:24.359488') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  Rendering api/tickets/show.json.jbuilder
+  Rendered api/tickets/show.json.jbuilder (Duration: 0.7ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 10.0ms (8 queries, 0 cached) | GC: 13.1ms)
+
+
+  
+ActionView::Template::Error (undefined method 'id' for nil)
+Caused by: NoMethodError (undefined method 'id' for nil)
+
+Information for: ActionView::Template::Error (undefined method 'id' for nil):
+    1: json.ticket do
+    2:     json.extract! @ticket, :id, :title, :description, :status, :category, :priority, :created_at, :updated_at
+    3:         json.creator do
+    4:         json.id json.creator.id
+    5:         json.name json.creator.name
+    6:         json.email json.creator.email
+    7:     end
+  
+app/views/api/tickets/show.json.jbuilder:4
+app/views/api/tickets/show.json.jbuilder:3
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+
+Information for cause: NoMethodError (undefined method 'id' for nil):
+  
+app/views/api/tickets/show.json.jbuilder:4
+app/views/api/tickets/show.json.jbuilder:3
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+Started POST "/api/tickets/?ticket[title]=%22bob%22&ticket[description]=%22bob%22&ticket[priority]=high&ticket[category]=%22compy%20broke%22&ticket[assignee_ids][]=63" for ::1 at 2025-12-13 23:24:55 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {"title" => "\"bob\"", "description" => "\"bob\"", "priority" => "high", "category" => "\"compy broke\"", "assignee_ids" => ["63"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 63 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:24:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" IS NULL LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '1DAe28Bw74RxF9isf8axXQ' AND "users"."id" != 63 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicket Create (0.8ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('"bob"', '"bob"', NULL, '"compy broke"', '2025-12-14 04:24:55.744206', '2025-12-14 04:24:55.744206', 62, 'high') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" = 24 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Create (0.4ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (24, 63, '2025-12-14 04:24:55.746803', '2025-12-14 04:24:55.746803') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  Rendering api/tickets/show.json.jbuilder
+  Rendered api/tickets/show.json.jbuilder (Duration: 3.2ms | GC: 1.1ms)
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 8.8ms (8 queries, 0 cached) | GC: 5.0ms)
+
+
+  
+ActionView::Template::Error (undefined method 'creator' for nil)
+Caused by: NoMethodError (undefined method 'creator' for nil)
+
+Information for: ActionView::Template::Error (undefined method 'creator' for nil):
+    1: json.ticket do
+    2:     json.extract! @ticket, :id, :title, :description, :status, :category, :priority, :created_at, :updated_at
+    3:     
+    4:     json.ticket.creator do
+    5:         json.id json.ticket.creator.id
+    6:         json.name json.ticket.creator.name
+    7:         json.email json.ticket.creator.email
+  
+app/views/api/tickets/show.json.jbuilder:4
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+
+Information for cause: NoMethodError (undefined method 'creator' for nil):
+  
+app/views/api/tickets/show.json.jbuilder:4
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+Started POST "/api/tickets/?ticket[title]=%22bob%22&ticket[description]=%22bob%22&ticket[priority]=high&ticket[category]=%22compy%20broke%22&ticket[assignee_ids][]=63" for ::1 at 2025-12-13 23:25:36 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {"title" => "\"bob\"", "description" => "\"bob\"", "priority" => "high", "category" => "\"compy broke\"", "assignee_ids" => ["63"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 63 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:24:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" IS NULL LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '1DAe28Bw74RxF9isf8axXQ' AND "users"."id" != 63 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicket Create (0.4ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('"bob"', '"bob"', NULL, '"compy broke"', '2025-12-14 04:25:36.444499', '2025-12-14 04:25:36.444499', 62, 'high') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" = 25 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Create (0.4ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (25, 63, '2025-12-14 04:25:36.448628', '2025-12-14 04:25:36.448628') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:27:in 'Api::TicketsController#create'
+  Rendering api/tickets/show.json.jbuilder
+  Rendered api/tickets/show.json.jbuilder (Duration: 0.5ms | GC: 0.2ms)
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 9.6ms (8 queries, 0 cached) | GC: 29.4ms)
+
+
+  
+ActionView::Template::Error (undefined method 'creator' for nil)
+Caused by: NoMethodError (undefined method 'creator' for nil)
+
+Information for: ActionView::Template::Error (undefined method 'creator' for nil):
+    1: json.ticket do
+    2:     json.extract! @ticket, :id, :title, :description, :status, :category, :priority, :created_at, :updated_at
+    3:     
+    4:     json.ticket.creator do
+    5:         json.id ticket.creator.id
+    6:         json.name ticket.creator.name
+    7:         json.email ticket.creator.email
+  
+app/views/api/tickets/show.json.jbuilder:4
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+
+Information for cause: NoMethodError (undefined method 'creator' for nil):
+  
+app/views/api/tickets/show.json.jbuilder:4
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+Started POST "/api/tickets/?ticket[title]=%22bob%22&ticket[description]=%22bob%22&ticket[priority]=high&ticket[category]=%22compy%20broke%22&ticket[assignee_ids][]=63" for ::1 at 2025-12-13 23:26:46 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {"title" => "\"bob\"", "description" => "\"bob\"", "priority" => "high", "category" => "\"compy broke\"", "assignee_ids" => ["63"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 63 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:25:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" IS NULL LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '1DAe28Bw74RxF9isf8axXQ' AND "users"."id" != 63 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mTicket Create (0.6ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('"bob"', '"bob"', NULL, '"compy broke"', '2025-12-14 04:26:46.154201', '2025-12-14 04:26:46.154201', 62, 'high') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" = 26 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Create (0.5ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (26, 63, '2025-12-14 04:26:46.156276', '2025-12-14 04:26:46.156276') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  Rendering api/tickets/show.json.jbuilder
+  Rendered api/tickets/show.json.jbuilder (Duration: 0.6ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 9.9ms (7 queries, 0 cached) | GC: 2.5ms)
+
+
+  
+ActionView::Template::Error (undefined method 'creator' for nil)
+Caused by: NoMethodError (undefined method 'creator' for nil)
+
+Information for: ActionView::Template::Error (undefined method 'creator' for nil):
+    1: json.ticket do
+    2:     json.extract! @ticket, :id, :title, :description, :status, :category, :priority, :created_at, :updated_at
+    3:     
+    4:     json.ticket.creator do
+    5:         json.id ticket.creator.id
+    6:         json.name ticket.creator.name
+    7:         json.email ticket.creator.email
+  
+app/views/api/tickets/show.json.jbuilder:4
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:29:in 'Api::TicketsController#create'
+
+Information for cause: NoMethodError (undefined method 'creator' for nil):
+  
+app/views/api/tickets/show.json.jbuilder:4
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:29:in 'Api::TicketsController#create'
+Started POST "/api/tickets/?ticket[title]=%22bob%22&ticket[description]=%22bob%22&ticket[priority]=high&ticket[category]=%22compy%20broke%22&ticket[assignee_ids][]=63" for ::1 at 2025-12-13 23:27:10 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {"title" => "\"bob\"", "description" => "\"bob\"", "priority" => "high", "category" => "\"compy broke\"", "assignee_ids" => ["63"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 63 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:25:in 'Api::TicketsController#create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ (rdbg)//Users/josephbergmann/Documents/SE project/IT-Support-Ticketing-System/backend/app/controllers/api/tickets_controller.rb:1:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" IS NULL LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '1DAe28Bw74RxF9isf8axXQ' AND "users"."id" != 63 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicket Create (0.7ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('"bob"', '"bob"', NULL, '"compy broke"', '2025-12-14 04:27:25.133001', '2025-12-14 04:27:25.133001', 62, 'high') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" = 27 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Create (0.4ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (27, 63, '2025-12-14 04:27:25.139175', '2025-12-14 04:27:25.139175') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  Rendering api/tickets/show.json.jbuilder
+  Rendered api/tickets/show.json.jbuilder (Duration: 1.2ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 14868ms (ActiveRecord: 11.3ms (8 queries, 0 cached) | GC: 22.6ms)
+
+
+  
+ActionView::Template::Error (undefined method 'creator' for nil)
+Caused by: NoMethodError (undefined method 'creator' for nil)
+
+Information for: ActionView::Template::Error (undefined method 'creator' for nil):
+    1: json.ticket do
+    2:     json.extract! @ticket, :id, :title, :description, :status, :category, :priority, :created_at, :updated_at
+    3:     
+    4:     json.ticket.creator do
+    5:         json.id ticket.creator.id
+    6:         json.name ticket.creator.name
+    7:         json.email ticket.creator.email
+  
+app/views/api/tickets/show.json.jbuilder:4
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:31:in 'Api::TicketsController#create'
+
+Information for cause: NoMethodError (undefined method 'creator' for nil):
+  
+app/views/api/tickets/show.json.jbuilder:4
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:31:in 'Api::TicketsController#create'
+Started POST "/api/tickets/?ticket[title]=%22bob%22&ticket[description]=%22bob%22&ticket[priority]=high&ticket[category]=%22compy%20broke%22&ticket[assignee_ids][]=63" for ::1 at 2025-12-13 23:27:31 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {"title" => "\"bob\"", "description" => "\"bob\"", "priority" => "high", "category" => "\"compy broke\"", "assignee_ids" => ["63"]}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 63 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:25:in 'Api::TicketsController#create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ (rdbg)//Users/josephbergmann/Documents/SE project/IT-Support-Ticketing-System/backend/app/controllers/api/tickets_controller.rb:1:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (6.3ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" IS NULL LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '1DAe28Bw74RxF9isf8axXQ' AND "users"."id" != 63 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicket Create (2.6ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('"bob"', '"bob"', NULL, '"compy broke"', '2025-12-14 04:27:57.658600', '2025-12-14 04:27:57.658600', 62, 'high') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" = 28 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Create (1.5ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (28, 63, '2025-12-14 04:27:57.671440', '2025-12-14 04:27:57.671440') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  Rendering api/tickets/show.json.jbuilder
+  Rendered api/tickets/show.json.jbuilder (Duration: 1.6ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 26002ms (ActiveRecord: 15.2ms (8 queries, 0 cached) | GC: 8.9ms)
+
+
+  
+ActionView::Template::Error (undefined method 'creator' for nil)
+Caused by: NoMethodError (undefined method 'creator' for nil)
+
+Information for: ActionView::Template::Error (undefined method 'creator' for nil):
+    1: json.ticket do
+    2:     json.extract! @ticket, :id, :title, :description, :status, :category, :priority, :created_at, :updated_at
+    3:     
+    4:     json.ticket.creator do
+    5:         json.id @ticket.creator.id
+    6:         json.name @ticket.creator.name
+    7:         json.email @ticket.creator.email
+  
+app/views/api/tickets/show.json.jbuilder:4
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:31:in 'Api::TicketsController#create'
+
+Information for cause: NoMethodError (undefined method 'creator' for nil):
+  
+app/views/api/tickets/show.json.jbuilder:4
+app/views/api/tickets/show.json.jbuilder:1
+app/controllers/api/tickets_controller.rb:31:in 'Api::TicketsController#create'
+Started POST "/api/tickets/?ticket[title]=%22bob%22&ticket[description]=%22bob%22&ticket[priority]=high&ticket[category]=%22compy%20broke%22&ticket[assignee_ids][]=63" for ::1 at 2025-12-13 23:28:32 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {"title" => "\"bob\"", "description" => "\"bob\"", "priority" => "high", "category" => "\"compy broke\"", "assignee_ids" => ["63"]}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 63 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:25:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" IS NULL LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '1DAe28Bw74RxF9isf8axXQ' AND "users"."id" != 63 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicket Create (0.9ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('"bob"', '"bob"', NULL, '"compy broke"', '2025-12-14 04:28:38.173502', '2025-12-14 04:28:38.173502', 62, 'high') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" = 29 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Create (0.4ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (29, 63, '2025-12-14 04:28:38.178775', '2025-12-14 04:28:38.178775') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  Rendering api/tickets/show.json.jbuilder
+  Rendered api/tickets/show.json.jbuilder (Duration: 2.1ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 5785ms (ActiveRecord: 12.0ms (8 queries, 0 cached) | GC: 33.4ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/show.json.jbuilder)
+Caused by: ActiveSupport::SyntaxErrorProxy (/Users/josephbergmann/Documents/SE project/IT-Support-Ticketing-System/backend/app/views/api/tickets/show.json.jbuilder:4: syntax error found
+  [2m2 | [m    json.extract! @ticket, :id, :title, :description, :status, :category, :priority, :created_at, :updated_at
+  [2m3 | [m    
+[1;31m> [m[2m4 | [m    json.@ticket.creator do
+  [2m  | [m         [1;31m^~~~~~~[m unexpected instance variable; expecting a message to send to the receiver
+  [2m5 | [m        json.id @ticket.creator.id
+  [2m6 | [m        json.name @ticket.creator.name
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/api/tickets/show.json.jbuilder):
+1:    json.ticket do
+2:        json.extract! @ticket, :id, :title, :description, :status, :category, :priority, :created_at, :updated_at
+3:        
+4:        json.@ticket.creator do
+5:            json.id @ticket.creator.id
+6:            json.name @ticket.creator.name
+7:            json.email @ticket.creator.email
+8:        end
+9:    
+10:        if @ticket.assignees.any?
+11:            json.assignees do
+12:                json.array! @ticket.assignees do |assignee|
+13:                    json.id assignee.id
+14:                    json.name assignee.name
+15:                    json.email assignee.email 
+16:                end
+17:            end
+18:        end
+19:    end
+  
+app/views/api/tickets/show.json.jbuilder:4: syntax error found
+app/controllers/api/tickets_controller.rb:31:in 'Api::TicketsController#create'
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/Users/josephbergmann/Documents/SE project/IT-Support-Ticketing-System/backend/app/views/api/tickets/show.json.jbuilder:4: syntax error found
+  [2m2 | [m    json.extract! @ticket, :id, :title, :description, :status, :category, :priority, :created_at, :updated_at
+  [2m3 | [m    
+[1;31m> [m[2m4 | [m    json.@ticket.creator do
+  [2m  | [m         [1;31m^~~~~~~[m unexpected instance variable; expecting a message to send to the receiver
+  [2m5 | [m        json.id @ticket.creator.id
+  [2m6 | [m        json.name @ticket.creator.name
+):
+  
+app/views/api/tickets/show.json.jbuilder:4: syntax error found
+app/controllers/api/tickets_controller.rb:31:in 'Api::TicketsController#create'
+Started POST "/api/tickets/?ticket[title]=%22bob%22&ticket[description]=%22bob%22&ticket[priority]=high&ticket[category]=%22compy%20broke%22&ticket[assignee_ids][]=63" for ::1 at 2025-12-13 23:29:05 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {"title" => "\"bob\"", "description" => "\"bob\"", "priority" => "high", "category" => "\"compy broke\"", "assignee_ids" => ["63"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'UIJ9y4jWqX-FSscKKYuOqw' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 63 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:25:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" IS NULL LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '1DAe28Bw74RxF9isf8axXQ' AND "users"."id" != 63 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicket Create (1.0ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('"bob"', '"bob"', NULL, '"compy broke"', '2025-12-14 04:29:06.442085', '2025-12-14 04:29:06.442085', 62, 'high') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" = 30 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Create (0.5ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (30, 63, '2025-12-14 04:29:06.453849', '2025-12-14 04:29:06.453849') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:30:in 'Api::TicketsController#create'
+  Rendering api/tickets/show.json.jbuilder
+  Rendered api/tickets/show.json.jbuilder (Duration: 0.7ms | GC: 0.0ms)
+Completed 200 OK in 1173ms (Views: 3.2ms | ActiveRecord: 11.9ms (8 queries, 0 cached) | GC: 6.4ms)
+
+
