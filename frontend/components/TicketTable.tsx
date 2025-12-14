@@ -24,9 +24,9 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
     const router = useRouter();
     const searchParams = useSearchParams();
 
-    // ---- INITIAL STATE FROM URL ----
+
     const initialPage = Number(searchParams.get("page")) || 1;
-    const initialRows = Number(searchParams.get("rows")) || 30;
+    const initialRows = Number(searchParams.get("rows")) || 10;
 
     const [page, setPage] = React.useState(initialPage);
     const [rowsPerPage, setRowsPerPage] = React.useState(initialRows);
@@ -57,7 +57,7 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         medium: "warning",
     };
 
-    // ---- FILTER ----
+
     const filteredTickets = React.useMemo(() => {
         if (!Array.isArray(tickets)) return [];
 
@@ -73,12 +73,12 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         });
     }, [tickets, filter]);
 
-    // reset page ONLY when filter changes
+
     React.useEffect(() => {
         setPage(1);
     }, [filter]);
 
-    // ---- SORT ----
+
     const sortedTickets = React.useMemo(() => {
         const sorted = [...filteredTickets];
         const { column, direction } = sortDescriptor;
@@ -97,7 +97,7 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
         return sorted;
     }, [filteredTickets, sortDescriptor]);
 
-    // ---- PAGINATION ----
+
     const displayedTickets = React.useMemo(() => {
         const start = (page - 1) * rowsPerPage;
         return sortedTickets.slice(start, start + rowsPerPage);
@@ -105,7 +105,7 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
 
     const pages = Math.max(1, Math.ceil(sortedTickets.length / rowsPerPage));
 
-    // clamp page if rowsPerPage changes or tickets shrink
+
     React.useEffect(() => {
         if (page > pages) {
             setPage(pages);
@@ -116,10 +116,9 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
     React.useEffect(() => {
         const params = new URLSearchParams(searchParams.toString());
         params.set("page", String(page));
-        params.set("rows", String(rowsPerPage));
 
         router.replace(`?${params.toString()}`, { scroll: false });
-    }, [page, rowsPerPage]);
+    }, [page]);
 
     const onRowsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setRowsPerPage(Number(e.target.value));
@@ -270,19 +269,6 @@ export default function TicketTable({ tickets, filter, setFilter }: Props) {
                     onChange={setPage}
                 />
 
-                <label className="flex items-center gap-2 text-default-400 text-small">
-                    Rows per page:
-                    <select
-                        className="bg-transparent outline-none text-default-400 text-small"
-                        value={rowsPerPage}
-                        onChange={onRowsPerPageChange}
-                    >
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="15">15</option>
-                        <option value="30">30</option>
-                    </select>
-                </label>
             </div>
         </>
     );

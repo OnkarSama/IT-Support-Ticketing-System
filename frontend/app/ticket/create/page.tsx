@@ -66,8 +66,8 @@ export default function NewTicketPage() {
                     description: formData.description,
                     status: status,
                     priority: priority.toLowerCase(),
-                    category,
-                    assigneeIDs,
+                    category: category,
+                    assigneeIDs: assigneeIDs,
                 },
             });
         },
