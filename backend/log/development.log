@@ -38659,3 +38659,1051 @@ Processing by Api::TicketsController#show as JSON
 Completed 200 OK in 23ms (Views: 4.8ms | ActiveRecord: 4.3ms (4 queries, 0 cached) | GC: 3.7ms)
 
 
+Started GET "/" for 127.0.0.1 at 2025-12-14 12:04:25 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/josephbergmann/.local/share/mise/installs/ruby/3.4.7/lib/ruby/gems/3.4.0/gems/railties-8.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/josephbergmann/.local/share/mise/installs/ruby/3.4.7/lib/ruby/gems/3.4.0/gems/railties-8.1.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 2.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-12-14 12:04:28 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/josephbergmann/.local/share/mise/installs/ruby/3.4.7/lib/ruby/gems/3.4.0/gems/railties-8.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/josephbergmann/.local/share/mise/installs/ruby/3.4.7/lib/ruby/gems/3.4.0/gems/railties-8.1.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | GC: 0.0ms)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-12-14 12:04:40 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/josephbergmann/.local/share/mise/installs/ruby/3.4.7/lib/ruby/gems/3.4.0/gems/railties-8.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/josephbergmann/.local/share/mise/installs/ruby/3.4.7/lib/ruby/gems/3.4.0/gems/railties-8.1.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | GC: 0.0ms)
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-12-14 12:05:07 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/josephbergmann/.local/share/mise/installs/ruby/3.4.7/lib/ruby/gems/3.4.0/gems/railties-8.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/josephbergmann/.local/share/mise/installs/ruby/3.4.7/lib/ruby/gems/3.4.0/gems/railties-8.1.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.3ms | GC: 0.0ms)
+Completed 200 OK in 6ms (Views: 1.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-12-14 12:05:08 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/josephbergmann/.local/share/mise/installs/ruby/3.4.7/lib/ruby/gems/3.4.0/gems/railties-8.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/josephbergmann/.local/share/mise/installs/ruby/3.4.7/lib/ruby/gems/3.4.0/gems/railties-8.1.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-12-14 12:05:08 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/josephbergmann/.local/share/mise/installs/ruby/3.4.7/lib/ruby/gems/3.4.0/gems/railties-8.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/josephbergmann/.local/share/mise/installs/ruby/3.4.7/lib/ruby/gems/3.4.0/gems/railties-8.1.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | GC: 0.0ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2025-12-14 12:10:36 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]", "session" => {"email" => "[FILTERED]", "password" => "[FILTERED]"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'QCyuNnIJdve_Fq4QNPsHjg' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:50:in 'User#generate_session_token'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'QCyuNnIJdve_Fq4QNPsHjg' AND "users"."id" != 62 LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Update (3.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-12-14 17:10:36.933657', "session_token" = 'QCyuNnIJdve_Fq4QNPsHjg' WHERE "users"."id" = 62 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mTicket Load (3.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 62 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/views/api/users/show.json.jbuilder:4
+  Rendered api/users/show.json.jbuilder (Duration: 14.2ms | GC: 0.0ms)
+Completed 200 OK in 274ms (Views: 16.0ms | ActiveRecord: 34.7ms (6 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/tickets" for 127.0.0.1 at 2025-12-14 12:10:37 -0500
+Started GET "/api/session" for 127.0.0.1 at 2025-12-14 12:10:37 -0500
+Processing by Api::TicketsController#index as JSON
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (6.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'QCyuNnIJdve_Fq4QNPsHjg' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'QCyuNnIJdve_Fq4QNPsHjg' LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (7.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 62 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/views/api/users/show.json.jbuilder:4
+  Rendered api/users/show.json.jbuilder (Duration: 12.7ms | GC: 0.0ms)
+Completed 200 OK in 40ms (Views: 5.8ms | ActiveRecord: 8.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mTicket Load (33.9ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 20 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  Rendered api/tickets/index.json.jbuilder (Duration: 73.7ms | GC: 0.0ms)
+Completed 200 OK in 115ms (Views: 38.0ms | ActiveRecord: 52.0ms (43 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2025-12-14 12:11:03 -0500
+Processing by Api::UsersController#index as JSON
+  Rendering api/users/index.json.jbuilder
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."role" = 'staff' /*action='index',application='Backend',controller='users'*/[0m
+  ↳ app/views/api/users/index.json.jbuilder:1
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 63 /*action='index',application='Backend',controller='users'*/[0m
+  ↳ app/views/api/users/index.json.jbuilder:6
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 66 /*action='index',application='Backend',controller='users'*/[0m
+  ↳ app/views/api/users/index.json.jbuilder:6
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 67 /*action='index',application='Backend',controller='users'*/[0m
+  ↳ app/views/api/users/index.json.jbuilder:6
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 62 /*action='index',application='Backend',controller='users'*/[0m
+  ↳ app/views/api/users/index.json.jbuilder:6
+  Rendered api/users/index.json.jbuilder (Duration: 13.7ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 18.0ms | ActiveRecord: 2.7ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/tickets" for 127.0.0.1 at 2025-12-14 12:11:19 -0500
+Processing by Api::TicketsController#create as JSON
+  Parameters: {"ticket" => {"title" => "helo", "description" => "machin broke", "status" => "Open", "priority" => "medium", "category" => "Network", "assignee_ids" => [63, 66]}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'QCyuNnIJdve_Fq4QNPsHjg' LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (63, 66) /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:25:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" IS NULL LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 66 AND "ticket_assignees"."ticket_id" IS NULL LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '1DAe28Bw74RxF9isf8axXQ' AND "users"."id" != 63 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'AEZ0UktJ4QixTFfyT2SUcg' AND "users"."id" != 66 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mTicket Create (3.0ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "status", "category", "created_at", "updated_at", "creator_id", "priority") VALUES ('helo', 'machin broke', 'Open', 'Network', '2025-12-14 17:11:19.835691', '2025-12-14 17:11:19.835691', 62, 'medium') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 63 AND "ticket_assignees"."ticket_id" = 31 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Create (1.2ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (31, 63, '2025-12-14 17:11:19.847464', '2025-12-14 17:11:19.847464') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "ticket_assignees" WHERE "ticket_assignees"."user_id" = 66 AND "ticket_assignees"."ticket_id" = 31 LIMIT 1 /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mTicketAssignee Create (0.3ms)[0m  [1m[32mINSERT INTO "ticket_assignees" ("ticket_id", "user_id", "created_at", "updated_at") VALUES (31, 66, '2025-12-14 17:11:19.851185', '2025-12-14 17:11:19.851185') RETURNING "id" /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/api/tickets_controller.rb:28:in 'Api::TicketsController#create'
+  Rendering api/tickets/show.json.jbuilder
+  Rendered api/tickets/show.json.jbuilder (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 99ms (Views: 1.7ms | ActiveRecord: 23.1ms (12 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/tickets" for 127.0.0.1 at 2025-12-14 12:11:19 -0500
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'QCyuNnIJdve_Fq4QNPsHjg' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 20 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 31 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 31 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  Rendered api/tickets/index.json.jbuilder (Duration: 63.5ms | GC: 27.4ms)
+Completed 200 OK in 65ms (Views: 55.9ms | ActiveRecord: 8.1ms (46 queries, 0 cached) | GC: 27.4ms)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2025-12-14 12:11:23 -0500
+Started GET "/api/tickets" for 127.0.0.1 at 2025-12-14 12:11:23 -0500
+Processing by Api::SessionsController#show as JSON
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'QCyuNnIJdve_Fq4QNPsHjg' LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mTicket Load (1.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 62 /*action='show',application='Backend',controller='sessions'*/[0m
+  [1m[36mUser Load (5.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'QCyuNnIJdve_Fq4QNPsHjg' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/users/show.json.jbuilder:4
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendered api/users/show.json.jbuilder (Duration: 5.7ms | GC: 0.0ms)
+  Rendering api/tickets/index.json.jbuilder
+Completed 200 OK in 14ms (Views: 6.5ms | ActiveRecord: 2.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mTicket Load (2.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 20 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 31 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 31 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  Rendered api/tickets/index.json.jbuilder (Duration: 62.2ms | GC: 8.2ms)
+Completed 200 OK in 75ms (Views: 47.1ms | ActiveRecord: 21.5ms (46 queries, 0 cached) | GC: 8.2ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2025-12-14 12:11:27 -0500
+Processing by Api::UsersController#index as JSON
+  Rendering api/users/index.json.jbuilder
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."role" = 'staff' /*action='index',application='Backend',controller='users'*/[0m
+  ↳ app/views/api/users/index.json.jbuilder:1
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 63 /*action='index',application='Backend',controller='users'*/[0m
+  ↳ app/views/api/users/index.json.jbuilder:6
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 66 /*action='index',application='Backend',controller='users'*/[0m
+  ↳ app/views/api/users/index.json.jbuilder:6
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 67 /*action='index',application='Backend',controller='users'*/[0m
+  ↳ app/views/api/users/index.json.jbuilder:6
+  [1m[36mTicket Load (0.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 62 /*action='index',application='Backend',controller='users'*/[0m
+  ↳ app/views/api/users/index.json.jbuilder:6
+  Rendered api/users/index.json.jbuilder (Duration: 7.1ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 2.0ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2025-12-14 12:11:34 -0500
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'QCyuNnIJdve_Fq4QNPsHjg' LIMIT 1 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'QfpitaY0Y_9Y_axhpB16WA' LIMIT 1 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:50:in 'User#generate_session_token'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = 'QfpitaY0Y_9Y_axhpB16WA' AND "users"."id" != 62 LIMIT 1 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-12-14 17:11:34.765929', "session_token" = 'QfpitaY0Y_9Y_axhpB16WA' WHERE "users"."id" = 62 /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT /*action='destroy',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+Completed 200 OK in 23ms (Views: 1.1ms | ActiveRecord: 5.5ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2025-12-14 12:11:41 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]", "session" => {"email" => "[FILTERED]", "password" => "[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@gmail.com' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:13:in 'User.find_by_credentials'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '5F8ccreQlAy2un5E6uurLg' LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:50:in 'User#generate_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = '5F8ccreQlAy2un5E6uurLg' AND "users"."id" != 62 LIMIT 1 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mUser Update (1.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = '2025-12-14 17:11:41.446591', "session_token" = '5F8ccreQlAy2un5E6uurLg' WHERE "users"."id" = 62 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/models/user.rb:23:in 'User#reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 62 /*action='create',application='Backend',controller='sessions'*/[0m
+  ↳ app/views/api/users/show.json.jbuilder:4
+  Rendered api/users/show.json.jbuilder (Duration: 1.4ms | GC: 0.0ms)
+Completed 200 OK in 205ms (Views: 1.3ms | ActiveRecord: 4.3ms (6 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2025-12-14 12:11:41 -0500
+Started GET "/api/tickets" for 127.0.0.1 at 2025-12-14 12:11:41 -0500
+Processing by Api::TicketsController#index as JSON
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = '5F8ccreQlAy2un5E6uurLg' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = '5F8ccreQlAy2un5E6uurLg' LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mTicket Load (3.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 62 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/views/api/users/show.json.jbuilder:4
+  Rendered api/users/show.json.jbuilder (Duration: 4.5ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 1.4ms | ActiveRecord: 4.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 20 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 31 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 31 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  Rendered api/tickets/index.json.jbuilder (Duration: 59.1ms | GC: 17.2ms)
+Completed 200 OK in 63ms (Views: 50.7ms | ActiveRecord: 9.3ms (46 queries, 0 cached) | GC: 17.2ms)
+
+
+Started GET "/api/tickets" for 127.0.0.1 at 2025-12-14 12:17:44 -0500
+Started GET "/api/session" for 127.0.0.1 at 2025-12-14 12:17:44 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/session"):
+  
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = '5F8ccreQlAy2un5E6uurLg' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (1.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 20 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 31 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 31 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  Rendered api/tickets/index.json.jbuilder (Duration: 72.1ms | GC: 21.4ms)
+Completed 200 OK in 84ms (Views: 62.0ms | ActiveRecord: 14.4ms (46 queries, 0 cached) | GC: 21.4ms)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2025-12-14 12:17:45 -0500
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = '5F8ccreQlAy2un5E6uurLg' LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 62 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/views/api/users/show.json.jbuilder:4
+  Rendered api/users/show.json.jbuilder (Duration: 3.9ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 6.0ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/api/tickets" for 127.0.0.1 at 2025-12-14 12:17:47 -0500
+Started GET "/api/session" for 127.0.0.1 at 2025-12-14 12:17:47 -0500
+Processing by Api::SessionsController#show as JSON
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = '5F8ccreQlAy2un5E6uurLg' LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 62 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/views/api/users/show.json.jbuilder:4
+  Rendered api/users/show.json.jbuilder (Duration: 1.9ms | GC: 0.0ms)
+Completed 200 OK in 7ms (Views: 1.8ms | ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = '5F8ccreQlAy2un5E6uurLg' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 20 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 31 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 31 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  Rendered api/tickets/index.json.jbuilder (Duration: 29.4ms | GC: 3.9ms)
+Completed 200 OK in 72ms (Views: 23.7ms | ActiveRecord: 10.2ms (46 queries, 0 cached) | GC: 4.4ms)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2025-12-14 12:17:48 -0500
+Started GET "/api/tickets" for 127.0.0.1 at 2025-12-14 12:17:48 -0500
+Processing by Api::SessionsController#show as JSON
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = '5F8ccreQlAy2un5E6uurLg' LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = '5F8ccreQlAy2un5E6uurLg' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (1.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 62 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/views/api/users/show.json.jbuilder:4
+  Rendered api/users/show.json.jbuilder (Duration: 3.2ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 2.9ms | ActiveRecord: 1.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mTicket Load (1.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 20 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 31 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 31 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  Rendered api/tickets/index.json.jbuilder (Duration: 63.7ms | GC: 12.6ms)
+Completed 200 OK in 71ms (Views: 53.9ms | ActiveRecord: 11.1ms (46 queries, 0 cached) | GC: 12.6ms)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2025-12-14 12:17:49 -0500
+Started GET "/api/tickets" for 127.0.0.1 at 2025-12-14 12:17:49 -0500
+Processing by Api::SessionsController#show as JSON
+Processing by Api::TicketsController#index as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = '5F8ccreQlAy2un5E6uurLg' LIMIT 1 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = '5F8ccreQlAy2un5E6uurLg' LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in 'ApplicationController#current_user'
+  Rendering api/tickets/index.json.jbuilder
+  [1m[36mTicket Load (0.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" INNER JOIN "ticket_assignees" ON "tickets"."id" = "ticket_assignees"."ticket_id" WHERE "ticket_assignees"."user_id" = 62 /*action='show',application='Backend',controller='sessions'*/[0m
+  ↳ app/views/api/users/show.json.jbuilder:4
+  Rendered api/users/show.json.jbuilder (Duration: 1.8ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 1.5ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 17 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 69 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 18 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 68 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 19 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 20 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 21 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 22 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 23 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 24 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 25 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 26 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 27 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 28 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 29 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 30 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 62 LIMIT 1[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:4
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 31 LIMIT 1 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "ticket_assignees" ON "users"."id" = "ticket_assignees"."user_id" WHERE "ticket_assignees"."ticket_id" = 31 /*action='index',application='Backend',controller='tickets'*/[0m
+  ↳ app/views/api/tickets/index.json.jbuilder:16
+  Rendered api/tickets/index.json.jbuilder (Duration: 38.0ms | GC: 1.1ms)
+Completed 200 OK in 42ms (Views: 29.2ms | ActiveRecord: 10.1ms (46 queries, 0 cached) | GC: 1.1ms)
+
+
