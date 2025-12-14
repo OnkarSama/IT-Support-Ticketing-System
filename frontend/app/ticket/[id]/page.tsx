@@ -249,6 +249,7 @@ export default function EditTicketPage({params}: PageProps) {
                             </>
                         )}
 
+
                         <Textarea
                             isRequired
                             label="Description"
