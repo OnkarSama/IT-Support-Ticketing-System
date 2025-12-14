@@ -12,33 +12,37 @@ import {
 
 type Props = {
     ticketId: number;
-    deleteFn: (id: number) => void | Promise<void>;
+    deleteFn: () => void | Promise<void>;
     onDeleted?: () => void;
+    className?: string;
 };
 
-export default function DeleteTicketModal({ ticketId, deleteFn, onDeleted }: Props) {
+export default function DeleteTicketModal({
+                                              ticketId,
+                                              deleteFn,
+                                              onDeleted,
+                                              className,
+                                          }: Props) {
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
-
-    const openModal = () => setOpen(true);
-    const closeModal = () => setOpen(false);
 
     const handleConfirm = async () => {
         setLoading(true);
         try {
-            await deleteFn(ticketId);
-            if (onDeleted) onDeleted();
-            closeModal();
+            await deleteFn();
+            onDeleted?.();
+            setOpen(false);
         } catch (err) {
             console.error("Delete failed:", err);
+        } finally {
+            setLoading(false);
         }
-        setLoading(false);
     };
 
     return (
-        <>
+        <div className={className}>
             {/* DELETE BUTTON */}
-            <Button color="danger" onPress={openModal}>
+            <Button color="danger" onPress={() => setOpen(true)}>
                 Delete
             </Button>
 
@@ -58,7 +62,7 @@ export default function DeleteTicketModal({ ticketId, deleteFn, onDeleted }: Pro
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button variant="flat" onPress={closeModal}>
+                        <Button variant="flat" onPress={() => setOpen(false)}>
                             Cancel
                         </Button>
 
@@ -72,6 +76,6 @@ export default function DeleteTicketModal({ ticketId, deleteFn, onDeleted }: Pro
                     </ModalFooter>
                 </ModalContent>
             </Modal>
-        </>
+        </div>
     );
 }

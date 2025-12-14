@@ -23,6 +23,10 @@ export const siteConfig = {
             label: "New Ticket",
             href: "/ticket/create",
         },
+        {
+            label: "Logout",
+            action: "logout",
+        }
     ],
     links: {
     },

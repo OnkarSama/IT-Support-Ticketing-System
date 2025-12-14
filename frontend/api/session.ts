@@ -1,7 +1,7 @@
 import api from './index'
 
 
-type LoginPayload = {
+export type LoginPayload = {
     email: string,
     password: string
 };

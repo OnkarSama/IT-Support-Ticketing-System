@@ -1,7 +1,7 @@
 "use client";
 
-import {use, useEffect, useState, FormEvent} from "react";
-import {useRouter} from "next/navigation";
+import { useEffect, useState, FormEvent } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
     Card,
     Button,
@@ -9,29 +9,27 @@ import {
     Textarea,
     Form,
     Select,
-    SelectItem, type SelectedItems, Chip, Avatar,
+    SelectItem,
+    type SelectedItems,
+    Chip,
+    Avatar,
 } from "@heroui/react";
-import {useQuery, useMutation, useQueryClient} from "@tanstack/react-query";
-
-import {useSearchParams} from "next/navigation";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 import apiRouter from "@/api/router";
-import type {TicketPayload} from "@/api/ticket";
-import type {User} from "@/api/user";
+import type { TicketPayload } from "@/api/ticket";
+import type { User } from "@/api/user";
 
 import DeleteTicketModal from "@/components/DeleteTicketModal";
-
 
 type Assignee = Pick<User, "id" | "name" | "email">;
 
 interface PageProps {
-    params: Promise<{ id: number }>;
+    params: { id: string };
 }
 
-export default function EditTicketPage({params}: PageProps) {
-
-    const {id: ticketIdString} = use(params);
-    const ticketId = Number(ticketIdString);
+export default function EditTicketPage({ params }: PageProps) {
+    const ticketId = Number(params.id);
 
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -48,16 +46,19 @@ export default function EditTicketPage({params}: PageProps) {
         assignee_ids: [],
     });
 
+    const { title, description, priority, status, category, assignee_ids } = formState;
 
-    const {title, description, priority, status, category, assignee_ids} = formState;
-
-
-    const {data: ticketData, isLoading, refetch} = useQuery({
+    const {
+        data: ticketData,
+        isLoading,
+        refetch,
+    } = useQuery({
         queryKey: ["getTicketById", ticketId],
         queryFn: () => apiRouter.tickets.getTicketById(ticketId),
+        enabled: Number.isFinite(ticketId),
     });
 
-    const {data: currentUserData} = useQuery({
+    const { data: currentUserData } = useQuery({
         queryKey: ["showUser"],
         queryFn: () => apiRouter.sessions.showUser(),
     });
@@ -65,11 +66,11 @@ export default function EditTicketPage({params}: PageProps) {
     const isStaff = currentUserData?.user?.role === "staff";
     const ticket = ticketData?.ticket;
 
-    const {data: users = []} = useQuery<Assignee[]>({
+    const { data: users = [] } = useQuery({
         queryKey: ["users"],
-        queryFn: async () => {
+        queryFn: async (): Promise<Assignee[]> => {
             const result = await apiRouter.users.showUsers();
-            return result.map(({id, name, email}: User) => ({
+            return result.map(({ id, name, email }: User) => ({
                 id,
                 name,
                 email,
@@ -77,28 +78,29 @@ export default function EditTicketPage({params}: PageProps) {
         },
     });
 
-    console.log(users);
     useEffect(() => {
         if (!ticket) return;
 
         setFormState({
-            title: ticket.title || "",
-            category: ticket.category || "",
-            description: ticket.description || "",
-            status: ticket.status || "Open",
-            priority: priority.toLowerCase() || "Medium",
-            assignee_ids: ticket.assignees?.map(a => a.id) ?? [],
+            title: ticket.title ?? "",
+            category: ticket.category ?? "",
+            description: ticket.description ?? "",
+            status: ticket.status ?? "Open",
+            priority: ticket.priority ?? "Medium",
+            assignee_ids: ticket.assignees?.map(
+                (a: { id: number }) => a.id
+            ) ?? [],
+
         });
     }, [ticket]);
 
-
     const updateMutation = useMutation({
-        mutationFn: async (payload: typeof formState) => {
-            const ticketPayload: TicketPayload = {ticket: {...payload}};
+        mutationFn: async (payload: TicketPayload["ticket"]) => {
+            const ticketPayload: TicketPayload = { ticket: payload };
             return apiRouter.tickets.updateTicket(ticketId, ticketPayload);
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(["getTickets"]);
+            queryClient.invalidateQueries({ queryKey: ["getTickets"] });
             refetch();
             setSubmitting(false);
             router.push(`/dashboard?${searchParams.toString()}`);
@@ -112,7 +114,7 @@ export default function EditTicketPage({params}: PageProps) {
     const deleteMutation = useMutation({
         mutationFn: async (id: number) => apiRouter.tickets.deleteTicket(id),
         onSuccess: () => {
-            queryClient.invalidateQueries({queryKey: ["getTickets"]});
+            queryClient.invalidateQueries({ queryKey: ["getTickets"] });
             router.push(`/dashboard?${searchParams.toString()}`);
         },
         onError: (error) => {
@@ -123,7 +125,6 @@ export default function EditTicketPage({params}: PageProps) {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("FORM STATE BEING SENT:", formState);
         setSubmitting(true);
         updateMutation.mutate(formState);
     };
@@ -155,28 +156,29 @@ export default function EditTicketPage({params}: PageProps) {
                             labelPlacement="inside"
                             value={title}
                             onChange={(e) =>
-                                setFormState((p) => ({...p, title: e.target.value}))
+                                setFormState((p) => ({ ...p, title: e.target.value }))
                             }
                         />
+
                         {isStaff && (
                             <>
-                                <div className="grid grid-cols-2 gap-4 w-full">
-
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
                                     <Select
                                         label="Status"
                                         labelPlacement="inside"
-                                        defaultSelectedKeys={[status]}
+                                        selectedKeys={[status]}
                                         className="w-full"
                                         onSelectionChange={(keys) => {
-                                            const value = Array.from(keys)[0] as string;
-                                            setFormState((p) => ({...p, status: value}));
+                                            const value = [...keys][0];
+                                            if (typeof value === "string") {
+                                                setFormState((p) => ({ ...p, status: value }));
+                                            }
                                         }}
                                     >
                                         <SelectItem key="Open">Open</SelectItem>
                                         <SelectItem key="In Progress">In Progress</SelectItem>
                                         <SelectItem key="Closed">Closed</SelectItem>
                                     </Select>
-
 
                                     <Select
                                         label="Category"
@@ -185,8 +187,10 @@ export default function EditTicketPage({params}: PageProps) {
                                         placeholder="Select a category"
                                         className="w-full"
                                         onSelectionChange={(keys) => {
-                                            const value = Array.from(keys)[0] as string;
-                                            setFormState((p) => ({...p, category: value}));
+                                            const value = [...keys][0];
+                                            if (typeof value === "string") {
+                                                setFormState((p) => ({ ...p, category: value }));
+                                            }
                                         }}
                                     >
                                         <SelectItem key="Access">Access</SelectItem>
@@ -197,38 +201,52 @@ export default function EditTicketPage({params}: PageProps) {
                                     </Select>
                                 </div>
 
-
-                                <div className="grid grid-cols-2 gap-4 w-full">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
                                     <Select
                                         items={users}
                                         label="Assign To"
                                         labelPlacement="inside"
                                         selectionMode="multiple"
                                         isMultiline
-                                        selectedKeys={new Set(assignee_ids.map(String))}
+                                        selectedKeys={new Set((assignee_ids ?? []).map(String))}
                                         className="w-full"
                                         placeholder="Select assignees"
                                         onSelectionChange={(keys) => {
-                                            const ids = Array.from(keys).map(Number);
-                                            setFormState((p) => ({...p, assignee_ids: ids}));
+                                            const ids = [...keys]
+                                                .map((k) => Number(k))
+                                                .filter(
+                                                    (n): n is number => !Number.isNaN(n)
+                                                );
+
+                                            setFormState((p) => ({
+                                                ...p,
+                                                assignee_ids: ids,
+                                            }));
                                         }}
                                         renderValue={(items: SelectedItems<Assignee>) => (
                                             <div className="flex flex-wrap gap-2">
                                                 {items.map((item) => (
-                                                    <Chip key={item.key}>{item.data?.name}</Chip>
+                                                    <Chip key={item.key}>
+                                                        {item.data?.name}
+                                                    </Chip>
                                                 ))}
                                             </div>
                                         )}
                                     >
                                         {(user) => (
-                                            <SelectItem key={String(user.id)} textValue={user.name}>
+                                            <SelectItem
+                                                key={String(user.id)}
+                                                textValue={user.name}
+                                            >
                                                 <div className="flex gap-2 items-center">
-                                                    <Avatar size="sm" name={user.name}/>
+                                                    <Avatar size="sm" name={user.name} />
                                                     <div className="flex flex-col">
-                                                        <span className="text-small">{user.name}</span>
+                                                        <span className="text-small">
+                                                            {user.name}
+                                                        </span>
                                                         <span className="text-tiny text-default-400">
-                {user.email}
-              </span>
+                                                            {user.email}
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </SelectItem>
@@ -238,12 +256,17 @@ export default function EditTicketPage({params}: PageProps) {
                                     <Select
                                         label="Priority"
                                         labelPlacement="inside"
-                                        selectedKeys={priority ? [priority] : []}
+                                        selectedKeys={[priority]}
                                         placeholder="Select a Priority"
                                         className="w-full"
                                         onSelectionChange={(keys) => {
-                                            const value = Array.from(keys)[0] as string;
-                                            setFormState((p) => ({...p, priority: value}));
+                                            const value = [...keys][0];
+                                            if (typeof value === "string") {
+                                                setFormState((p) => ({
+                                                    ...p,
+                                                    priority: value,
+                                                }));
+                                            }
                                         }}
                                     >
                                         <SelectItem key="Low">Low</SelectItem>
@@ -254,51 +277,63 @@ export default function EditTicketPage({params}: PageProps) {
                             </>
                         )}
 
-
                         <Textarea
                             isRequired
                             label="Description"
                             minRows={4}
                             value={description}
                             onChange={(e) =>
-                                setFormState((p) => ({...p, description: e.target.value}))
+                                setFormState((p) => ({
+                                    ...p,
+                                    description: e.target.value,
+                                }))
                             }
                         />
 
-                        <div className="mt-6 flex justify-end gap-4">
-                            <Button
-                                type="button"
-                                variant="flat"
-                                onPressEnd={() =>
-                                    setFormState({
-                                        title: ticket.title || "",
-                                        category: ticket.category || "",
-                                        description: ticket.description || "",
-                                        priority: ticket.priority || "Medium",
-                                        status: ticket.status || "Open",
-                                        assignee_ids: ticket.assignees?.map(a => a.id) ?? [],
-                                    })
-                                }
-
+                        <div className="mt-6 w-full">
+                            <div
+                                className={`grid gap-4 w-full grid-cols-1 ${
+                                    isStaff ? "sm:grid-cols-3" : "sm:grid-cols-2"
+                                }`}
                             >
-                                Reset
-                            </Button>
+                                <Button
+                                    type="button"
+                                    variant="flat"
+                                    className="w-full"
+                                    onPressEnd={() =>
+                                        setFormState({
+                                            title: ticket.title ?? "",
+                                            category: ticket.category ?? "",
+                                            description: ticket.description ?? "",
+                                            priority: ticket.priority ?? "Medium",
+                                            status: ticket.status ?? "Open",
+                                            assignee_ids: ticket.assignees?.map(
+                                                (a: { id: number }) => a.id
+                                            ) ?? [],
+                                        })
+                                    }
+                                >
+                                    Reset
+                                </Button>
 
-                            <Button
-                                type="submit"
-                                variant="solid"
-                                color="primary"
-                                isDisabled={submitting}
-                            >
-                                {submitting ? "Updating..." : "Update Ticket"}
-                            </Button>
+                                <Button
+                                    type="submit"
+                                    variant="solid"
+                                    color="primary"
+                                    isDisabled={submitting}
+                                    className="w-full"
+                                >
+                                    {submitting ? "Updating..." : "Update Ticket"}
+                                </Button>
 
-                            {isStaff && (
-                                <DeleteTicketModal
-                                    ticketId={ticketId}
-                                    deleteFn={handleDelete}
-                                />
-                            )}
+                                {isStaff && (
+                                    <DeleteTicketModal
+                                        ticketId={ticketId}
+                                        deleteFn={handleDelete}
+                                        className="w-full"
+                                    />
+                                )}
+                            </div>
                         </div>
                     </Form>
                 </Card>

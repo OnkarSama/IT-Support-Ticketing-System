@@ -1,21 +1,23 @@
 "use client";
 
 import React from "react";
-import {Button, Input, Checkbox, Link, Form, Divider} from "@heroui/react";
-import {Icon} from "@iconify/react";
-import {useMutation} from "@tanstack/react-query";
+import { Button, Input, Form } from "@heroui/react";
+import { Icon } from "@iconify/react";
+import { useMutation } from "@tanstack/react-query";
 import apiRouter from "@/api/router";
 import { useRouter } from "next/navigation";
+
+import type {LoginPayload} from "@/api/session";
 
 export default function Component() {
     const router = useRouter();
     const [isVisible, setIsVisible] = React.useState(false);
 
-    const toggleVisibility = () => setIsVisible(!isVisible);
+    const toggleVisibility = () => setIsVisible((v) => !v);
 
-    // 🔥 useMutation for login
     const loginMutation = useMutation({
-        mutationFn: apiRouter.sessions.createSession,
+        mutationFn: (payload: LoginPayload) =>
+            apiRouter.sessions.createSession(payload),
         onSuccess: (data) => {
             console.log("Login Success:", data);
             router.push("/dashboard");
@@ -29,12 +31,11 @@ export default function Component() {
         event.preventDefault();
 
         const formData = new FormData(event.currentTarget);
-        const payload = {
-            email: formData.get("email")?.toString().toLowerCase(),
-            password: formData.get("password"),
-        };
 
-        console.log(payload);
+        const payload: LoginPayload = {
+            email: formData.get("email")!.toString().toLowerCase(),
+            password: formData.get("password")!.toString(),
+        };
 
         loginMutation.mutate(payload);
     };
@@ -44,10 +45,16 @@ export default function Component() {
             <div className="rounded-large flex w-full max-w-sm flex-col gap-4">
                 <div className="flex flex-col items-center pb-6">
                     <p className="text-xl font-medium">Welcome</p>
-                    <p className="text-small text-default-500">Log in to your account to continue</p>
+                    <p className="text-small text-default-500">
+                        Log in to your account to continue
+                    </p>
                 </div>
 
-                <Form className="flex flex-col gap-3" validationBehavior="native" onSubmit={handleSubmit}>
+                <Form
+                    className="flex flex-col gap-3"
+                    validationBehavior="native"
+                    onSubmit={handleSubmit}
+                >
                     <Input
                         isRequired
                         label="Email Address"
@@ -66,11 +73,10 @@ export default function Component() {
                         variant="bordered"
                         endContent={
                             <button type="button" onClick={toggleVisibility}>
-                                {isVisible ? (
-                                    <Icon className="text-default-400 pointer-events-none text-2xl" icon="solar:eye-closed-linear" />
-                                ) : (
-                                    <Icon className="text-default-400 pointer-events-none text-2xl" icon="solar:eye-bold" />
-                                )}
+                                <Icon
+                                    className="text-default-400 pointer-events-none text-2xl"
+                                    icon={isVisible ? "solar:eye-closed-linear" : "solar:eye-bold"}
+                                />
                             </button>
                         }
                     />
@@ -85,15 +91,17 @@ export default function Component() {
                     </Button>
                 </Form>
 
-                {/* 🔥 Show errors or success */}
                 {loginMutation.isError && (
-                    <p className="text-red-500 text-small">Login failed. Please try again.</p>
+                    <p className="text-red-500 text-small">
+                        Login failed. Please try again.
+                    </p>
                 )}
 
                 {loginMutation.isSuccess && (
-                    <p className="text-green-500 text-small">Login successful!</p>
+                    <p className="text-green-500 text-small">
+                        Login successful!
+                    </p>
                 )}
-
             </div>
         </div>
     );
