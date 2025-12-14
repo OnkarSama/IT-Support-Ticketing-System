@@ -7,7 +7,7 @@ export type TicketPayload = {
         description: string;
         priority: string;
         status: string;
-        assigneeIDs: number[] | null;
+        assignee_ids: number[] | null;
     }
 }
 

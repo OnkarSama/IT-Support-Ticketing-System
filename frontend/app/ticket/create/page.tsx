@@ -59,7 +59,6 @@ export default function NewTicketPage() {
     const createMutation = useMutation({
         mutationFn: async (formData: Record<string, any>) => {
             const assigneeIDs = Array.from(selectedAssignees).map(Number);
-
             return apiRouter.tickets.createTicket({
                 ticket: {
                     title: formData.title,
@@ -67,12 +66,13 @@ export default function NewTicketPage() {
                     status: status,
                     priority: priority.toLowerCase(),
                     category: category,
-                    assigneeIDs: assigneeIDs,
+                    assignee_ids: assigneeIDs,
                 },
             });
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["getTickets"] });
+
             router.push(`/dashboard?${searchParams.toString()}`);
         },
         onError: (err) => {

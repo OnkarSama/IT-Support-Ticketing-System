@@ -45,11 +45,11 @@ export default function EditTicketPage({params}: PageProps) {
         description: "",
         status: "Open",
         priority: "Medium",
-        assigneeIDs: [],
+        assignee_ids: [],
     });
 
 
-    const {title, description, priority, status, category, assigneeIDs} = formState;
+    const {title, description, priority, status, category, assignee_ids} = formState;
 
 
     const {data: ticketData, isLoading, refetch} = useQuery({
@@ -87,7 +87,7 @@ export default function EditTicketPage({params}: PageProps) {
             description: ticket.description || "",
             status: ticket.status || "Open",
             priority: priority.toLowerCase() || "Medium",
-            assigneeIDs: ticket.assignees?.map(a => a.id) ?? [],
+            assignee_ids: ticket.assignees?.map(a => a.id) ?? [],
         });
     }, [ticket]);
 
@@ -204,12 +204,12 @@ export default function EditTicketPage({params}: PageProps) {
                                         labelPlacement="inside"
                                         selectionMode="multiple"
                                         isMultiline
-                                        selectedKeys={new Set(assigneeIDs.map(String))}
+                                        selectedKeys={new Set(assignee_ids.map(String))}
                                         className="w-full"
                                         placeholder="Select assignees"
                                         onSelectionChange={(keys) => {
                                             const ids = Array.from(keys).map(Number);
-                                            setFormState((p) => ({...p, assigneeIDs: ids}));
+                                            setFormState((p) => ({...p, assignee_ids: ids}));
                                         }}
                                         renderValue={(items: SelectedItems<Assignee>) => (
                                             <div className="flex flex-wrap gap-2">
@@ -275,7 +275,7 @@ export default function EditTicketPage({params}: PageProps) {
                                         description: ticket.description || "",
                                         priority: ticket.priority || "Medium",
                                         status: ticket.status || "Open",
-                                        assigneeIDs: ticket.assignees?.map(a => a.id) ?? [],
+                                        assignee_ids: ticket.assignees?.map(a => a.id) ?? [],
                                     })
                                 }
 
