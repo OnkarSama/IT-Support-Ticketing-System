@@ -72,3 +72,7 @@ tmp/*
 backend/tmp/*
 backend/log/*
 backend/log/development.log
+backend/log/development.log
+backend/tmp/cache/bootsnap/compile-cache-iseq/*
+backend/tmp/cache/bootsnap/compile-cache-iseq/*
+backend/tmp/cache/bootsnap/load-path-cache
